@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+@import "variables.scss";
+
+@layer reset, primeng;
+
+@layer reset {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-family: "montserrat", sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 1rem;
+  }
+
+  body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .header-container
+   {
+    max-width: 1400px;
+    padding: 0 1rem;
+  }
+
+  .my-container {
+    max-width: 1300px;
+    padding: 0 1rem;
+  }
+
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .Facebook{
+    &:hover{
+      a{
+        color: #1877F2 !important;      
+      }
+    }
+  }
+
+  .Instagram{
+    &:hover{
+      a{      
+        color: #E1306C !important;
+      }
+    }
+  }
+
+  .Youtube{
+    &:hover{
+      a{      
+        color: #FF0000 !important;
+      }
+    }
+  }
+
+  .Whatsapp{
+    &:hover{
+      a{      
+        color: green !important;
+      }
+    }
+  }
+}
