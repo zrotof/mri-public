@@ -12,14 +12,14 @@ export default {
   {
     "renderMode": 2,
     "preload": [
-      "chunk-7OHDS2A4.js"
+      "chunk-EUUBMNDG.js"
     ],
     "route": "/agence"
   },
   {
     "renderMode": 2,
     "preload": [
-      "chunk-D7GBY5IU.js",
+      "chunk-SNZU6FM2.js",
       "chunk-TS73LLPX.js"
     ],
     "route": "/devis-gratuit"
@@ -27,11 +27,11 @@ export default {
 ],
   entryPointToBrowserMapping: undefined,
   assets: {
-    'index.csr.html': {size: 4910, hash: 'e1fceedf271ba06fa077d1e19bfc849f24b72cf15c4648310aa6e5878dda60b9', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
-    'index.server.html': {size: 4725, hash: '119b717935e7e61623e98c8d6905a7c039a22fd85ee6996cbafcbd8e6b11981f', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
-    'agence/index.html': {size: 68491, hash: 'ebb7fcebc2c6a5d0fa63574174d743ee1020084998b1715aee4d213eb6ccfde6', text: () => import('./assets-chunks/agence_index_html.mjs').then(m => m.default)},
-    'index.html': {size: 120230, hash: '1c17baeb8d0886c8f5c7b70f6e681f5afa707e38f8f99bdb8e6e444c4327e592', text: () => import('./assets-chunks/index_html.mjs').then(m => m.default)},
-    'devis-gratuit/index.html': {size: 84323, hash: '5107672f9ba2fed5b17c54802fdd411786359452d3b43be7f364753154e71c1e', text: () => import('./assets-chunks/devis-gratuit_index_html.mjs').then(m => m.default)},
+    'index.csr.html': {size: 4979, hash: '93fe359505583dc2e3fe8ac8c937c89830dd4725e37db940b14286d2459ca803', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
+    'index.server.html': {size: 4794, hash: '9e393d5bc22ccba66abae915633c6ba1226ac7d64b4c80fca8a9b221f305e788', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
+    'agence/index.html': {size: 70289, hash: 'e651554562f9f92611cc5ec722a929d02d3426633818df68659f4cf47b1ed77f', text: () => import('./assets-chunks/agence_index_html.mjs').then(m => m.default)},
+    'devis-gratuit/index.html': {size: 84654, hash: '92875df94bc5befbbeb64a3588f7b9f790bbdfff02f8a5a44b6c3efabb143693', text: () => import('./assets-chunks/devis-gratuit_index_html.mjs').then(m => m.default)},
+    'index.html': {size: 120748, hash: '80c8bb3c6b99403f5ca97cd5038873aae5329ef69360a466ed73ab7fbfea9215', text: () => import('./assets-chunks/index_html.mjs').then(m => m.default)},
     'styles-UE4VLJ65.css': {size: 13938, hash: 'N23Qxwmj32Y', text: () => import('./assets-chunks/styles-UE4VLJ65_css.mjs').then(m => m.default)}
   },
 };

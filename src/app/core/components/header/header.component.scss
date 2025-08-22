@@ -24,15 +24,20 @@ header {
         nav {
             ul {
                 display: flex;
-                gap: 2.5rem;
+                gap: 2rem;
 
                 li {
                     a {
                         position: relative;
                         font-weight: 500;
                         color: var(--project-black-primary-color);
-                        
-                        fa-icon{
+                        padding: 1.5rem 0.5rem;
+
+                        &:hover {
+                            color: var(--project-green-primary-color);
+                        }
+
+                        fa-icon {
                             font-size: 0.9rem;
                             margin-left: 0.3rem;
                         }
@@ -47,7 +52,7 @@ header {
                             position: absolute;
                             left: 50%;
                             transform: translateX(-50%);
-                            bottom: -1rem;
+                            bottom: 0;
                             width: 10px;
                             height: 10px;
                             border-radius: 50%;

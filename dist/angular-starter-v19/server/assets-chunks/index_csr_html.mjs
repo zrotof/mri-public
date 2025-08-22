@@ -3,7 +3,7 @@ export default `<!doctype html>
 
 <head>
   <meta charset="utf-8">
-  <title>Angular Starter V19</title>
+  <title>Accueil - Ma Rénovation Immobilière</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -14,6 +14,6 @@ export default `<!doctype html>
 
 <body ngcm="">
   <app-root></app-root>
-<link rel="modulepreload" href="chunk-EU5ZBCYS.js"><link rel="modulepreload" href="chunk-QOF6TDHQ.js"><link rel="modulepreload" href="chunk-HDAY3D36.js"><script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-PT3HHBHW.js" type="module"></script></body>
+<link rel="modulepreload" href="chunk-A75K3TTR.js"><link rel="modulepreload" href="chunk-LQDRIGXA.js"><link rel="modulepreload" href="chunk-YH4QX4Q7.js"><link rel="modulepreload" href="chunk-HDAY3D36.js"><script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-7QM3FSTQ.js" type="module"></script></body>
 
 </html>`;

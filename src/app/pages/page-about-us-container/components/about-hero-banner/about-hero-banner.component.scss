@@ -1,11 +1,11 @@
-.about-hero-banner{
+.about-hero-banner {
     position: relative;
     display: flex;
     justify-content: center;
     padding-top: 12rem;
 
 
-    &::before{
+    &::before {
         position: absolute;
         content: "";
         width: 100%;
@@ -16,32 +16,32 @@
         z-index: -1;
     }
 
-    .content{
+    .content {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 2rem;
         width: 100%;
 
-        .texts{
+        .texts {
             display: flex;
             justify-content: space-between;
             gap: 5rem;
             width: 100%;
 
-            h1{
+            h1 {
                 font-size: 3.5rem;
                 line-height: 1;
                 letter-spacing: -1px;
                 color: var(--project-blue-primary-color);
 
-                span{
+                span {
                     color: var(--project-green-primary-color);
                     font-weight: 900;
                 }
             }
 
-            p{
+            p {
                 font-size: 1rem;
                 line-height: 1.5;
                 max-width: 600px;
@@ -49,22 +49,50 @@
             }
         }
 
-        .image-wrapper{
+        .image-wrapper {
             position: relative;
             width: 100%;
             height: 40rem;
             border-radius: 2rem;
             overflow: hidden;
 
-            img{
+            img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
                 object-position: top center;
             }
+
+            .play-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 110px;
+                height: 110px;
+                top: 50%;
+                left: 50%;
+                border-radius: 50%;
+                position: absolute;
+                transform: translate(-50%, -50%);
+                z-index: 2;
+                background-color: var(--project-green-primary-color);
+                transition: all 0.2s ease-in-out;
+                box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+                color: var(--project-white-primary-color);
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--project-white-primary-color);
+                    color: var(--project-green-primary-color);
+                }
+
+                fa-icon {
+                    font-size: 3rem;
+                }
+            }
         }
-        
-        .rich-about{
+
+        .rich-about {
             text-align: center;
             font-size: 1rem;
             font-weight: 500;

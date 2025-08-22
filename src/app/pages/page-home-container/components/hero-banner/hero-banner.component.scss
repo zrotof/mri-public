@@ -1,15 +1,15 @@
-.hero-banner{
+.hero-banner {
     display: flex;
     justify-content: center;
 
-    .content{
+    .content {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding-top: 6rem;
         gap: 1.5rem;
 
-        h1{
+        h1 {
             font-size: 4rem;
             line-height: 1;
             letter-spacing: -1px;
@@ -18,7 +18,7 @@
             color: var(--project-blue-primary-color);
         }
 
-        h2{
+        h2 {
             font-size: 1.1rem;
             line-height: 1.5;
             font-weight: 400;
@@ -26,7 +26,7 @@
             max-width: 500px;
         }
 
-        button{
+        button {
             margin-top: 2rem;
             background-color: var(--project-green-primary-color);
             font-size: 1.05rem;
@@ -35,6 +35,11 @@
             font-weight: 500;
             border: 1px solid var(--project-green-primary-color);
             color: white;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--project-blue-primary-color);
+            }
         }
     }
 }

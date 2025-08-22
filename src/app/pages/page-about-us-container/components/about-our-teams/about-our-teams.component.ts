@@ -14,32 +14,32 @@ export class AboutOurTeamsComponent {
 
   protected readonly teams = [
     {
-      image: "images/home/hero-carousel/maison.jpg",
+      image: "images/about-us/teams/boss.jpg",
       name: "Jean Arthur",
       position: "Sales manager"
     },
     {
-      image: "images/home/hero-carousel/maison.jpg",
+      image: "images/about-us/teams/alex.jpg",
       name: "Jean Arthur",
       position: "Sales manager"
     },
     {
-      image: "images/home/hero-carousel/maison.jpg",
+      image: "images/about-us/teams/tom.webp",
       name: "Jean Arthur",
       position: "Sales manager"
     },
     {
-      image: "images/home/hero-carousel/maison.jpg",
+      image: "images/about-us/teams/jean.avif",      
       name: "Jean Arthur",
       position: "Sales manager"
     },
     {
-      image: "images/home/hero-carousel/maison.jpg",
+      image: "images/about-us/teams/boss.jpg",      
       name: "Jean Arthur",
       position: "Sales manager"
     },
     {
-      image: "images/home/hero-carousel/maison.jpg",
+      image: "images/about-us/teams/boss.jpg",      
       name: "Jean Arthur",
       position: "Sales manager"
     }
