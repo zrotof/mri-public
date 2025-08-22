@@ -1,0 +1,101 @@
+.hero-image-carousel {
+    margin-top: -3rem;
+
+    .carousel-wrapper {
+        position: relative;
+        width: 100%;
+        height: 35rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110vw;
+            height: 100px;
+            background-color: var(--project-white-primary-color);
+            border-bottom-left-radius: 80%;
+            border-bottom-right-radius: 80%;
+            z-index: 2;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110vw;
+            height: 100px;
+            background-color: var(--project-white-primary-color);
+            border-top-left-radius: 80%;
+            border-top-right-radius: 80%;
+            z-index: 2;
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgb(235, 235, 235);
+            color: var(--project-black-primary-color);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                background-color: var(--project-green-primary-color);
+                color: var(--project-white-primary-color);
+            }
+
+            &.prev-button {
+                left: 10px;
+            }
+
+            &.next-button {
+                right: 10px;
+            }
+        }
+
+        .carousel-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            height: 100%;
+            animation: scroll-left 120s linear infinite;
+
+            .image-wrapper {
+                position: relative;
+                min-width: 30vw;
+                height: 100%;
+
+                img {
+                    object-fit: cover;
+                }
+            }
+
+            // Animation de défilement lent
+            @keyframes scroll-left {
+                0% {
+                    transform: translateX(0);
+                }
+
+                100% {
+                    // Calcul de la distance de défilement
+                    // Ici, le défilement se fait jusqu'à la copie de l'image 1
+                    // (pour créer l'effet de boucle infinie sans saut)
+                    transform: translateX(calc(-100% + 30vw + 2rem));
+                }
+            }
+        }
+    }
+}

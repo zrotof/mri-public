@@ -1,0 +1,24 @@
+<div class="about-our-teams">
+    <div class="content my-container">
+        <h2>Notre Équipe</h2>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita harum ipsum modi nisi totam? Similique
+            tenetur quae obcaecati dolores vitae dolor facilis doloribus facere nihil? Et quaerat debitis exercitationem
+            voluptatibus!
+        </p>
+        <ul>
+            @for (team of teams; track $index) {
+            <li>
+                <div class="image-wrapper">
+                    <img [ngSrc]="team.image" [alt]="team.name" fill>
+                </div>
+
+                <div class="texts">
+                    <h3> {{team.name}} </h3>
+                    <p> {{team.position}} </p>
+                </div>
+            </li>
+            }
+        </ul>
+    </div>
+</div>

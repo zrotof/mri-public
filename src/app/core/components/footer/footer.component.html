@@ -1,0 +1,108 @@
+<footer>
+    <div class="top">
+        <div class="content my-container">
+
+            <div class="our-services">
+                <h4>Nos Services</h4>
+
+                <ul>
+                    <li>
+                        <a href="">Aménagement de cuisine</a>
+                    </li>
+                    <li>
+                        <a href="">Aménagement de salle de bain</a>
+                    </li>
+                    <li>
+                        <a href="">Aménagements et extension</a>
+                    </li>
+                    <li>
+                        <a href="">Décoration d'intérieur et agencement</a>
+                    </li>
+                    <li>
+                        <a href="">Électricité</a>
+                    </li>
+                    <li>
+                        <a href="">Peinture</a>
+                    </li>
+                    <li>
+                        <a href="">Plomberie</a>
+                    </li>
+                    <li>
+                        <a href="">Rénovation complète</a>
+                    </li>
+                    <li>
+                        <a href="">Rénovation extérieur</a>
+                    </li>
+                    <li>
+                        <a href="">Sols et plafonds</a>
+                    </li>
+                    <li>
+                        <a href="">Système de securité alarme</a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="hours-networks">
+                <div class="hours">
+                    <h4>Horaires</h4>
+
+                    <p>
+                        <span>Lun - Ven</span> :
+                        <span>9h00 - 17h30</span>
+                    </p>
+                </div>
+                <div class="contact-ways">
+                    <h4>Contactez-nous</h4>
+
+                    <ul>
+                        <li>
+                            <a href="">
+                                <div class="icon-wrapper">
+
+                                    <fa-icon [icon]=" 'faPhone' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                                </div>
+                                +33 130495882
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="icon-wrapper">
+                                    <fa-icon [icon]=" 'faEnvelope' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                                </div>
+                                contact&#64;mri-idf.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="icon-wrapper">
+
+                                    <fa-icon [icon]=" 'faLocationDot' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                                </div>    
+                                20 Rue Charles de Gaulle,<br> 78860 Saint-Nom-la-Bretèche
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="networks">
+                    <h4>Suivez-nous</h4>
+
+                    <ul>
+                        @for (network of networks; track $index) {
+                        <li>
+                            <a target="_blank" [href]="network.link">
+                                <fa-icon [icon]="network.icon | convertStringLabelToFontawesomeIcon"></fa-icon>
+                            </a>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="content my-container">
+            <small>Copyright © {{currentYear}} MA RÉNOVATION IMMOBILIÈRE, tous droits réservés</small>
+        </div>
+    </div>
+</footer>

@@ -3,6 +3,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideRouter } from '@angular/router';
 import { providePrimeNG } from 'primeng/config';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 import Lara from '@primeng/themes/lara';
 
@@ -22,7 +23,7 @@ export const appConfig: ApplicationConfig = {
           darkModeSelector: false,
         }
       }
-    })
+    }), provideClientHydration(withEventReplay())
   ]
 }
 

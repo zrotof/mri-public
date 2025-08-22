@@ -1,0 +1,19 @@
+<div class="about-our-services">
+    <div class="content my-container">
+        <h2>Nos Services</h2>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita harum ipsum modi nisi totam? Similique tenetur quae obcaecati dolores vitae dolor facilis doloribus facere nihil? Et quaerat debitis exercitationem voluptatibus!
+        </p>
+        <ul>
+            @for (service of services; track $index) {
+                <li>
+                    <img [src]="service.icon">
+                    <h3> {{service.title}} </h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, fugiat fuga molestias cupiditate, nesciunt distinctio.
+                    </p>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

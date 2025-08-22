@@ -1,0 +1,138 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--project-blue-primary-color);
+    gap: 2rem;
+    padding: 4rem 0 2rem 0;
+    margin-top: 5rem;
+    
+    .top {
+        display: flex;
+        justify-content: center;
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .our-services,
+            .contact-ways,
+            .networks,
+            .hours {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                color: var(--project-white-primary-color);
+
+                h4 {
+                    font-size: 1.1rem;
+                    color: var(--project-green-secondary-color);
+                }
+            }
+
+            .hours-networks {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .our-services,
+            .contact-ways {
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+
+                    li {
+
+                        a {
+                            display: flex;
+                            align-items: center;
+                            color: var(--project-white-primary-color);
+
+                            .icon-wrapper {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 30px;
+                                height: 30px;
+                                border-radius: 50%;
+                                border: 1px solid var(--project-white-primary-color);
+                                margin-right: 0.5rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .hours {
+                padding-bottom: 1rem;
+                border-bottom: 1px solid var(--project-white-primary-color);
+                margin-bottom: 1rem;
+
+                p {
+                    font-size: 1rem;
+                    display: flex;
+                    color: var(--project-white-primary-color);
+                    gap: 0.5rem;
+                }
+            }
+
+            .networks {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                color: var(--project-white-primary-color);
+                border-top: 1px solid var(--project-white-primary-color);
+                padding-top: 1rem;
+                margin-top: 1rem;
+
+                h4 {
+                    font-size: 1.1rem;
+                    color: var(--project-green-secondary-color);
+                }
+
+                ul {
+                    display: flex;
+                    gap: 0.7rem;
+
+                    li {
+                        a {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 50%;
+                            width: 35px;
+                            height: 35px;
+                            background-color: var(--project-white-primary-color);
+                            color: var(--project-blue-primary-color);
+                            transition: all 0.2s ease-in-out;
+
+                            &:hover {
+                                background-color: var(--project-green-primary-color);
+                            }
+
+                            fa-icon {
+                                font-size: 1.2rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .bottom {
+        display: flex;
+        justify-content: center;
+
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid var(--project-white-primary-color);
+            padding-top: 2rem;
+            width: 100%;
+            color: var(--project-white-primary-color);
+        }
+    }
+}

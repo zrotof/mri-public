@@ -1,0 +1,77 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--project-white-primary-color);
+    z-index: 10;
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.05rem;
+        width: 100%;
+
+        .logo {
+            object-fit: cover;
+        }
+
+        nav {
+            ul {
+                display: flex;
+                gap: 2.5rem;
+
+                li {
+                    a {
+                        position: relative;
+                        font-weight: 500;
+                        color: var(--project-black-primary-color);
+                        
+                        fa-icon{
+                            font-size: 0.9rem;
+                            margin-left: 0.3rem;
+                        }
+                    }
+
+                    .active-link {
+
+                        color: var(--project-green-primary-color);
+
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            bottom: -1rem;
+                            width: 10px;
+                            height: 10px;
+                            border-radius: 50%;
+                            background-color: var(--project-green-primary-color);
+                        }
+                    }
+                }
+            }
+        }
+
+        button {
+            background-color: var(--project-green-primary-color);
+            font-size: 1.05rem;
+            border-radius: 100px;
+            padding: 12px 18px;
+            font-weight: 500;
+            border: 1px solid var(--project-green-primary-color);
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                background-color: var(--project-blue-primary-color);
+            }
+        }
+    }
+}

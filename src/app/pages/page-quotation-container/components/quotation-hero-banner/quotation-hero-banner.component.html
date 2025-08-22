@@ -1,0 +1,38 @@
+<div class="quotation-hero-banner">
+    <img ngSrc="images/home/hero-carousel/maison-5.webp" alt="" fill priority>
+
+    <div class="content header-container">
+        <div class="texts">
+            <h1>Demandez votre devis gratuit pour vos travaux de rénovation</h1>
+            <p>Obtenez rapidement une estimation détaillée et sans engagement pour votre projet de construction ou de
+                rénovation. Nos experts vous accompagnent, de la conception à la réalisation.</p>
+        </div>
+        <form>
+            <h2>Obtenez un devis de vos travaux 100% gratuit</h2>
+            <div class="row-two">
+                <div class="input-bloc">
+                    <label>Nom</label>
+                    <input type="text" pInputText formControlName="text" placeholder="Entrez votre nom" />
+                </div>
+                <div class="input-bloc">
+                    <label>Téléphone</label>
+                    <input type="text" pInputText formControlName="text" placeholder="Entrez votre téléphone" />
+                </div>
+            </div>
+            <div class="input-bloc">
+                <label>Email</label>
+                <input type="text" pInputText formControlName="text" placeholder="Entrez votre adresse mail" />
+            </div>
+            <div class="input-bloc">
+                <label>Objet</label>
+                <p-select formControlName="selectedRenovationType" [options]="renovationTypes"
+                    placeholder="Sélectionnez l'objet de votre demande" class="w-full md:w-56" />
+            </div>
+            <div class="input-bloc">
+                <label>Message</label>
+                <textarea rows="5" cols="30" pTextarea formControlName="text"></textarea>
+            </div>
+            <button>Obtenir Mon Devis Gratuit</button>
+        </form>
+    </div>
+</div>

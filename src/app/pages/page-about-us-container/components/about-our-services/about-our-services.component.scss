@@ -1,0 +1,66 @@
+.about-our-services {
+    display: flex;
+    justify-content: center;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+
+        h2 {
+            font-size: 3.5rem;
+            color: var(--project-blue-primary-color);
+            line-height: 1;
+            letter-spacing: -1;
+        }
+
+        p{
+            max-width: 1000px;
+            line-height: 1.5;
+            font-size: 1rem;
+        }
+
+        ul {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+
+            li {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem;
+                border-radius: 10px;
+                background-color: var(--project-green-secondary-color);
+                box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+                transition: all 0.3s ease-in-out;
+                cursor: pointer;
+                
+                &:hover{
+                    background-color: var(--project-green-primary-color);
+                    color: var(--project-white-primary-color);
+                    transform: scale(1.05);
+                }
+
+                img{
+                    width: 60px;
+                    margin-bottom: 30px;
+                }
+
+                h3 {
+                    font-size: 1.05rem;
+                    font-weight: 600;
+                    line-height: 1;
+                    letter-spacing: -1px;
+                }
+
+                p {
+                    font-size: 0.95rem;
+                    line-height: 1.4;
+                }
+            }
+        }
+    }
+}

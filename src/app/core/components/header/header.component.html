@@ -1,0 +1,27 @@
+<header>
+    <div class="content header-container">
+        <img class="logo" alt="" ngSrc="images/header/erasebg-transformed.webp" width="120" height="72">
+
+        <nav>
+            <ul>
+                <li>
+                    <a routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Accueil</a>
+                </li>
+                 <li>
+                    <a routerLink="agence" routerLinkActive="active-link">L'agence</a>
+                </li>
+                <li>
+                    <a>
+                        Nos Services
+                        <fa-icon [icon]="'faAngleDown' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </a>
+                </li>
+                 <li>
+                    <a>Nos Réalisations</a>
+                </li>
+            </ul>
+        </nav>
+
+        <button>Contact</button>
+    </div>
+</header>

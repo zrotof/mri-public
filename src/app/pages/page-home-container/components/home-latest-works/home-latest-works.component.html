@@ -1,0 +1,34 @@
+<div class="home-latest-works">
+    <div class="content my-container">
+        <div class="top">
+            <h1>
+                <span>Découvrez</span>
+                <span>Nos Dernières Réalisations</span>
+            </h1>
+        </div>
+        <div class="works">
+            <p-carousel [value]="latestWorks" [numVisible]="2" [numScroll]="1" [circular]="true"
+                [autoplayInterval]="9000" [responsiveOptions]="responsiveOptions">
+                <ng-template let-work #item>
+                    <div class="work">
+                        <div class="image-wrapper">
+                            <img [ngSrc]="work.image" alt="" fill>
+
+                            <ul class="renovation-types">
+                                @for (renovationType of work.renovationTypes; track $index) {
+                                <li>{{renovationType}}</li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="texts">
+                            <h3>{{work.title}}</h3>
+
+                            <p>{{work.description}}</p>
+                            <button>Voir plus</button>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+    </div>
+</div>

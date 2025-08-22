@@ -1,0 +1,35 @@
+<div class="road-map-process">
+    <div class="top">
+        <div class="content my-container">
+            <h2>
+                <span>De l’idée</span>
+                <span>à la perfection</span>
+            </h2>
+            <p>
+                Chaque projet est unique, et chaque étape compte. De l’analyse initiale à la livraison finale, nous vous
+                accompagnons avec soin et expertise pour transformer vos idées en espaces concrets et inspirants.
+                Découvrez comment nous donnons vie à vos projets, étape par étape
+            </p>
+        </div>
+    </div>
+    <div class="timeline-wrapper">
+
+        <svg class="timeline-svg" width="100" height="100" viewBox="0 0 416 163" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1 1H304.5C304.5 1 333.5 13.5 333.5 43C333.5 72.5 304.5 83.5 304.5 83.5H87C87 83.5 52.5 90.5 53 124C53.5 157.5 87 162.5 87 162.5H415.5"
+                stroke="#6d9907" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" />
+        </svg>
+
+        @for (work of works; track $index) {
+            <div class="timeline-step" [class]="$index%2 === 0 ? 'reverse' : '' " [style.top]="work.top"
+                [style.left]="work.left">
+    
+                <div class="timeline-dot"> {{$index + 1}} </div>
+                <div class="timeline-content">
+                    <h3>{{ work.title }}</h3>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,64 @@
+.about-quotation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-image: url("../../../../../../public/images/home/hero-carousel/maison-5.webp");
+    background-position: top center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 20rem;
+    padding: 10rem 0;
+
+    &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .texts {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background-color: var(--project-white-primary-color);
+            border-radius: 1rem;
+            padding: 1.5rem 2rem;
+            max-width: 700px;
+            z-index: 1;
+
+            h2{
+                font-size: 2rem;
+                color: var(--project-blue-primary-color);
+            }
+
+            p{
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+
+            button {
+                margin-top: 2rem;
+                background-color: var(--project-green-primary-color);
+                font-size: 1.05rem;
+                border-radius: 100px;
+                padding: 12px 18px;
+                font-weight: 500;
+                border: 1px solid var(--project-green-primary-color);
+                color: white;
+                width: fit-content;
+            }
+        }
+    }
+}

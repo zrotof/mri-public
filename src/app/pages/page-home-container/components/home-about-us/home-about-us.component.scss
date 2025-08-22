@@ -1,0 +1,108 @@
+.home-about-us {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 4rem;
+
+    .top {
+        display: flex;
+        justify-content: center;
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            gap: 4rem;
+
+            .image-wrapper {
+                position: relative;
+                flex: 1;
+                height: 35rem;
+
+                img {
+                    object-fit: cover;
+                    object-position: top center;
+                }
+            }
+
+            .texts {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                gap: 0.5rem;
+
+                h2 {
+                    margin-bottom: 1rem;
+                    font-size: 3rem;
+                    line-height: 1;
+                    letter-spacing: -1px;
+                    color: var(--project-blue-primary-color);
+                }
+
+                p {
+                    font-size: 1rem;
+                    line-height: 1.5;
+                    
+                }
+
+                button {
+                    background-color: var(--project-green-primary-color);
+                    font-size: 1.05rem;
+                    border-radius: 100px;
+                    padding: 12px 18px;
+                    font-weight: 500;
+                    border: 1px solid var(--project-green-primary-color);
+                    color: white;
+                    cursor: pointer;
+                    transition: all 0.2s ease-in-out;
+                    width: fit-content;
+                    margin-top: 3rem;
+                    
+                    &:hover {
+                        background-color: var(--project-blue-primary-color);
+                    }
+                }
+            }
+        }
+    }
+
+    .bottom{
+        display: flex;
+        justify-content: center;
+
+        .content{
+            width: 100%;
+            border-bottom: 1px solid rgb(194, 194, 194);
+            padding-bottom: 3rem;
+
+            ul{
+                display: flex;
+                justify-content: space-between;
+
+                li{
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+
+                    span{
+                        font-size: 5rem;
+                        line-height: 1;
+                        font-weight: 600;
+                        color: var(--project-blue-primary-color);
+                    }
+
+                    .texts{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.3rem;
+
+                        p{
+                            font-size: 1rem;
+                            line-height: 1;
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
