@@ -5,6 +5,7 @@ import {
   faAngleLeft,
   faAngleRight,
   faCalendarDays,
+  faClock,
   faEnvelope,
   faLocationDot,
   faPlay,
@@ -19,7 +20,7 @@ import {
   faFacebookF,
   faXTwitter,
   faWhatsapp,
-  faYoutube,
+  faYoutube
 } from '@fortawesome/free-brands-svg-icons';
 
 import { IconDefinition } from '@fortawesome/angular-fontawesome';
@@ -40,6 +41,8 @@ export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
         return faAngleRight
       case 'faCalendarDays':
         return faCalendarDays;
+      case 'faClock':
+        return faClock;
       case 'faEnvelope':
         return faEnvelope;
       case 'faInstagram':

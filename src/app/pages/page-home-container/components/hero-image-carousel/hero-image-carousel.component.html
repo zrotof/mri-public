@@ -1,18 +1,18 @@
 <div class="hero-image-carousel">
     <div class="carousel-wrapper">
-        <button class="nav-button prev-button" (click)="move('right')" aria-label="Image précédente">
+        <button class="nav-button prev-button" (click)="prevWork()" aria-label="Image précédente">
             <fa-icon [icon]=" 'faAngleLeft' | convertStringLabelToFontawesomeIcon"></fa-icon>
         </button>
 
         <div class="carousel-container" #carouselContainer>
-            @for (image of images; track $index) {
-            <div class="image-wrapper">
+            @for (image of images.concat(images); track $index) {
+            <div class="image-wrapper" (click)="onItemChoosed($index)">
                 <img [ngSrc]="image.name" [alt]="image.alt" fill priority>
             </div>
             }
         </div>
 
-        <button class="nav-button next-button" (click)="move('left')" aria-label="Image suivante">
+        <button class="nav-button next-button" (click)="nextWork()" aria-label="Image suivante">
             <fa-icon [icon]=" 'faAngleRight' | convertStringLabelToFontawesomeIcon"></fa-icon>
         </button>
     </div>

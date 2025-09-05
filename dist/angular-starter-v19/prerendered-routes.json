@@ -2,6 +2,8 @@
   "routes": {
     "/": {},
     "/agence": {},
-    "/devis-gratuit": {}
+    "/contactez-nous": {},
+    "/devis-gratuit": {},
+    "/nos-realisations": {}
   }
 }

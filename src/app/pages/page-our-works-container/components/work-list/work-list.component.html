@@ -1,0 +1,36 @@
+<div class="work-list">
+    <div class="content header-container">
+        <h1>Nos Réalisations</h1>
+        <p>
+            Plongez dans notre portfolio pour voir comment nous transformons les espaces et donnons vie aux idées de
+            nos clients.
+        </p>
+
+        <div class="filters-works">
+            <nav class="filters">
+                <ul>
+                    @for (menu of menus; track $index) {
+                        <li >
+                            <a (click)="onFilterClicked($index)" [class]="menu.isActive === true ? 'active-work-menu' : ''">
+                                <span> {{menu.title}} </span>
+                                <span> {{menu.count}} </span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+            
+            <div class="works">
+                @for (work of works; track $index) {
+                <div class="work">
+                    <div class="image-wrapper">
+                        <img [ngSrc]="work.image" [alt]="work.title" fill>
+                        <h3> {{work.title}} </h3>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>

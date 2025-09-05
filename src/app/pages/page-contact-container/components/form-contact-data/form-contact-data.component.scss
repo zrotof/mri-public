@@ -1,0 +1,159 @@
+.form-contact-data {
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .pre {
+            font-size: 1rem;
+            color: var(--project-green-primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding: 7px 15px;
+            border-radius: 5px;
+            background-color: var(--project-green-secondary-color);
+            width: fit-content;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--project-blue-primary-color);
+            line-height: 1;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            max-width: 900px;
+        }
+
+        .form-block-data {
+            display: flex;
+            justify-content: space-between;
+            gap: 5rem;
+            margin-top: 2rem;
+
+            .form-bloc {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                gap: 2rem;
+                padding: 2rem;
+                border-radius: 1rem;
+                border: 1px solid #cbd5e1;
+                background-color: #fafafa;
+
+                h2 {
+                    font-size: 1.7rem;
+                    font-weight: 600;
+                }
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.4rem;
+                    width: 100%;
+
+                    .input-bloc {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+
+                        label {
+                            font-size: 1rem;
+                            font-weight: 600;
+                        }
+
+                        input,
+                        textarea {
+                            width: 100%;
+                        }
+
+                        textarea {
+                            min-height: 100px;
+                        }
+                    }
+
+                    button {
+                        align-self: flex-start;
+                        padding: 0.7rem 1.5rem;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        color: #fff;
+                        background-color: var(--project-blue-primary-color);
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        transition: background-color 0.3s ease;
+
+                        &:hover {
+                            background-color: var(--project-blue-secondary-color);
+                        }
+                    }
+                }
+            }
+
+            .data {
+                margin-top: 2rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                flex: 1;
+
+                h2 {
+                    font-size: 1.7rem;
+                    font-weight: 600;
+                }
+
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.7rem;
+
+                    li {
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+
+                        .icon-wrapper {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 40px;
+                            height: 35px;
+                            border-radius: 5px;
+                            background-color: var(--project-green-secondary-color);
+                            color: var(--project-green-primary-color);
+
+                            fa-icon {
+                                font-size: 1.2rem;
+                                line-height: 1;
+                            }
+                        }
+
+                        span {
+                            font-weight: 600;
+                            color: var(--project-blue-primary-color);
+                        }
+                    }
+                }
+
+                iframe {
+                    width: 100%;
+                    border: none;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    margin-top: 2rem;
+                    height: 465px;
+                }
+            }
+        }
+    }
+}

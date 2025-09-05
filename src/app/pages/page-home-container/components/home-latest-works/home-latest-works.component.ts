@@ -9,12 +9,13 @@ import { ConvertStringLabelToFontawesomeIconPipe } from '../../../../core/pipes/
   templateUrl: './home-latest-works.component.html',
   styleUrl: './home-latest-works.component.scss',
   encapsulation: ViewEncapsulation.None,
+  host: { ngSkipHydration: 'true' },
   imports: [
     FontAwesomeModule,
     //ConvertStringLabelToFontawesomeIconPipe,
     NgOptimizedImage,
     CarouselModule,
-],
+  ],
 })
 
 export class HomeLatestWorksComponent {
@@ -22,7 +23,7 @@ export class HomeLatestWorksComponent {
   responsiveOptions = [
     {
       breakpoint: '1400px',
-      numVisible: 2,
+      numVisible: 3,
       numScroll: 1
     },
     {

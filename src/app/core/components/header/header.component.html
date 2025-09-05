@@ -1,4 +1,4 @@
-<header>
+<header #header>
     <div class="content header-container">
         <img class="logo" alt="" ngSrc="images/header/erasebg-transformed.webp" width="120" height="72">
 
@@ -17,11 +17,11 @@
                     </a>
                 </li>
                  <li>
-                    <a>Nos Réalisations</a>
+                    <a routerLink="nos-realisations" routerLinkActive="active-link">Nos Réalisations</a>
                 </li>
             </ul>
         </nav>
 
-        <button>Contact</button>
+        <button routerLink="contactez-nous">Contact</button>
     </div>
 </header>
