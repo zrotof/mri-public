@@ -5,6 +5,13 @@ export default `<!doctype html>
   <meta charset="utf-8">
   <title>Accueil - Ma Rénovation Immobilière</title>
   <base href="/">
+  <meta name="description" content="Spécialisée dans la rénovation générale et basée à Saint Germain-en-Laye, nous transformons vos espaces de vie et de travail, en proposant des solutions sur mesure pour concrétiser tous vos projets, de la conception à la réalisation.">
+  <meta property="og:title" content="Accueil - Ma Rénovation Immobilière">
+  <meta property="og:description" content="Spécialisée dans la rénovation générale et basée à Saint Germain-en-Laye, nous transformons vos espaces de vie et de travail, en proposant des solutions sur mesure pour concrétiser tous vos projets, de la conception à la réalisation.">
+  <meta property="og:url" content="https://www.ma-renovation-immobiliere.com/">
+  <meta property="og:site_name" content="Ma Rénovation Immobilière">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.ma-renovation-immobiliere.com/images/maintenance/mri.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +21,6 @@ export default `<!doctype html>
 
 <body ngcm="">
   <app-root></app-root>
-<link rel="modulepreload" href="chunk-DAN45LHQ.js"><link rel="modulepreload" href="chunk-QCS5CATR.js"><link rel="modulepreload" href="chunk-XMNA46WT.js"><link rel="modulepreload" href="chunk-I6Y6NXHR.js"><link rel="modulepreload" href="chunk-NZL3SUJL.js"><script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-ZFWA6ZN5.js" type="module"></script></body>
+<link rel="modulepreload" href="chunk-T63HKDNU.js"><link rel="modulepreload" href="chunk-F2RQUGMW.js"><link rel="modulepreload" href="chunk-SQ735JCB.js"><link rel="modulepreload" href="chunk-O2CS3GOH.js"><script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-JCU2MH4R.js" type="module"></script></body>
 
 </html>`;

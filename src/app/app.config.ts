@@ -27,7 +27,8 @@ export const appConfig: ApplicationConfig = {
           darkModeSelector: false,
         }
       }
-    }), provideClientHydration(withEventReplay())
+    }), 
+    provideClientHydration(withEventReplay())
   ]
 }
 

@@ -28,13 +28,13 @@
 
         button {
             margin-top: 2rem;
-            background-color: var(--project-green-primary-color);
             font-size: 1.05rem;
             border-radius: 100px;
             padding: 12px 18px;
             font-weight: 500;
             border: 1px solid var(--project-green-primary-color);
             color: white;
+            background-color: var(--project-green-primary-color);
             cursor: pointer;
 
             &:hover {

@@ -1,5 +1,43 @@
 .hero-image-carousel {
+    display: flex;
+    justify-content: center;
     margin-top: -3rem;
+    position: relative;
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+
+        button {
+            background-color: rgb(235, 235, 235);
+            color: var(--project-black-primary-color);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                background-color: var(--project-green-primary-color);
+                color: var(--project-white-primary-color);
+            }
+
+            &.prev-button {
+                left: 0;
+            }
+
+            &.next-button {
+                right: 0;
+            }
+        }
+
+    }
 
     .carousel-wrapper {
         position: relative;
@@ -37,35 +75,6 @@
             z-index: 9999;
         }
 
-        .nav-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgb(235, 235, 235);
-            color: var(--project-black-primary-color);
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.2s ease-in-out;
-            z-index: 9999;
-
-            &:hover {
-                background-color: var(--project-green-primary-color);
-                color: var(--project-white-primary-color);
-            }
-
-            &.prev-button {
-                left: 10px;
-            }
-
-            &.next-button {
-                right: 10px;
-            }
-        }
-
         .carousel-container {
             display: flex;
             gap: 1rem;
@@ -78,7 +87,7 @@
                 flex: 1 0 auto;
                 height: 100%;
 
-                &::before{
+                &::before {
                     position: absolute;
                     content: "";
                     top: 100%;
@@ -90,15 +99,17 @@
                     transition: all 0.5s ease-in-out;
                 }
 
-                &:hover{
+                &:hover {
 
-                    &::before{
+                    &::before {
                         top: 0;
                     }
                 }
 
                 img {
                     object-fit: cover;
+                    z-index: -1;
+
                 }
             }
         }

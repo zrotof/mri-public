@@ -16,7 +16,7 @@ import { HomeCustomerTestimoniesComponent } from './components/home-customer-tes
     //HomeSupplierCarouselComponent,
     HomeAboutUsComponent,
     HomeLatestWorksComponent,
-    HomeCustomerTestimoniesComponent
+    HomeCustomerTestimoniesComponent,
   ]
 })
 

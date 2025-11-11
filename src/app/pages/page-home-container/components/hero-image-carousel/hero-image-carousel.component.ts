@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, ElementRef, inject, NgZone, PLATFORM_ID, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  NgZone,
+  PLATFORM_ID,
+  ViewChild,
+  inject,
+  OnDestroy
+} from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConvertStringLabelToFontawesomeIconPipe } from '../../../../core/pipes/convertStringLabelToFontawesomeIcon/convert-string-label-to-fontawesome-icon.pipe';
 import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
@@ -8,171 +17,270 @@ import { Draggable } from 'gsap/Draggable';
 
 gsap.registerPlugin(Draggable);
 
+/**
+ * Interface for the image data in the carousel.
+ */
+interface CarouselImage {
+  name: string;
+  alt: string;
+}
+
+/**
+ * Interface for the configuration of the horizontalLoop function.
+ */
+interface HorizontalLoopConfig {
+  repeat?: number;
+  paused?: boolean;
+  onChange?: (element: HTMLElement, index: number) => void;
+  speed?: number;
+  draggable?: boolean;
+  reversed?: boolean;
+}
+
 @Component({
   selector: 'app-hero-image-carousel',
   templateUrl: './hero-image-carousel.component.html',
-  styleUrl: './hero-image-carousel.component.scss',
+  styleUrls: ['./hero-image-carousel.component.scss'],
   imports: [
     NgOptimizedImage,
     FontAwesomeModule,
     ConvertStringLabelToFontawesomeIconPipe
   ],
 })
-export class HeroImageCarouselComponent implements AfterViewInit {
 
+export class HeroImageCarouselComponent implements AfterViewInit, OnDestroy {
   private ngZone = inject(NgZone);
-  private isBrowser = isPlatformBrowser(inject(PLATFORM_ID))
-  @ViewChild('carouselContainer', { static: true }) carouselContainer!: ElementRef<HTMLDivElement>;
+  private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  @ViewChild('carouselContainer', { static: false }) carouselContainer!: ElementRef<HTMLDivElement>;
 
-  private galleryTween !: gsap.core.Tween;
-
-  private draggable !: Draggable;
-
-  images = [
-    {
-      name: "images/home/hero-carousel/maison.jpg",
-      alt: ""
-    },
-    {
-      name: "images/home/hero-carousel/maison-4.jpg",
-      alt: ""
-    },
-    {
-      name: "images/home/hero-carousel/maison-5.webp",
-      alt: ""
-    },
-    {
-      name: "images/home/hero-carousel/maison-2.jpg",
-      alt: ""
-    },
-    {
-      name: "images/home/hero-carousel/maison-3.webp",
-      alt: ""
-    },
-    {
-      name: "images/home/hero-carousel/maison-6.jpg",
-      alt: ""
-    }
+  images: CarouselImage[] = [
+    { name: "images/home/hero-carousel/maison.jpg", alt: "Une maison moderne avec de grandes baies vitrées et une piscine" },
+    { name: "images/home/hero-carousel/maison-4.jpg", alt: "Intérieur contemporain d'une maison avec une cuisine ouverte" },
+    { name: "images/home/hero-carousel/maison-5.webp", alt: "Salon lumineux avec vue sur un jardin verdoyant" },
+    { name: "images/home/hero-carousel/maison-2.jpg", alt: "Façade d'une villa de luxe avec des lignes épurées" },
+    { name: "images/home/hero-carousel/maison-3.webp", alt: "Vue aérienne d'une maison d'architecte nichée dans la nature" },
+    { name: "images/home/hero-carousel/maison-6.jpg", alt: "Entrée d'une maison avec un aménagement paysager minimaliste" }
   ];
 
+  private loopTimeline?: gsap.core.Timeline;
 
-  slidesPerView = 1;
 
   ngAfterViewInit(): void {
-    if (this.isBrowser) {
-      this.updateSlidesPerView();
-      //this.cloneSlidesForLoop();
-      this.initGalleryAnimation();
-      this.initDraggable();
+    if (!this.isBrowser) return;
 
-      new ResizeObserver(() => {
-        this.updateSlidesPerView();
-        this.restartGalleryAnimation();
-        this.draggable.update();
-      }).observe(this.carouselContainer.nativeElement);
-    }
-  }
+    this.ngZone.runOutsideAngular(() => {
+      const projects = gsap.utils.toArray<HTMLElement>(
+        this.carouselContainer.nativeElement.querySelectorAll('.image-wrapper')
+      );
 
-  private updateSlidesPerView() {
-    if (this.isBrowser) {
-      const width = window.innerWidth;
+      // Early exit if no items are found
+      if (!projects || projects.length === 0) {
+        console.warn('Carousel items not found.');
+        return;
+      }
 
-      if (width < 600) this.slidesPerView = 1;
-      else if (width < 992) this.slidesPerView = 2;
-      else this.slidesPerView = 3;
-    }
-  }
-
-  private cloneSlidesForLoop() {
-    const trackEl = this.carouselContainer.nativeElement;
-    const slides = Array.from(trackEl.children) as HTMLElement[];
-    slides.forEach(slide => {
-      const clone = slide.cloneNode(true);
-      trackEl.appendChild(clone);
+      this.loopTimeline = this.horizontalLoop(projects, {
+        paused: false,
+        draggable: true,
+        speed: 0.3,
+        onChange: (element: HTMLElement, index: number) => {
+          projects.forEach(project => project.classList.remove('active'));
+          element.classList.add('active');
+        }
+      });
     });
   }
 
-  private initGalleryAnimation() {
-    const trackEl = this.carouselContainer.nativeElement;
-    const totalWidth = trackEl.scrollWidth / 2;
-
-    if (this.galleryTween) this.galleryTween.kill();
-
-    this.ngZone.runOutsideAngular(() => {
-      this.galleryTween = gsap.to(trackEl, {
-        x: -totalWidth,
-        ease: 'none',
-        duration: totalWidth / 20,
-        repeat: -1,
-
-      })
-    })
+  nextWork(): void {
+    this.loopTimeline?.['next']({ duration: 0.5, ease: "power1.inOut" });
   }
 
-  pauseGallery() {
-    this.galleryTween?.pause()
+  prevWork(): void {
+    this.loopTimeline?.['previous']({ duration: 0.5, ease: "power1.inOut" });
   }
 
-  resumeGallery() {
-    this.galleryTween?.resume()
-  }
-
-  nextWork() {
-    this.pauseGallery();
-    const slideWidth = this.getSlideWidth();
-    gsap.to(this.carouselContainer.nativeElement, {
-      x: `-=${slideWidth}`,
-      duration: 0.5,
-      ease: 'power2.inOut',
-      onComplete: () => this.restartGalleryAnimation()
-    })
-  }
-
-  prevWork() {
-    this.pauseGallery();
-    const slideWidth = this.getSlideWidth();
-    gsap.to(this.carouselContainer.nativeElement, {
-      x: `+=${slideWidth}`,
-      duration: 0.5,
-      ease: 'power2.inOut',
-      onComplete: () => this.restartGalleryAnimation()
-    })
-  }
-
-  private getSlideWidth() {
-    const slide = this.carouselContainer.nativeElement.querySelector('.image-wrapper') as HTMLElement;
-    return slide ? slide.offsetWidth + 16 : 310;
-  }
-
-  private initDraggable() {
-    const trackEl = this.carouselContainer.nativeElement;
-    this.draggable = Draggable.create(trackEl, {
-      type: 'x',
-      edgeResistance: 0.8,
-      inertia: false,
-      onPress: () => this.pauseGallery(),
-      onRelease: () => {
-        this.restartGalleryAnimation();
-        this.resumeGallery();
-      },
-      snap: {
-        x: (endValue: number) => {
-          return Math.round(endValue / this.getSlideWidth()) * this.getSlideWidth();
-        }
-      }
-    })[0]
-  }
-
-  private restartGalleryAnimation() {
-    this.initGalleryAnimation()
-  }
-
-  onItemChoosed(index : number){
-    console.log(index);
+  onItemChoosed(index: number): void {
+    console.log("choosed")
   }
 
   ngOnDestroy(): void {
-    this.galleryTween?.kill();
-    this.draggable?.kill();
+    this.loopTimeline?.kill?.();
+  }
+
+  private horizontalLoop(items: HTMLElement[], config: HorizontalLoopConfig): gsap.core.Timeline {
+    items = gsap.utils.toArray(items);
+    config = config || {};
+
+    const onChange = config.onChange;
+    let lastIndex = 0;
+    let curIndex = 0;
+    let indexIsDirty = false;
+
+    const tl = gsap.timeline({
+      delay: 2,
+      repeat: config.repeat,
+      paused: config.paused,
+      defaults: { ease: "none"},
+      onUpdate: onChange && (() => {
+        let i = (tl as any)['closestIndex']();
+        if (lastIndex !== i) {
+          lastIndex = i;
+          onChange(items[i], i);
+        }
+      }),
+      onReverseComplete: () => { tl.totalTime(tl.rawTime() + tl.duration() * 100); }
+    });
+
+    const startX = items[0].offsetLeft;
+    const widths: number[] = [];
+    const xPercents: number[] = [];
+    const times: number[] = [];
+    const spaceBefore: number[] = [];
+    let totalWidth: number;
+    let timeWrap: (n: number) => number;
+    const container = items[0].parentNode as HTMLElement;
+
+    const pixelsPerSecond = (config.speed || 1) * 100;
+
+    const getTotalWidth = (): number => {
+      const lastItem = items[items.length - 1];
+      const scaleX = Number(gsap.getProperty(lastItem, "scaleX"));
+      return lastItem.offsetLeft + (xPercents[items.length - 1] / 100) * widths[items.length - 1] - startX + spaceBefore[0] + lastItem.offsetWidth * scaleX;
+    };
+
+    const populateWidths = (): void => {
+      let containerRect = container.getBoundingClientRect();
+      items.forEach((el, i) => {
+        widths[i] = parseFloat(gsap.getProperty(el, "width", "px") as string);
+        xPercents[i] = parseFloat(gsap.getProperty(el, "x", "px") as string) / widths[i] * 100 + Number(gsap.getProperty(el, "xPercent"));
+        const elementRect = el.getBoundingClientRect();
+        spaceBefore[i] = elementRect.left - (i ? containerRect.right : containerRect.left);
+        containerRect = elementRect;
+      });
+      gsap.set(items, { xPercent: (i: number) => xPercents[i] });
+      totalWidth = getTotalWidth();
+    };
+
+    const populateTimeline = (): void => {
+      tl.clear();
+      items.forEach((item, i) => {
+        const curX = xPercents[i] / 100 * widths[i];
+        const distanceToStart = item.offsetLeft + curX - startX + spaceBefore[0];
+        const distanceToLoop = distanceToStart + widths[i] * Number(gsap.getProperty(item, "scaleX"));
+
+        tl.to(item, {
+          xPercent: (curX - distanceToLoop) / widths[i] * 100,
+          duration: distanceToLoop / pixelsPerSecond
+        }, 0)
+          .fromTo(item,
+            { xPercent: (curX - distanceToLoop + totalWidth) / widths[i] * 100 },
+            { xPercent: xPercents[i], duration: (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond, immediateRender: false },
+            distanceToLoop / pixelsPerSecond)
+          .add("label" + i, distanceToStart / pixelsPerSecond);
+
+        times[i] = distanceToStart / pixelsPerSecond;
+      });
+      timeWrap = gsap.utils.wrap(0, tl.duration());
+    };
+
+    populateWidths();
+    populateTimeline();
+
+    const getClosest = (values: number[], value: number, wrap: number): number => {
+      let i = values.length, closest = 1e10, index = 0, d;
+      while (i--) {
+        d = Math.abs(values[i] - value);
+        if (d > wrap / 2) d = wrap - d;
+        if (d < closest) {
+          closest = d;
+          index = i;
+        }
+      }
+      return index;
+    };
+
+    function toIndex(index: number, vars: gsap.TweenVars): gsap.core.Tween {
+      vars = vars || {};
+      if (Math.abs(index - curIndex) > items.length / 2)
+        index += index > curIndex ? -items.length : items.length;
+      let newIndex = gsap.utils.wrap(0, items.length, index);
+      let time = times[newIndex];
+      if (time > tl.time() !== index > curIndex && index !== curIndex) {
+        time += tl.duration() * (index > curIndex ? 1 : -1);
+      }
+      if (time < 0 || time > tl.duration()) {
+        vars.modifiers = { time: timeWrap };
+      }
+      curIndex = newIndex;
+      vars.overwrite = true;
+      return vars.duration === 0
+        ? gsap.to(tl, { time: timeWrap(time), duration: 0, overwrite: true })
+        : tl.tweenTo(time, vars);
+    }
+
+    (tl as any)['toIndex'] = toIndex;
+    (tl as any)['closestIndex'] = (setCurrent?: boolean) => {
+      const index = getClosest(times, tl.time(), tl.duration());
+      if (setCurrent) {
+        curIndex = index;
+        indexIsDirty = false;
+      }
+      return index;
+    };
+    (tl as any)['current'] = () => indexIsDirty ? (tl as any)['closestIndex'](true) : curIndex;
+    (tl as any)['next'] = (vars: gsap.TweenVars) => toIndex((tl as any)['current']() + 1, vars);
+    (tl as any)['previous'] = (vars: gsap.TweenVars) => toIndex((tl as any)['current']() - 1, vars);
+    (tl as any)['times'] = times;
+
+    tl.progress(1, true).progress(0, true);
+
+    if (config.reversed) {
+      if (typeof tl.vars.onReverseComplete === 'function') {
+        tl.vars.onReverseComplete();
+      }
+      tl.reverse();
+    }
+
+    if (config.draggable) {
+      const proxy = document.createElement("div");
+      let ratio: number, startProgress: number, draggable: Draggable;
+
+      const align = () => { tl.progress(gsap.utils.wrap(0, 1, startProgress + (draggable.startX - draggable.x) * ratio)); };
+
+      draggable = Draggable.create(proxy, {
+        trigger: items[0].parentNode as Element,
+        type: "x",
+        inertia: true,
+        onPressInit() {
+          gsap.killTweensOf(tl);
+          startProgress = tl.progress();
+          populateWidths();
+          ratio = 1 / totalWidth;
+          gsap.set(proxy, { x: startProgress / -ratio });
+        },
+        onDrag: align,
+        onThrowUpdate: align,
+        onRelease: () => (tl as any)['closestIndex'](true),
+        onThrowComplete: () => (tl as any)['closestIndex'](true)
+      })[0];
+
+      (tl as any).draggable = draggable;
+    }
+
+    (tl as any)['closestIndex'](true);
+    lastIndex = curIndex;
+    if (onChange) {
+      onChange(items[curIndex], curIndex);
+    }
+
+    return tl;
+  }
+
+  pauseGallery(): void {
+    this.loopTimeline?.pause();
+  }
+
+  resumeGallery(): void {
+    this.loopTimeline?.resume();
   }
 }

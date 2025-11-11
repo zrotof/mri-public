@@ -1,18 +1,19 @@
 <div class="hero-image-carousel">
     <div class="carousel-wrapper">
-        <button class="nav-button prev-button" (click)="prevWork()" aria-label="Image précédente">
-            <fa-icon [icon]=" 'faAngleLeft' | convertStringLabelToFontawesomeIcon"></fa-icon>
-        </button>
-
-        <div class="carousel-container" #carouselContainer>
-            @for (image of images.concat(images); track $index) {
+        <div class="carousel-container" #carouselContainer (mouseenter)="pauseGallery()" (mouseleave)="resumeGallery()">
+            @for (image of images; track $index) {
             <div class="image-wrapper" (click)="onItemChoosed($index)">
-                <img [ngSrc]="image.name" [alt]="image.alt" fill priority>
+                <img [ngSrc]="image.name" [alt]="image.alt" fill>
             </div>
             }
         </div>
+    </div>
 
-        <button class="nav-button next-button" (click)="nextWork()" aria-label="Image suivante">
+    <div class="content header-container">
+        <button class="prev-button" (click)="prevWork()" aria-label="Image précédente">
+            <fa-icon [icon]=" 'faAngleLeft' | convertStringLabelToFontawesomeIcon"></fa-icon>
+        </button>
+        <button class="next-button" (click)="nextWork()" aria-label="Image suivante">
             <fa-icon [icon]=" 'faAngleRight' | convertStringLabelToFontawesomeIcon"></fa-icon>
         </button>
     </div>
