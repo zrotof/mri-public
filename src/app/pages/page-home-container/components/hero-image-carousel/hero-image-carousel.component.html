@@ -1,20 +1,44 @@
 <div class="hero-image-carousel">
+    <div class="content my-container">
+        <div class="top">
+            <h2>
+                <span>Découvrez</span>
+                <span>Nos Dernières Réalisations</span>
+            </h2>
+
+            <p>
+                Nous avons eu l’occasion de travailler sur de nombreux projets, que ce soit auprès de société de
+                transport, de construction, d’enseigne du retail ou encore chez de nombreux particuliers. Découvrez
+                certains de nos projets ci-dessous.
+            </p>
+        </div>
+    </div>
     <div class="carousel-wrapper">
         <div class="carousel-container" #carouselContainer (mouseenter)="pauseGallery()" (mouseleave)="resumeGallery()">
-            @for (image of images; track $index) {
-            <div class="image-wrapper" (click)="onItemChoosed($index)">
-                <img [ngSrc]="image.name" [alt]="image.alt" fill>
+            @for (work of latestWorks; track $index) {
+            <div class="work" (click)="onProjectChoosed($index)">
+                <div class="image-wrapper">
+                    <img [ngSrc]="work.image" [alt]="work.title" fill>
+                    <ul class="renovation-types">
+                        @for (renovationType of work.renovationTypes; track $index) {
+                        <li>{{renovationType}}</li>
+                        }
+                    </ul>
+                </div>
+                <div class="texts">
+                    <h3> {{work.title}} </h3>
+                    <button>Voir plus</button>
+                </div>
             </div>
             }
         </div>
-    </div>
-
-    <div class="content header-container">
-        <button class="prev-button" (click)="prevWork()" aria-label="Image précédente">
-            <fa-icon [icon]=" 'faAngleLeft' | convertStringLabelToFontawesomeIcon"></fa-icon>
-        </button>
-        <button class="next-button" (click)="nextWork()" aria-label="Image suivante">
-            <fa-icon [icon]=" 'faAngleRight' | convertStringLabelToFontawesomeIcon"></fa-icon>
-        </button>
+        <div class="buttons header-container">
+            <button class="prev-button" (click)="prevWork()" aria-label="Image précédente">
+                <fa-icon [icon]=" 'faAngleLeft' | convertStringLabelToFontawesomeIcon"></fa-icon>
+            </button>
+            <button class="next-button" (click)="nextWork()" aria-label="Image suivante">
+                <fa-icon [icon]=" 'faAngleRight' | convertStringLabelToFontawesomeIcon"></fa-icon>
+            </button>
+        </div>
     </div>
 </div>

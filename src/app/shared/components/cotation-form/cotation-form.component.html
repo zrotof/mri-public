@@ -1,0 +1,33 @@
+<form>
+    <div class="row-two">
+        <div class="input-bloc">
+            <label>Nom</label>
+            <input type="text" pInputText formControlName="text" placeholder="Entrez votre nom" />
+        </div>
+        <div class="input-bloc">
+            <label>Société (optionnel)</label>
+            <input type="text" pInputText formControlName="text" placeholder="Nom de société" />
+        </div>
+    </div>
+
+    <div class="row-two">
+        <div class="input-bloc">
+            <label>Téléphone</label>
+            <input type="text" pInputText formControlName="text" placeholder="Entrez votre téléphone" />
+        </div>
+        <div class="input-bloc">
+            <label>Email</label>
+            <input type="text" pInputText formControlName="text" placeholder="Entrez votre adresse mail" />
+        </div>
+    </div>
+    <div class="input-bloc">
+        <label>Objet</label>
+        <p-select formControlName="selectedRenovationType" [options]="renovationTypes"
+            placeholder="Sélectionnez l'objet de votre demande" class="w-full md:w-56" />
+    </div>
+    <div class="input-bloc">
+        <label>Message</label>
+        <textarea rows="5" cols="30" pTextarea formControlName="text"></textarea>
+    </div>
+    <button>Obtenir Mon Devis Gratuit</button>
+</form>

@@ -5,9 +5,10 @@
         <nav>
             <ul>
                 <li>
-                    <a routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Accueil</a>
+                    <a routerLink="" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{exact: true}">Accueil</a>
                 </li>
-                 <li>
+                <li>
                     <a routerLink="agence" routerLinkActive="active-link">L'agence</a>
                 </li>
                 <li>
@@ -16,12 +17,15 @@
                         <fa-icon [icon]="'faAngleDown' | convertStringLabelToFontawesomeIcon"></fa-icon>
                     </a>
                 </li>
-                 <li>
+                <li>
                     <a routerLink="nos-realisations" routerLinkActive="active-link">Nos Réalisations</a>
                 </li>
             </ul>
         </nav>
 
-        <button routerLink="contactez-nous">Contact</button>
+        <div class="buttons">
+            <button class="btn-contact" routerLink="contactez-nous">Contact</button>
+            <button class="btn-cotation" (click)="onOpenCotationRequest()">Devis Gratuit</button>
+        </div>
     </div>
 </header>

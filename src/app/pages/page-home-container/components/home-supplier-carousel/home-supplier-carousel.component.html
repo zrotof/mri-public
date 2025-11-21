@@ -1,7 +1,7 @@
 <div class="home-supplier-carousel">
     <div class="content my-container">
         <p-carousel [value]="images" [numVisible]="4" [numScroll]="1" [circular]="true" [autoplayInterval]="3000"
-            [responsiveOptions]="responsiveOptions">
+            [responsiveOptions]="responsiveOptions" [showIndicators]="false">
             <ng-template let-image #item>
                 <img [ngSrc]="image" alt width="200" height="50">
             </ng-template>

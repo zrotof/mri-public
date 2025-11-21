@@ -34,7 +34,6 @@
                 padding: 2rem 2rem 1.5rem 2rem;
                 background-color: var(--project-green-secondary-color);
                 min-height: 100%;
-                border-radius: 1rem;
                 flex: 1;
 
                 .quote {
@@ -96,7 +95,7 @@
                                 border: 1px solid var(--project-blue-primary-color);
                                 width: 45px;
                                 height: 45px;
-                                border-radius: 50%;
+                                border-radius: 0;
                                 background-color: var(--project-white-primary-color);
                                 transition: all 0.2s ease-in-out;
                                 cursor: pointer;
@@ -115,7 +114,6 @@
                 position: relative;
                 width: 350px;
                 height: 25rem;
-                border-radius: 1rem;
                 overflow: hidden;
 
                 img {

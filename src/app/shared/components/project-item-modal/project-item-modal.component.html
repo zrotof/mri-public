@@ -1,0 +1,37 @@
+<div class="project-item-modal">
+    <div class="project-hero-banner">
+        <img class="hero" [ngSrc]="projectData.coverImage" fill priority>
+        <div class="content header-container">
+            <div class="texts">
+                <h1> {{projectData.title}} </h1>
+                <p> {{projectData.description}} </p>
+            </div>
+
+            <ul class="renovation-types">
+                @for (renovationType of projectData.renovationTypes; track $index) {
+                <li>{{renovationType}}</li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="images">
+        <div class="content header-container">
+            <p-carousel [value]="imagesWithIndex" [numVisible]="2" [numScroll]="3" [circular]="false">
+                <ng-template let-image #item>
+                    <div class="image-wrapper" (click)="onImageClick(image.index - 1)">
+                        <img [ngSrc]="image.imageSrc" alt="" fill>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+    </div>
+</div>
+
+<p-galleria [value]="projectData.images" [(visible)]="displayCustom!" [(activeIndex)]="activeIndex"
+    [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '850px' }" [numVisible]="7"
+    [circular]="true" [fullScreen]="true" [showItemNavigators]="true" [showThumbnails]="false">
+    <ng-template #item let-image>
+        <img [src]="image" style="width: 100%; display: block;" />
+    </ng-template>
+</p-galleria>

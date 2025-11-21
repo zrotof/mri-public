@@ -1,19 +1,28 @@
-import { isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, inject, PLATFORM_ID, ViewChild } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, inject, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
+
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { CotationFormComponent } from '../../../../shared/components/cotation-form/cotation-form.component';
 
 @Component({
   selector: 'app-hero-banner',
   templateUrl: './hero-banner.component.html',
   styleUrl: './hero-banner.component.scss',
+  encapsulation: ViewEncapsulation.None,
+  providers: [DialogService],
   imports: [
-    RouterLink
+    NgOptimizedImage
   ]
 })
+
 export class HeroBannerComponent implements AfterViewInit {
+
   private isBrowser = isPlatformBrowser(inject(PLATFORM_ID))
+  private dialogservice = inject(DialogService);
+
+  ref: DynamicDialogRef | undefined;
 
   private titleTween!: gsap.core.Tween;
 
@@ -55,5 +64,18 @@ export class HeroBannerComponent implements AfterViewInit {
           scale: 0
         }
       )
+  }
+
+  onOpenCotationRequest(){
+    this.dialogservice.open(
+      CotationFormComponent, {
+        header: "Obtenez un devis de vos travaux 100% gratuit",
+        modal:true,
+        baseZIndex: 100,
+        closable: true,
+        styleClass: "cotation-form",
+        width: "38rem",
+      }
+    )
   }
 }

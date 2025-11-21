@@ -1,45 +1,72 @@
 .hero-banner {
     display: flex;
     justify-content: center;
+    position: relative;
+    height: 100vh;
+    height: 100svh;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-color: rgba(63, 61, 86, 0.481);
+        z-index: 0;
+    }
+
+    img {
+        object-fit: cover;
+        z-index: -1;
+    }
 
     .content {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 6rem;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding-bottom: 4rem;
         gap: 1.5rem;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
 
         h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
+            font-weight: 800;
             line-height: 1;
             letter-spacing: -1px;
-            text-align: center;
-            max-width: 850px;
-            color: var(--project-blue-primary-color);
+            max-width: 780px;
+            color: var(--project-green-secondary-color);
+            text-shadow: 0 1px 1px var(--project-black-primary-color);
         }
 
-        h2 {
-            font-size: 1.1rem;
-            line-height: 1.5;
-            font-weight: 400;
-            text-align: center;
-            max-width: 500px;
-        }
+        .left{
+            width: 388px;
 
-        button {
-            margin-top: 2rem;
-            font-size: 1.05rem;
-            border-radius: 100px;
-            padding: 12px 18px;
-            font-weight: 500;
-            border: 1px solid var(--project-green-primary-color);
-            color: white;
-            background-color: var(--project-green-primary-color);
-            cursor: pointer;
-
-            &:hover {
-                background-color: var(--project-blue-primary-color);
+            h2 {
+                font-size: 1rem;
+                line-height: 1.5;
+                font-weight: 400;
+                max-width: 500px;
+                color: var(--project-green-secondary-color);
+            }
+    
+            button {
+                margin-top: 2rem;
+                font-size: 1.05rem;
+                padding: 12px 18px;
+                font-weight: 500;
+                border: 1px solid var(--project-green-primary-color);
+                color: white;
+                background-color: var(--project-green-primary-color);
+                cursor: pointer;
+    
+                &:hover {
+                    background-color: var(--project-blue-primary-color);
+                }
             }
         }
+
     }
 }

@@ -12,7 +12,9 @@ import {
   faPhone,
   faQuoteRight,
   faQuoteLeft,
-  faUser
+  faUser,
+  faPlus,
+  faXmark
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -53,6 +55,8 @@ export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
         return faLocationDot;
       case 'faPlay':
         return faPlay
+      case 'faPlus':
+        return faPlus
       case 'faPhone':
         return faPhone;
       case 'faQuoteLeft':
@@ -61,6 +65,8 @@ export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
         return faQuoteRight;
       case 'faWhatsapp':
         return faWhatsapp
+      case 'faXmark':
+        return faXmark
       case 'faXTwitter':
         return faXTwitter;
       case 'faYoutube':

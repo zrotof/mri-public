@@ -8,7 +8,7 @@ header {
     left: 0;
     width: 100%;
     background-color: var(--project-white-primary-color);
-    z-index: 99999;
+    z-index: 99;
 
     .content {
         display: flex;
@@ -46,40 +46,46 @@ header {
                     }
 
                     .active-link {
-
                         color: var(--project-green-primary-color);
-
-                        &::after {
-                            content: "";
-                            position: absolute;
-                            left: 50%;
-                            transform: translateX(-50%);
-                            bottom: 0;
-                            width: 10px;
-                            height: 10px;
-                            border-radius: 50%;
-                            background-color: var(--project-green-primary-color);
-                        }
                     }
                 }
             }
         }
 
-        button {
-            background-color: var(--project-green-primary-color);
-            font-size: 1.05rem;
-            border-radius: 100px;
-            padding: 12px 18px;
-            font-weight: 500;
-            border: 1px solid var(--project-green-primary-color);
-            color: white;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
+        .buttons {
+            display: flex;
+            gap: 1rem;
 
-            &:hover {
-                background-color: var(--project-blue-primary-color);
+            button {
+                font-size: 1.05rem;
+                padding: 12px 18px;
+                font-weight: 500;
+                border: 1px solid var(--project-green-primary-color);
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+            }
+
+            .btn-contact {
+                color: var(--project-green-primary-color);
+                background-color: transparent;
+
+                &:hover {
+                    color: white;
+                    background-color: var(--project-green-primary-color);
+                }
+            }
+
+            .btn-cotation {
+                color: white;
+                background-color: var(--project-green-primary-color);
+
+                &:hover {
+                    color: var(--project-green-primary-color);
+                    background-color: var(--project-green-secondary-color);
+                }
             }
         }
+
     }
 }
 

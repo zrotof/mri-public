@@ -16,17 +16,4 @@ import { SelectModule } from 'primeng/select';
   ]
 })
 
-export class QuotationHeroBannerComponent {
-  renovationTypes = [
-    "Aménagement de cuisine",
-    "Aménagement de salle de bain",
-    "Aménagements et extension",
-    "Décoration d'intérieur et agencement",
-    "Électricité",
-    "Peinture",
-    "Plomberie",
-    "Rénovation complète",
-    "Rénovation extérieur",
-    "Sols et plafonds"
-  ]
-}
+export class QuotationHeroBannerComponent {}

@@ -3,8 +3,8 @@ import { HeroBannerComponent } from './components/hero-banner/hero-banner.compon
 import { HeroImageCarouselComponent } from './components/hero-image-carousel/hero-image-carousel.component';
 import { HomeSupplierCarouselComponent } from './components/home-supplier-carousel/home-supplier-carousel.component';
 import { HomeAboutUsComponent } from './components/home-about-us/home-about-us.component';
-import { HomeLatestWorksComponent } from './components/home-latest-works/home-latest-works.component';
 import { HomeCustomerTestimoniesComponent } from './components/home-customer-testimonies/home-customer-testimonies.component';
+import { CotationBannerComponent } from '../../shared/components/cotation-banner/cotation-banner.component';
 
 @Component({
   selector: 'app-page-home-container',
@@ -13,9 +13,9 @@ import { HomeCustomerTestimoniesComponent } from './components/home-customer-tes
   imports: [
     HeroBannerComponent,
     HeroImageCarouselComponent,
-    //HomeSupplierCarouselComponent,
+    HomeSupplierCarouselComponent,
     HomeAboutUsComponent,
-    HomeLatestWorksComponent,
+    CotationBannerComponent,
     HomeCustomerTestimoniesComponent,
   ]
 })
