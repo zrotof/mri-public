@@ -1,0 +1,82 @@
+.about-more {
+    display: flex;
+    justify-content: center;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        width: 100%;
+
+        h2 {
+            font-size: 3.5rem;
+            color: var(--project-blue-primary-color);
+            line-height: 1;
+            letter-spacing: -1;
+            text-align: center;
+        }
+
+        .top {
+            display: flex;
+            gap: 5rem;
+
+            .left {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                flex: 1;
+                gap: 2rem;
+
+                .texts {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5rem;
+
+                    p {
+                        font-size: 1rem;
+                        font-weight: 500;
+                        line-height: 1.8;
+                    }
+                }
+
+                button {
+                    background-color: var(--project-green-primary-color);
+                    font-size: 1.05rem;
+                    padding: 12px 18px;
+                    font-weight: 500;
+                    border: 1px solid var(--project-green-primary-color);
+                    color: white;
+                    cursor: pointer;
+                    transition: all 0.2s ease-in-out;
+                    width: fit-content;
+
+                    &:hover {
+                        background-color: var(--project-blue-primary-color);
+                    }
+                }
+            }
+
+            .image-wrapper {
+                position: relative;
+                flex: 1;
+                height: 30rem;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 200px;
+                    height: 200px;
+                    bottom: -1.5rem;
+                    right: -1.5rem;
+                    background-color: var(--project-green-primary-color);
+                }
+
+                img {
+                    object-fit: cover;
+                }
+
+
+            }
+        }
+    }
+}

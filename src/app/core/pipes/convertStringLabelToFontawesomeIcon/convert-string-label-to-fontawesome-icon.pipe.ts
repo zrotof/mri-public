@@ -4,6 +4,7 @@ import {
   faAngleDown,
   faAngleLeft,
   faAngleRight,
+  faArrowRight,
   faCalendarDays,
   faClock,
   faEnvelope,
@@ -20,6 +21,7 @@ import {
 import {
   faInstagram,
   faFacebookF,
+  faLinkedin,
   faXTwitter,
   faWhatsapp,
   faYoutube
@@ -41,6 +43,8 @@ export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
         return faAngleLeft
       case 'faAngleRight':
         return faAngleRight
+      case 'faArrowRight':
+        return faArrowRight
       case 'faCalendarDays':
         return faCalendarDays;
       case 'faClock':
@@ -51,6 +55,8 @@ export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
         return faInstagram;
       case 'faFacebookF':
         return faFacebookF;
+      case 'faLinkedin':
+        return faLinkedin;
       case 'faLocationDot':
         return faLocationDot;
       case 'faPlay':

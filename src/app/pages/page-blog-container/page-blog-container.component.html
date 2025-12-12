@@ -1,0 +1,8 @@
+<div class="page-blog-container">
+    <app-blog-hero></app-blog-hero>
+    <app-main-blog-article [blogArticle]="blogArticles()[0]"></app-main-blog-article>
+<!--
+    <app-blog-rubric-list [rubrics]="blogRubrics()" (rubricIndexClicked)="onRubricClickedEventHandler($event)"></app-blog-rubric-list>
+-->
+    <app-blog-summary [articles]="blogArticles()"></app-blog-summary>
+</div>

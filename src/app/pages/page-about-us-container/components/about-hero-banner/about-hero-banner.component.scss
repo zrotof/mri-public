@@ -88,30 +88,5 @@
                 }
             }
         }
-
-        .rich-about {
-            text-align: center;
-            font-size: 1rem;
-            font-weight: 500;
-            line-height: 1.8;
-            max-width: 1000px;
-            margin-top: 3rem;
-        }
-
-        button {
-            background-color: var(--project-green-primary-color);
-            font-size: 1.05rem;
-            border-radius: 100px;
-            padding: 12px 18px;
-            font-weight: 500;
-            border: 1px solid var(--project-green-primary-color);
-            color: white;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-
-            &:hover {
-                background-color: var(--project-blue-primary-color);
-            }
-        }
     }
 }

@@ -1,16 +1,34 @@
 <div class="page-under-maintenance">
     <div class="content my-container" #maintenanceContainer>
         <div class="image-wrapper image">
-            <img ngSrc="images/maintenance/mri.jpg" alt="Ma rénonnation Immobilière" fill priority>
+            <img ngSrc="images/maintenance/ma-renovation-immobiliere.webp" alt="Ma rénonnation Immobilière" fill priority>
+            <div class="square"></div>
+            <a href="https://www.instagram.com/ma_renov_immo/" target="_blank" class="network instagram">
+                <div class="icon-wrapper">
+                    <fa-icon [icon]="'faInstagram' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                </div>
+                <p> Découvrez plus <br> sur Instagram</p>
+            </a>
+<!--
+            <a href="https://www.instagram.com/ma_renov_immo/" target="_blank" class="network linkedin">
+                <div class="icon-wrapper">
+                    <fa-icon [icon]="'faLinkedin' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                </div>
+                <p> Découvrez plus <br> sur Linkedin</p>
+            </a>
+-->
+        
         </div>
 
         <div class="texts">
-            <img class="logo" alt="" ngSrc="images/header/erasebg-transformed.webp" width="130" height="82">
-
-            <h1>Ma Rénnovation Immobilière</h1>
-            <p>
+            <div class="logo-bloc">
+                <img class="logo" alt="" ngSrc="images/header/erasebg-transformed.webp" width="130" height="82">
+    
+                <h1>Ma Rénnovation Immobilière</h1>
+            </div>
+            <p class="explain">
                 Un chantier est en cours !
-                Comme nos projets de construction, notre site se construit pierre après pierre.
+                Comme nos projets de construction, notre site fait peau neuve.
                 Nous finalisons les derniers détails pour vous accueillir très bientôt.
             </p>
 
@@ -19,11 +37,11 @@
 
                 <ul>
                     <li>
-                        <a href="tel:+330130610606">
+                        <a href="tel:+33623736056">
                             <div class="icon-wrapper">
                                 <fa-icon [icon]="'faPhone' | convertStringLabelToFontawesomeIcon"></fa-icon>
                             </div>
-                            <span>+33 01 30 61 06 06</span>
+                            <span>+33 06 23 73 60 56</span>
                         </a>
                     </li>
                     <li>
@@ -35,7 +53,7 @@
                         </a>
                     </li>
                     <li>
-                        <a target="_blank">
+                        <a href="http://www.google.com/maps/search/?api=1&query=45+Rue+de+la+Liberté,+78100+Saint-Germain-en-Laye" target="_blank">
                             <div class="icon-wrapper">
                                 <fa-icon [icon]="'faLocationDot' | convertStringLabelToFontawesomeIcon"></fa-icon>
                             </div>
@@ -44,7 +62,6 @@
                     </li>
                 </ul>
             </div>
-
         </div>
     </div>
 </div>

@@ -1,0 +1,11 @@
+<div class="blog-rubric-list">
+    <div class="content my-container">
+        <ul>
+            @for (rubric of rubrics(); track $index) {
+                <li [class.active-rubric]="rubric.isActive === true" (click)="onRubricClicked($index)">
+                    {{rubric.full_name}}
+                </li>
+            }
+        </ul>
+    </div>
+</div>

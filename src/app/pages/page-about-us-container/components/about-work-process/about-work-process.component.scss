@@ -1,0 +1,193 @@
+.about-work-process {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(237, 238, 246);
+    padding: 5rem 0 10rem 0;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 1.5rem;
+
+        h2 {
+            font-size: 3.5rem;
+            color: var(--project-blue-primary-color);
+            line-height: 1;
+            letter-spacing: -1;
+            text-align: center;
+        }
+
+        .sub-header {
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 900px;
+            font-weight: 500;
+        }
+
+        .timeline-container {
+            position: relative;
+            width: 100%;
+            margin-top: 10rem;
+
+            .main-horizontal-line {
+                position: absolute;
+                top: 50%; // Centrée verticalement par rapport au container
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background-color: var(--project-blue-primary-color);
+                z-index: 0;
+
+                // Petit ajustement responsive pour mobile
+                @media (max-width: 768px) {
+                    display: none; // On cache la ligne horizontale sur mobile
+                }
+            }
+
+            .steps-grid {
+                display: grid;
+                grid-template-columns: repeat(6, 1fr); // 5 colonnes égales
+                gap: 1rem;
+                position: relative;
+
+                @media (max-width: 768px) {
+                    grid-template-columns: 1fr; // Une seule colonne sur mobile
+                    gap: 3rem;
+                }
+
+                .step {
+                    display: flex;
+                    align-items: flex-end;
+                        grid-row: 1 / 1;
+
+
+                    &:nth-child(1) {
+                        grid-column: 1 / 3;
+                    }
+
+                    &:nth-child(2) {
+                        grid-column: 2 / 4;
+                    }
+
+                    &:nth-child(3) {
+                        grid-column: 3 / 5;
+                    }
+
+                    &:nth-child(4) {
+                        grid-column: 4 / 6;
+                    }
+
+                    /* 3. Règle spécifique pour le deuxième élément */
+                    &:nth-child(5) {
+                        grid-column: 5 / 7;
+
+                    }
+
+                    // Configuration spécifique pour les éléments du bas (4 et 5)
+                    &.step-bottom {
+                        align-items: flex-start; // Colle le contenu vers le haut (vers la ligne centrale)
+                        // Décalage pour descendre sous la ligne médiane virtuelle
+                        transform: translateY(50%);
+
+                        // Sur mobile, on annule ces transformations complexes
+                        @media (max-width: 768px) {
+                            transform: none;
+                            flex-direction: row;
+                        }
+
+                        .visuals {
+                            flex-direction: column;
+                        }
+
+                         .texts {
+                            flex-direction: column-reverse;
+                         }
+                    }
+
+                    // Ajustement pour les éléments du haut (1, 2, 3) pour qu'ils "remontent"
+                    &:not(.step-bottom) {
+                        transform: translateY(-50%);
+
+                        @media (max-width: 768px) {
+                            transform: none;
+                        }
+                    }
+
+                    // Responsive Mobile Styles
+                    @media (max-width: 768px) {
+                        height: auto;
+                        flex-direction: row !important; // Cercle à gauche, texte à droite
+                        align-items: flex-start;
+                    }
+
+                    .visuals {
+                        display: flex;
+                        flex-direction: column-reverse;
+                        align-items: center;
+                        width: 40px;
+                        flex-shrink: 0;
+
+                        @media (max-width: 768px) {
+                            margin-right: 1.5rem;
+                            flex-direction: column; // Simple colonne sur mobile
+                        }
+
+                        .vertical-stem {
+                            width: 2px;
+                            height: 75px; // Longueur de la tige verticale
+                            background-color: var(--project-blue-primary-color);
+
+                            @media (max-width: 768px) {
+                                display: none; // Pas de tige verticale sur mobile
+                            }
+                        }
+
+                        .circle {
+                            width: 70px;
+                            height: 70px;
+                            border-radius: 50%;
+                            border: 3px solid var(--project-blue-primary-color);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-weight: 500;
+                            color: var(--project-blue-primary-color);
+                            z-index: 2;
+                            font-size: 1.5rem;
+                        }
+                    }
+
+
+                    .texts {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+                        padding: 1rem 2rem 1rem 2rem;
+                        height: 100%;
+
+
+                        @media (max-width: 768px) {
+                            padding: 0;
+                            padding-top: 0.5rem;
+                        }
+
+                        .title {
+                            font-size: 1.25rem;
+                            color: var(--project-blue-primary-color);
+                            font-weight: bold;
+                        }
+
+                        .description {
+                            font-size: 0.92rem;
+                            color: var(--project-black-primary-color);
+                            line-height: 1.4;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

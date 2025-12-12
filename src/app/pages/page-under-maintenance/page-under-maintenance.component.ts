@@ -25,13 +25,16 @@ export class PageUnderMaintenanceComponent {
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
 
-    this.initAnimation();
+    setTimeout(() => {
+      this.initAnimation();
+    }, 0)
   }
 
   initAnimation() {
 
-    const titleEl = document.querySelector("h1");
-    const pEl = this.maintenanceContainer.nativeElement.querySelector("p");
+    const container = this.maintenanceContainer.nativeElement;
+    const titleEl = container.querySelector("h1");
+    const pEl = container.querySelector("p");
 
     let titleSplit = SplitText.create(titleEl, {
       type: 'words',
@@ -43,24 +46,33 @@ export class PageUnderMaintenanceComponent {
       mask: "lines"
     })
 
+
+
     gsap.timeline()
-      .from(this.maintenanceContainer.nativeElement.querySelector(".image"), {
+      .set(container, { opacity: 1, visibility: 'visible' })
+      .from(container.querySelector(".logo"), {
+        scale: 2.5,
+        duration: 1,
+        delay: 0.3,
+        opacity: 0,
+        ease: "power1.inOut"
+      })
+      .from(container.querySelector(".image img"), {
         left: -100,
         duration: 2,
         opacity: 0,
         ease: "power1.inOut"
-      })
-      .from(this.maintenanceContainer.nativeElement.querySelector(".logo"), {
-        scale: 2.5,
-        duration: 1,
-        opacity: 0
-      },"<")
+      }, "-=0.7")
+
       .from(titleSplit.words, {
         textAlign: "center",
         y: 60,
         stagger: 0.3,
         duration: 0.7,
-      }, "-=0.2")
+        opacity: 0,
+
+      }, "-=0.9")
+
       .from(pSplit.lines,
         {
           y: 30,
@@ -69,19 +81,45 @@ export class PageUnderMaintenanceComponent {
           duration: 0.7,
         }
       )
-      .from(this.maintenanceContainer.nativeElement.querySelectorAll(".contact p"),
+      .from(container.querySelector(".explain"),
         {
           y: 30,
           opacity: 0,
         },
         "-=0.2"
       )
-      .from(this.maintenanceContainer.nativeElement.querySelectorAll(".contact ul li"),
+      .from(container.querySelectorAll(".contact p"),
+        {
+          y: 30,
+          opacity: 0,
+        },
+        "-=0.2"
+      )
+      .from(container.querySelectorAll(".contact ul li"),
         {
           y: 30,
           opacity: 0,
           stagger: 0.3,
           duration: 0.7,
+        },
+        "-=0.2"
+      )
+
+      .from(container.querySelectorAll(".network"),
+        {
+          x: -30,
+          duration: 0.7,
+          opacity: 0
+        },
+        "-=0.2"
+      )
+
+      .from(container.querySelector(".square"),
+        {
+          y: 30,
+          duration: 0.7,
+          ease: "back",
+          scale: 0
         },
         "-=0.2"
       )

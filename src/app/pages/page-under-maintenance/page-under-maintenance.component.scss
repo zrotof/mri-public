@@ -3,50 +3,119 @@
     justify-content: center;
     min-height: 100svh;
     height: 100%;
-    background-color: var(--project-green-secondary-color);
     padding: 2rem 0;
+    background: linear-gradient(to bottom, #eff8d8 0%, #e5ffa9 80%);
 
     .content {
         width: 100%;
         display: flex;
         align-items: center;
         gap: 4rem;
+        opacity: 0;
 
         .image-wrapper {
-            overflow: hidden;
             width: 500px;
             height: 40rem;
             position: relative;
-            border-radius: 50% 50% 0 0;
-            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+            .square {
+                position: absolute;
+                content: "";
+                bottom: -2.5rem;
+                left: -2.5rem;
+                background-color: var(--project-green-primary-color);
+                width: 250px;
+                height: 250px;
+                z-index: 0;
+            }
 
             img {
                 object-fit: cover;
                 object-position: top;
+                z-index: 2;
+            }
+
+            .network {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                position: absolute;
+                padding-right: 1rem;
+                padding-bottom: 0.5rem;
+                z-index: 2;
+                border-right: 10px solid var(--project-green-secondary-color);
+                border-bottom: 10px solid var(--project-green-secondary-color);
+                background-color: var(--project-green-secondary-color);
+                cursor: pointer;
+                text-decoration: none;
+                color: var(--project-black-primary-color);
+
+                &:hover {
+                    transition: all 0.2s ease-in-out;
+
+                    .icon-wrapper {
+                        background-color: var(--project-green-primary-color);
+                        color: var(--project-white-primary-color);
+                    }
+                }
+
+                .icon-wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 1rem;
+                    background-color: var(--project-white-primary-color);
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 7px;
+                    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+                    fa-icon {
+                        font-size: 2rem;
+                    }
+                }
+
+                p {
+                    font-weight: 500;
+                }
+            }
+
+            .instagram {
+                top: 0;
+                left: 0;
+            }
+
+            .linkedin {
+                left: 0;
+                bottom: 0;
             }
         }
 
         .texts {
             display: flex;
             flex-direction: column;
+            justify-content: space-around;
             gap: 1rem;
             flex: 1;
 
-            h1 {
-                font-size: 4rem;
-                font-weight: 800;
-                line-height: 1;
-                color: var(--project-black-primary-color);
-                max-width: 700px;
-                margin-top: 1rem;
+            .logo-bloc {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+
+                h1 {
+                    font-size: 3.3rem;
+                    font-weight: 800;
+                    line-height: 1;
+                    color: var(--project-black-primary-color);
+                    max-width: 700px;
+                    margin-top: 1rem;
+                }
             }
 
-            p {
+            .explain {
                 font-size: 1rem;
-                line-height: 1.6;
-                font-weight: 500;
-                max-width: 900px;
-
+                line-height: 1.5;
             }
 
             .contact {
@@ -78,7 +147,6 @@
                             justify-content: center;
                             width: 40px;
                             height: 35px;
-                            border-radius: 5px;
                             background-color: white;
                             color: var(--project-green-primary-color);
                             box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -90,7 +158,6 @@
                         }
 
                         span {
-                            text-align: center;
                             font-weight: 600;
                             color: var(--project-black-primary-color);
                         }
@@ -101,18 +168,17 @@
     }
 }
 
-@media all and (max-width: 1111px) {
+@media all and (max-width: 1210px) {
     .page-under-maintenance {
         .content {
-            .image-wrapper {
-                width: 450px;
-                height: 40rem;
-            }
-
             .texts {
+                .logo-bloc {
+                    flex-direction: column;
+                    align-items: flex-start;
 
-                h1 {
-                    font-size: 3rem;
+                    h1 {
+                        font-size: 2.8rem;
+                    }
                 }
 
                 .contact {
@@ -127,21 +193,63 @@
     }
 }
 
-@media all and (max-width: 1024px) {
+@media all and (max-width: 980px) {
     .page-under-maintenance {
+        padding-bottom: 0;
+
         .content {
             flex-direction: column-reverse;
 
             .image-wrapper {
-                display: none;
+                position: absolute;
+                overflow: unset;
+                width: 100%;
+
+                img,
+                .square {
+                    display: none;
+                }
+
+                .network {
+                    justify-content: center;
+                    align-items: center;
+                    top: unset;
+                    bottom: 0;
+                    padding: 0;
+                    width: 100%;
+                    background-color: var(--project-green-primary-color);
+                    flex-direction: row;
+                    border: none;
+                    gap: 0;
+
+                    .icon-wrapper {
+                        width: fit-content;
+                        height: fit-content;
+                        background-color: unset;
+                        color: white;
+                        box-shadow: none;
+                    }
+
+                    p {
+                        display: flex;
+                        gap: 0.3rem;
+                        color: white;
+                    }
+                }
+
+
             }
 
             .texts {
-                align-items: center;
+                justify-content: center;
+                padding-bottom: 100px;
 
-                h1 {
-                    font-size: 3rem;
-                    text-align: center;
+                .logo-bloc {
+                    align-items: center;
+
+                    h1 {
+                        text-align: center;
+                    }
                 }
 
                 p {
@@ -153,14 +261,35 @@
                     margin-top: 1rem;
                     justify-content: center;
 
-
-
                     ul {
-                        gap: 1.8rem;
-                        li{
-                            a{
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 1rem;
+
+                        li {
+                            a {
                                 flex-direction: column;
-                                gap: 0.7rem;
+                                align-items: flex-start;
+                                gap: 2rem;
+                                background-color: #f4fae5;
+                                padding: 0.5rem;
+                                box-shadow: rgb(50 50 93 / 12%) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+                                height: -webkit-fill-available;
+
+                                .icon-wrapper {
+                                    background-color: transparent;
+                                    width: fit-content;
+                                    height: fit;
+                                    box-shadow: none;
+
+                                    fa-icon {
+                                        font-size: 1.5rem;
+                                    }
+                                }
+                            }
+
+                            &:last-child {
+                                grid-column: span 2;
                             }
                         }
                     }
@@ -174,8 +303,10 @@
     .page-under-maintenance {
         .content {
             .texts {
-                h1 {
-                    font-size: 2rem;
+                .logo-bloc {
+                    h1 {
+                        font-size: 2rem;
+                    }
                 }
             }
         }

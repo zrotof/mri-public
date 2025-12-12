@@ -7,8 +7,7 @@ import { DialogService } from 'primeng/dynamicdialog';
   templateUrl: './contact-hero.component.html',
   styleUrl: './contact-hero.component.scss',
   encapsulation: ViewEncapsulation.None,
-  providers: [DialogService],
-  imports: []
+  providers: [DialogService]
 })
 
 export class ContactHeroComponent {

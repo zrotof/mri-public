@@ -14,7 +14,7 @@ import { ConvertStringLabelToFontawesomeIconPipe } from '../../../../core/pipes/
 import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { gsap } from 'gsap';
-import { Draggable } from 'gsap/Draggable';
+import { Draggable } from 'gsap/all';
 import { ProjectItemModalComponent } from '../../../../shared/components/project-item-modal/project-item-modal.component';
 
 gsap.registerPlugin(Draggable);

@@ -1,0 +1,33 @@
+<div class="about-work-process">
+    <div class="content my-container">
+        <h2>
+            De l’Idée À La Perfection
+        </h2>
+        <p class="sub-header">
+            Chaque projet est unique, et chaque étape compte. De l’analyse initiale à la livraison finale, nous vous
+            accompagnons avec soin et expertise pour transformer vos idées en espaces concrets et inspirants.
+            Découvrez comment nous donnons vie à vos projets, étape par étape
+        </p>
+
+        <div class="timeline-container">
+            <div class="main-horizontal-line"></div>
+
+            <div class="steps-grid">
+                @for (step of steps; track step.id) {
+                <div class="step" [class.step-bottom]="step.position === 'bottom'">
+
+                    <div class="visuals">
+                        <div class="vertical-stem"></div>
+                        <div class="circle">{{ step.id }}</div>
+                    </div>
+
+                    <div class="texts">
+                        <h3 class="title">{{ step.title }}</h3>
+                        <p class="description">{{ step.description }}</p>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

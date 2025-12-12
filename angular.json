@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-starter-v19": {
+    "mri-public": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-starter-v19",
+            "outputPath": "dist/mri-public",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-starter-v19:build:production"
+              "buildTarget": "mri-public:build:production"
             },
             "development": {
-              "buildTarget": "angular-starter-v19:build:development"
+              "buildTarget": "mri-public:build:development"
             }
           },
           "defaultConfiguration": "development"

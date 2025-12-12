@@ -1,0 +1,35 @@
+<div class="blog-summary">
+    <div class="content header-container">
+        @for (article of articles(); track $index) {
+        <div class="article" [routerLink]="['/blog', article.id]">
+            <div class="image-container">
+                <img [ngSrc]="article.image_url" [alt]="article.title" fill>
+                <span class="category">
+                    {{ article.category }}
+                </span>
+            </div>
+
+            <div class="texts">
+                <div class="meta">
+                    <div class="date">
+                        <fa-icon [icon]="'faCalendarDays' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                        <span>
+                            {{ article.publish_date | date: 'dd MMM yyyy' }}
+                        </span>
+                    </div>
+                    <div class="time">
+                        <fa-icon [icon]="'faClock' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                        <span>
+                            {{ article.reading_time_minutes }} minutes
+                        </span>
+                    </div>
+                </div>
+
+                <h3 class="title">
+                    {{ article.title }}
+                </h3>
+            </div>
+        </div>
+        }
+    </div>
+</div>

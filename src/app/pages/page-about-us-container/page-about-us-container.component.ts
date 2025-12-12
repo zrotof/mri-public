@@ -3,6 +3,8 @@ import { AboutHeroBannerComponent } from './components/about-hero-banner/about-h
 import { AboutOurServicesComponent } from './components/about-our-services/about-our-services.component';
 import { AboutQuotationComponent } from './components/about-quotation/about-quotation.component';
 import { AboutOurTeamsComponent } from './components/about-our-teams/about-our-teams.component';
+import { AboutMoreComponent } from "./components/about-more/about-more.component";
+import { AboutWorkProcessComponent } from "./components/about-work-process/about-work-process.component";
 
 @Component({
   selector: 'app-page-about-us-container',
@@ -12,10 +14,10 @@ import { AboutOurTeamsComponent } from './components/about-our-teams/about-our-t
     AboutHeroBannerComponent,
     AboutOurServicesComponent,
     AboutQuotationComponent,
-    AboutOurTeamsComponent
-  ]
+    AboutWorkProcessComponent,
+    AboutOurTeamsComponent,
+    AboutMoreComponent,
+]
 })
 
-export class PageAboutUsContainerComponent {
-
-}
+export class PageAboutUsContainerComponent {}

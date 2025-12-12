@@ -47,6 +47,7 @@ export class HeroBannerComponent implements AfterViewInit {
         stagger: 0.3,
         duration: 0.7,
       })
+
       .from("h2",
         {
           y: 30,
@@ -55,6 +56,7 @@ export class HeroBannerComponent implements AfterViewInit {
         },
         "-=0.2"
       )
+      
       .from(".btn",
         {
           y: 30,

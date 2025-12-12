@@ -1,6 +1,6 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
-import { CarouselModule } from 'primeng/carousel';
+import { Carousel, CarouselModule } from 'primeng/carousel';
 
 @Component({
   selector: 'app-home-supplier-carousel',
@@ -48,4 +48,8 @@ export class HomeSupplierCarouselComponent {
     "images/home/suppliers/Logo-legrand-fournisseur-ma-renovation-immobiliere.png",
     "images/home/suppliers/Logo-legrand-fournisseur-ma-renovation-immobiliere.png"
   ]
+
+  constructor() {
+    Carousel.prototype.onTouchMove = () => { };
+  }
 }

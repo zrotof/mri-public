@@ -15,9 +15,11 @@
                 object-fit: cover;
                 filter: grayscale(100%) brightness(0.55);
                 transition: all 0.3s ease-in-out;
+                opacity: 0.8;
 
                 &:hover{
                     filter: none;
+                    opacity: 1;
                 }
             }
         }

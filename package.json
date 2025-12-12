@@ -1,5 +1,5 @@
 {
-  "name": "angular-starter-v19",
+  "name": "mri-public",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:angular-starter-v19": "node dist/angular-starter-v19/server/server.mjs"
+    "serve:ssr:mri-public": "node dist/mri-public/server/server.mjs"
   },
   "private": true,
   "dependencies": {

@@ -1,0 +1,28 @@
+<div class="main-blog-article">
+    <div class="content header-container">
+        <div class="image-wrapper">
+            <img [src]="blogArticle().image_url" alt="">
+        </div>
+        <div class="texts">
+            <div class="meta">
+                <div class="date">
+                    <fa-icon [icon]="'faCalendarDays' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    <span>
+                        {{ blogArticle().publish_date | date: 'dd MMM yyyy' }}
+                    </span>
+                </div>
+                <div class="time">
+                    <fa-icon [icon]="'faClock' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    <span>
+                        {{ blogArticle().reading_time_minutes }} minutes
+                    </span>
+                </div>
+            </div>
+            <h2> {{blogArticle().title}} </h2>
+
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo, veniam a iste blanditiis laboriosam ipsa recusandae quidem necessitatibus facilis non impedit cum, ullam, harum exercitationem nemo quis dolor illum sunt. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident aperiam itaque, aliquid adipisci, iusto at porro et tenetur soluta ipsam qui facere eius maxime debitis? Nam nobis iure veniam porro?
+            </p>
+        </div>
+    </div>
+</div>
