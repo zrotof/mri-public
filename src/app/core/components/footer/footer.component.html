@@ -90,7 +90,7 @@
                     <ul>
                         @for (network of networks; track $index) {
                         <li>
-                            <a target="_blank" [href]="network.link">
+                            <a target="_blank" [href]="network.href">
                                 <fa-icon [icon]="network.icon | convertStringLabelToFontawesomeIcon"></fa-icon>
                             </a>
                         </li>

@@ -1,7 +1,8 @@
 <div class="page-under-maintenance">
     <div class="content my-container" #maintenanceContainer>
         <div class="image-wrapper image">
-            <img ngSrc="images/maintenance/ma-renovation-immobiliere.webp" alt="Ma rénonnation Immobilière" fill priority>
+            <img ngSrc="images/maintenance/ma-renovation-immobiliere.webp" alt="Ma rénonnation Immobilière" fill
+                priority>
             <div class="square"></div>
             <a href="https://www.instagram.com/ma_renov_immo/" target="_blank" class="network instagram">
                 <div class="icon-wrapper">
@@ -9,21 +10,19 @@
                 </div>
                 <p> Découvrez plus <br> sur Instagram</p>
             </a>
-<!--
-            <a href="https://www.instagram.com/ma_renov_immo/" target="_blank" class="network linkedin">
-                <div class="icon-wrapper">
-                    <fa-icon [icon]="'faLinkedin' | convertStringLabelToFontawesomeIcon"></fa-icon>
-                </div>
-                <p> Découvrez plus <br> sur Linkedin</p>
-            </a>
--->
-        
+
+        </div>
+
+        <div class="image-wrapper-on-mobile image">
+            <img ngSrc="images/maintenance/ma-renovation-immobiliere.webp" alt="Ma rénonnation Immobilière" fill
+                priority>
         </div>
 
         <div class="texts">
             <div class="logo-bloc">
-                <img class="logo" alt="" ngSrc="images/header/erasebg-transformed.webp" width="130" height="82">
-    
+                <img class="logo" alt="" ngSrc="images/logos/ma-renovation-immobiliere.svg" width="130" height="82"
+                    priority>
+
                 <h1>Ma Rénnovation Immobilière</h1>
             </div>
             <p class="explain">
@@ -36,30 +35,17 @@
                 <p>Vous pouvez toujours nous joindre :</p>
 
                 <ul>
+                    @for (network of networks; track $index) {
                     <li>
-                        <a href="tel:+33623736056">
+                        <a [href]="network.href" target="_blank">
                             <div class="icon-wrapper">
-                                <fa-icon [icon]="'faPhone' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                                <fa-icon [icon]="network.icon| convertStringLabelToFontawesomeIcon"></fa-icon>
                             </div>
-                            <span>+33 06 23 73 60 56</span>
+                            <span class="long"> {{network.longLabel}} </span>
+                            <span class="short"> {{network.shortLabel}} </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="mailto:contact&#64;mri-idf.com">
-                            <div class="icon-wrapper">
-                                <fa-icon [icon]="'faEnvelope' | convertStringLabelToFontawesomeIcon"></fa-icon>
-                            </div>
-                            <span>contact&#64;mri-idf.com</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.google.com/maps/search/?api=1&query=45+Rue+de+la+Liberté,+78100+Saint-Germain-en-Laye" target="_blank">
-                            <div class="icon-wrapper">
-                                <fa-icon [icon]="'faLocationDot' | convertStringLabelToFontawesomeIcon"></fa-icon>
-                            </div>
-                            <span>45 Rue de la Liberté, 78100 Saint-Germain-en-Laye</span>
-                        </a>
-                    </li>
+                    }
                 </ul>
             </div>
         </div>

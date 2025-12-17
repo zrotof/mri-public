@@ -21,6 +21,6 @@ export default `<!doctype html>
 
 <body ngcm="">
   <app-root></app-root>
-<link rel="modulepreload" href="chunk-7T744P6Y.js"><script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-7QT7WFKO.js" type="module"></script></body>
+<link rel="modulepreload" href="chunk-ROUBEZ7I.js"><script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-CF6PAGOH.js" type="module"></script></body>
 
 </html>`;
