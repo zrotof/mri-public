@@ -13,7 +13,7 @@ export const NETWORKS: NETWORK[] = [
         icon: "faPhone"
     },
     {
-        href: "mailto:contact&#64;mri-idf.com",
+        href: "mailto:contact@mri-idf.com",
         longLabel: "contact@mri-idf.com",
         shortLabel: "Email",
         icon: "faEnvelope"
