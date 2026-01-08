@@ -1,10 +1,5 @@
 {
   "routes": {
-    "/": {},
-    "/agence": {},
-    "/blog": {},
-    "/contactez-nous": {},
-    "/devis-gratuit": {},
-    "/nos-realisations": {}
+    "/": {}
   }
 }
