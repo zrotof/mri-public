@@ -111,6 +111,15 @@
                     max-width: 700px;
                     margin-top: 1rem;
                 }
+
+                .words {
+                    display: inline-block;
+                    overflow: hidden;
+
+                    >div {
+                        display: inline-block;
+                    }
+                }
             }
 
             .explain {
@@ -183,7 +192,8 @@
         .contact ul li,
         .square,
         .network,
-        [class*="split"] { // cible tous les éléments créés par SplitText
+        [class*="split"] {
+            // cible tous les éléments créés par SplitText
             transform: translateZ(0);
             will-change: transform, opacity;
             backface-visibility: hidden;
@@ -218,8 +228,7 @@
 
 @media all and (max-width: 980px) {
     .page-under-maintenance {
-        padding-bottom: 0;
-
+        padding: 0;
 
         .content {
             flex-direction: column-reverse;
@@ -285,6 +294,7 @@
                         left: 0;
                         background: var(--project-green-primary-color);
                         width: 100%;
+                        height: fit-content;
 
                         li {
                             flex: 1;
@@ -300,7 +310,6 @@
                                 background-color: transparent;
                                 padding: 0.5rem;
                                 box-shadow: none;
-                                height: -webkit-fill-available;
 
                                 .icon-wrapper {
                                     box-shadow: none;

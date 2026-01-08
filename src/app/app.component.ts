@@ -3,6 +3,8 @@ import { RouterOutlet } from '@angular/router';
 
 import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './core/components/footer/footer.component';
+import { PageUnderMaintenanceComponent } from './pages/page-under-maintenance/page-under-maintenance.component';
+
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,7 @@ import { FooterComponent } from './core/components/footer/footer.component';
     RouterOutlet,
     HeaderComponent,
     FooterComponent,
+    PageUnderMaintenanceComponent
   ]
 })
 

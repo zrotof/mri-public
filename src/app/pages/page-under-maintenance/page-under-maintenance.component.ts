@@ -26,11 +26,11 @@ export class PageUnderMaintenanceComponent {
   private isBrowser = isPlatformBrowser(inject(PLATFORM_ID))
   private readonly ngZone = inject(NgZone);
 
-  private ctx !: gsap.Context;
+  private ctx ?: gsap.Context;
 
   protected readonly networks = NETWORKS;
 
-  @ViewChild('maintenanceContainer', { static: true }) maintenanceContainer!: ElementRef<HTMLElement>;
+  @ViewChild('maintenanceContainer') maintenanceContainer!: ElementRef<HTMLElement>;
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
@@ -40,26 +40,23 @@ export class PageUnderMaintenanceComponent {
     })
   }
 
-  initAnimation() {
+  private initAnimation() {
     const loaderEl = this.maintenanceContainer.nativeElement;
 
     this.ctx = gsap.context((self) => {
       gsap.set(loaderEl, { autoAlpha: 1 });
       const q = self.selector!;
 
-      const titleEl = q("h1");
-
-      let titleSplit = new SplitText(titleEl, {
+      let titleSplit = new SplitText(q("h1"), {
         type: 'words',
-        mask: "words"
+        mask: 'words'
       })
 
       const tl = gsap.timeline({
         onComplete: () => {
           titleSplit.revert();
         }
-      }
-      );
+      });
 
       tl
         .from(q(".logo"), {
@@ -77,7 +74,7 @@ export class PageUnderMaintenanceComponent {
         }, "-=0.7")
 
         .from(titleSplit.words, {
-          y: 60,
+          y: 80,
           stagger: 0.3,
           duration: 0.7,
           opacity: 0,
