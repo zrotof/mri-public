@@ -1,46 +1,44 @@
-<div class="home-latest-works">
-    <svg class="waves-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#344170" fill-opacity="1"
-            d="M0,128L80,128C160,128,320,128,480,117.3C640,107,800,85,960,85.3C1120,85,1280,107,1360,117.3L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
-        </path>
-    </svg>
-
+<div class="hero-image-carousel">
     <div class="content my-container">
         <div class="top">
-            <h1>
+            <h2>
                 <span>Découvrez</span>
                 <span>Nos Dernières Réalisations</span>
-            </h1>
-        </div>
-        <div class="works">
-            <p-carousel [value]="latestWorks" [numVisible]="3" [numScroll]="1" [circular]="true"
-                [autoplayInterval]="9000" [responsiveOptions]="responsiveOptions">
-                <ng-template let-work #item>
-                    <div class="work">
-                        <div class="image-wrapper">
-                            <img [ngSrc]="work.image" alt="" fill>
+            </h2>
 
-                            <ul class="renovation-types">
-                                @for (renovationType of work.renovationTypes; track $index) {
-                                <li>{{renovationType}}</li>
-                                }
-                            </ul>
-                        </div>
-                        <div class="texts">
-                            <h3>{{work.title}}</h3>
-
-                            <p>{{work.description}}</p>
-                            <button>Voir plus</button>
-                        </div>
-                    </div>
-                </ng-template>
-            </p-carousel>
+            <p>
+                Nous avons eu l’occasion de travailler sur de nombreux projets, que ce soit auprès de société de
+                transport, de construction, d’enseigne du retail ou encore chez de nombreux particuliers. Découvrez
+                certains de nos projets ci-dessous.
+            </p>
         </div>
     </div>
-
-    <svg class="waves-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#344170" fill-opacity="1"
-            d="M0,224L80,240C160,256,320,288,480,282.7C640,277,800,235,960,234.7C1120,235,1280,277,1360,298.7L1440,320L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
-        </path>
-    </svg>
+    <div class="carousel-wrapper">
+        <div class="carousel-container" #carouselContainer (mouseenter)="pauseGallery()" (mouseleave)="resumeGallery()">
+            @for (work of latestWorks; track $index) {
+            <div class="work" (click)="onProjectChoosed(work.id)">
+                <div class="image-wrapper">
+                    <img [ngSrc]="work.coverImage" [alt]="work.title" fill>
+                    <ul class="renovation-types">
+                        @for (renovationType of work.renovationTypes; track $index) {
+                        <li><app-work-type [workType]="renovationType"></app-work-type></li>
+                        }
+                    </ul>
+                </div>
+                <div class="texts">
+                    <h3> {{work.title}} </h3>
+                    <button>Voir plus</button>
+                </div>
+            </div>
+            }
+        </div>
+        <div class="buttons header-container">
+            <button class="prev-button" (click)="prevWork()" aria-label="Image précédente">
+                <fa-icon [icon]=" 'faAngleLeft' | convertStringLabelToFontawesomeIcon"></fa-icon>
+            </button>
+            <button class="next-button" (click)="nextWork()" aria-label="Image suivante">
+                <fa-icon [icon]=" 'faAngleRight' | convertStringLabelToFontawesomeIcon"></fa-icon>
+            </button>
+        </div>
+    </div>
 </div>

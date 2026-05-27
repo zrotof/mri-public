@@ -9,36 +9,36 @@ import { Component } from '@angular/core';
 
 export class AboutWorkProcessComponent {
 
-  steps = [
+  protected readonly steps = [
     {
       id: '1',
-      title: 'Discovery',
-      description: "Let's have a chat about your vision, lifestyle needs, block, budget and expectations.",
+      title: 'La découverte',
+      description: "Visite sur site, écoute de votre projet et analyse des contraintes techniques de votre espace.",
       position: 'top'
     },
     {
       id: '4',
-      title: 'Finishes',
-      description: 'Have a chat with our In-house Interior Designer to finalise your selections and finishes.',
+      title: 'Le chantier',
+      description: 'Pilotage quotidien des travaux, photos d’avancement et ajustements en temps réel.',
       position: 'bottom'
     },
     {
       id: '2',
-      title: 'Design',
-      description: 'Let our Award-Winning Designers put pen to paper and design a home that is unique to you.',
+      title: 'Étude & Devis',
+      description: 'Proposition budgétaire claire, périmètre des travaux précis et engagement sur les délais.',
       position: 'top'
     },
     {
       id: '5',
-      title: 'Building',
-      description: "Let's build your unique home. We will guide you through the building journey providing you with the flexibility.",
+      title: 'La livraison',
+      description: 'Nettoyage complet, validation finale des finitions et remise des clés d’un intérieur prêt à vivre.',
       position: 'bottom'
     },
     {
       id: '3',
-      title: 'Approvals',
-      description: 'Sign your preliminary works contract and we will take care of the rest including the approval process.',
+      title: 'La préparation',
+      description: 'Sélection des matériaux, plans techniques et planification rigoureuse pour tout anticiper.',
       position: 'top'
     }
-  ];
+];
 }

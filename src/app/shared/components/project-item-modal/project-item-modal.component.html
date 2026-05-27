@@ -1,6 +1,6 @@
 <div class="project-item-modal">
     <div class="project-hero-banner">
-        <img class="hero" [ngSrc]="projectData.coverImage" fill priority>
+        <img class="hero" [ngSrc]="currentImage.imageSrc" fill priority>
         <div class="content header-container">
             <div class="texts">
                 <h1> {{projectData.title}} </h1>
@@ -9,17 +9,15 @@
 
             <ul class="renovation-types">
                 @for (renovationType of projectData.renovationTypes; track $index) {
-                <li>{{renovationType}}</li>
+                <li><app-work-type [workType]="renovationType" /></li>
                 }
             </ul>
         </div>
-    </div>
 
-    <div class="images">
-        <div class="content header-container">
-            <p-carousel [value]="imagesWithIndex" [numVisible]="2" [numScroll]="3" [circular]="false">
+        <div class="images">
+            <p-carousel [value]="imagesWithIndex" [numVisible]="2" [numScroll]="1" [circular]="false">
                 <ng-template let-image #item>
-                    <div class="image-wrapper" (click)="onImageClick(image.index - 1)">
+                    <div class="image-wrapper" (click)="onImageClicked(image.index)" [class]="image.isActive ? 'active-image' : ''">
                         <img [ngSrc]="image.imageSrc" alt="" fill>
                     </div>
                 </ng-template>

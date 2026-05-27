@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeLatestWorksComponent } from './home-latest-works.component';
+import { WorkTypeComponent } from './work-type.component';
 
-describe('HomeLatestWorksComponent', () => {
-  let component: HomeLatestWorksComponent;
-  let fixture: ComponentFixture<HomeLatestWorksComponent>;
+describe('WorkTypeComponent', () => {
+  let component: WorkTypeComponent;
+  let fixture: ComponentFixture<WorkTypeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeLatestWorksComponent]
+      imports: [WorkTypeComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HomeLatestWorksComponent);
+    fixture = TestBed.createComponent(WorkTypeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

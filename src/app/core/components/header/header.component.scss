@@ -7,7 +7,6 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--project-white-primary-color);
     z-index: 99;
 
     .content {
@@ -16,23 +15,29 @@ header {
         align-items: center;
         font-size: 1.05rem;
         width: 100%;
+        gap: 5rem;
 
         .logo {
             object-fit: cover;
             transition: all 0.2s ease-in-out;
+            cursor: pointer;
         }
 
         nav {
+            flex: 1;
+
             ul {
                 display: flex;
+                justify-content: flex-end;
                 gap: 1.5rem;
 
                 li {
                     a {
+                        font-size: 1rem;
                         position: relative;
                         font-weight: 500;
-                        color: var(--project-black-primary-color);
-                        padding: 1.5rem 0.5rem;
+                        color: var(--project-white-primary-color);
+                        padding: 10px 0;
                         cursor: pointer;
 
                         &:hover {
@@ -46,7 +51,8 @@ header {
                     }
 
                     .active-link {
-                        color: var(--project-green-primary-color);
+                        border-bottom: 1px solid var(--project-white-primary-color);
+                        color: var(--project-white-primary-color);
                     }
                 }
             }
@@ -57,17 +63,19 @@ header {
             gap: 1rem;
 
             button {
-                font-size: 1.05rem;
-                padding: 12px 18px;
+                font-size: 1rem;
+                padding: 10px 16px;
                 font-weight: 500;
-                border: 1px solid var(--project-green-primary-color);
+                border: 2px solid var(--project-green-primary-color);
                 cursor: pointer;
                 transition: all 0.2s ease-in-out;
             }
 
             .btn-contact {
-                color: var(--project-green-primary-color);
+                color: var(--project-white-primary-color);
                 background-color: transparent;
+                border: 2px solid var(--project-white-primary-color);
+
 
                 &:hover {
                     color: white;
@@ -92,4 +100,31 @@ header {
 .navbar-background-on-scroll {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, #eff8d8 0px 8px 16px -8px;
     transition: all 0.3s ease-in-out;
+    background-color: var(--project-white-primary-color);
+
+    .content {
+
+        nav {
+
+            ul {
+                li {
+                    a {
+                        color: var(--project-black-primary-color);
+                    }
+
+                    .active-link {
+                        color: var(--project-green-primary-color);
+                        border-bottom: 1px solid var(--project-green-primary-color);
+                    }
+                }
+            }
+        }
+
+        .buttons {
+            .btn-contact {
+                color: var(--project-green-primary-color);
+                border: 2px solid var(--project-green-primary-color);
+            }
+        }
+    }
 }

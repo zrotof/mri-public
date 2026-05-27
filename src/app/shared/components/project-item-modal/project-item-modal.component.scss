@@ -1,35 +1,41 @@
 .project-item-modal {
     position: relative;
     width: 100%;
+    overflow: hidden;
 
     .project-hero-banner {
         position: relative;
         display: flex;
         justify-content: center;
-        background-color: var(--project-blue-primary-color);
-        padding-top: 4rem;
-        padding-bottom: 20rem;
+        height: calc(100vh - 4rem);
+        height: calc(100svh - 88px);
+        width: 100%;
 
         &::before {
-            position: absolute;
-            top: 0;
-            left: 0;
             content: "";
-            background: linear-gradient(36deg, rgba(52, 65, 112, 1) 45%, rgba(52, 65, 112, 0.7) 66%, rgba(255, 255, 255, 0) 100%);
+            position: absolute;
             width: 100%;
             height: 100%;
-            z-index: 1;
+            left: 0;
+            top: 0;
+            background-color: rgba(14, 14, 14, 0.481);
+            z-index: 0;
         }
 
         .hero {
+            z-index: -1;
             object-fit: cover;
         }
 
         .content {
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             width: 100%;
             gap: 3rem;
+            padding-top: 2.5rem;
+            height: 100%;
+            padding-bottom: 2rem;
 
             .texts {
                 display: flex;
@@ -39,109 +45,119 @@
 
                 h1 {
                     line-height: 1;
-                    font-size: 3rem;
-                    max-width: 750px;
+                    font-size: 2.8rem;
+                    font-weight: 700;
+                    letter-spacing: -1px;
+                    max-width: 600px;
                     color: var(--project-green-secondary-color);
                 }
 
                 p {
                     color: var(--project-white-primary-color);
-                    font-weight: 300;
                     font-size: 1rem;
                     line-height: 1.5;
-                    max-width: 1000px;
+                    max-width: 600px;
                 }
             }
 
             .renovation-types {
+                max-width: 300px;
                 display: flex;
                 flex-wrap: wrap;
                 gap: 0.5rem;
                 bottom: 1.5rem;
                 left: 1rem;
                 z-index: 2;
-
-                li {
-                    height: fit-content;
-                    font-size: 0.92rem;
-                    padding: 5px 10px;
-                    background-color: var(--project-green-primary-color);
-                    color: var(--project-white-primary-color);
-                    border: 1px solid #a7a7a7;
-                }
             }
         }
-    }
 
-    .images {
-        display: flex;
-        justify-content: center;
-        margin-top: -13rem;
+        .images {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            justify-content: center;
+            z-index: 2;
+            width: 400px;
 
-        .content {
-            width: 100%;
-            position: relative;
-            z-index: 3 !important;
+            .p-carousel-content-container {
+                flex-direction: column-reverse;
+                align-items: flex-end;
+            }
 
-            .p-carousel-content {
-                p-button {
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-100%);
-                    z-index: 5;
+            p-carousel {
+                width: 100%;
 
-                    button {
-                        background-color: var(--project-green-primary-color);
-                        color: var(--project-white-primary-color);
-                    }
-                }
+                .p-carousel-content {
+                    width: 100% !important;
 
-                .p-carousel-prev-button {
-                    left: 0;
-                }
-
-                .p-carousel-next-button {
-                    right: 0;
-                }
-
-                .image-wrapper {
-                    position: relative;
-                    width: 97%;
-                    height: 26rem;
-                    margin: auto;
-                    cursor: pointer;
-                    overflow: hidden;
-
-                    &::before {
-                        content: "";
+                    p-button {
                         position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        top: 0;
-                        background-color: rgba(63, 61, 86, 0.22);
-                        z-index: 1;
-                        transition: all 0.2s ease-in-out;
+                        top: 6rem;
+                        z-index: 5;
+
+                        button {
+                            background-color: var(--project-green-primary-color);
+                            color: var(--project-white-primary-color);
+                            width: 40px;
+                            height: 40px;
+                        }
                     }
 
-                    &:hover {
+                    .p-carousel-prev-button {
+                        left: -1rem;
+                    }
+
+                    .p-carousel-next-button {
+                        right: -1rem;
+                    }
+                    
+
+                    .image-wrapper {
+                        position: relative;
+                        width: 95%;
+                        height: 8rem;
+                        margin: auto;
+                        cursor: pointer;
+                        overflow: hidden;
+                        background-color: var(--project-green-secondary-color);
+
                         &::before {
-                            display: none;
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            top: 0;
+                            background-color: rgba(63, 61, 86, 0.22);
+                            z-index: 1;
+                            transition: all 0.2s ease-in-out;
+                        }
+
+                        &:hover {
+                            &::before {
+                                display: none;
+                            }
+
+                            img {
+                                transform: scale(1.2);
+                            }
                         }
 
                         img {
-                            transform: scale(1.2);
+                            padding: 0.25rem;
+                            width: 100%;
+                            object-fit: cover;
+                            transition: all 0.2s ease-in-out;
                         }
                     }
 
-                    img {
-                        object-fit: cover;
-                        transition: all 0.2s ease-in-out;
+                    .active-image{
+                        background-color: var(--project-green-primary-color);
                     }
                 }
             }
-
         }
     }
 }

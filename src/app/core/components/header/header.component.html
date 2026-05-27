@@ -1,15 +1,26 @@
 <header #header>
     <div class="content header-container">
-        <img class="logo" alt="" ngSrc="images/logos/ma-renovation-immobiliere.svg" width="120" height="72">
+        <img 
+            routerLink="" 
+            routerLinkActive="active-link" 
+            [routerLinkActiveOptions]="{exact: true}" 
+            class="logo" 
+            alt=""
+            ngSrc="images/logos/ma-renovation-immobiliere.svg" 
+            width="90" 
+            height="55"
+            >
 
         <nav>
             <ul>
+                
                 <li>
                     <a routerLink="" routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{exact: true}">Accueil</a>
                 </li>
+                
                 <li>
-                    <a routerLink="agence" routerLinkActive="active-link">L'agence</a>
+                    <a routerLink="agence" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">L'agence</a>
                 </li>
                 <li>
                     <a>

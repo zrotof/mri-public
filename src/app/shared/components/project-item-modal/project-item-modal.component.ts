@@ -4,6 +4,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { GalleriaModule } from 'primeng/galleria';
 import { ProjectService } from '../../../core/services/project/project.service';
+import { WorkTypeComponent } from '../work-type/work-type.component';
 
 @Component({
   selector: 'app-project-item-modal',
@@ -13,7 +14,8 @@ import { ProjectService } from '../../../core/services/project/project.service';
   imports: [
     NgOptimizedImage,
     CarouselModule,
-    GalleriaModule
+    GalleriaModule,
+    WorkTypeComponent
   ]
 })
 
@@ -28,15 +30,6 @@ export class ProjectItemModalComponent {
   displayCustom: boolean | undefined;
 
   activeIndex: number = 0;
-
-  protected readonly images = [
-    { index: 0, itemImageSrc: "images/home/hero-carousel/maison.jpg", alt: "Une maison moderne avec de grandes baies vitrées et une piscine" },
-    { index: 1, itemImageSrc: "images/home/hero-carousel/maison-4.jpg", alt: "Intérieur contemporain d'une maison avec une cuisine ouverte" },
-    { index: 2, itemImageSrc: "images/home/hero-carousel/maison-5.webp", alt: "Salon lumineux avec vue sur un jardin verdoyant" },
-    { index: 3, itemImageSrc: "images/home/hero-carousel/maison-2.jpg", alt: "Façade d'une villa de luxe avec des lignes épurées" },
-    { index: 4, itemImageSrc: "images/home/hero-carousel/maison-3.webp", alt: "Vue aérienne d'une maison d'architecte nichée dans la nature" },
-    { index: 5, itemImageSrc: "images/home/hero-carousel/maison-6.jpg", alt: "Entrée d'une maison avec un aménagement paysager minimaliste" }
-  ];
 
   responsiveOptions: any[] = [
     {
@@ -53,20 +46,29 @@ export class ProjectItemModalComponent {
     }
   ];
 
+  currentImage: any;
+
   imagesWithIndex : any[]= [];
 
   ngOnInit() {
-    this.imagesWithIndex = this.projectData.images.map((item , index) => (  {
-      imageSrc: item,
-      index: index + 1
-    }));
+    this.imagesWithIndex = [{imageSrc: this.projectData.coverImage, index: 0, isActive: true}, ...this.getImages() ]
+
+    this.currentImage = this.imagesWithIndex[0];
   }
 
-  onImageClick(index: number) {
+  getImages() {
+    return  this.projectData.images.map((item , index ) => (  {
+      imageSrc: item,
+      index: index + 1,
+      isActive: false
+      }
+  ));
+  }
 
-    console.log(index);
-    this.activeIndex = index;
-    this.displayCustom = true;
+  onImageClicked(index: number) {
+    this.imagesWithIndex.forEach(image => image.isActive = false)
+    this.currentImage = this.imagesWithIndex.find(image => image.index === index);
+    this.currentImage.isActive = true;
   }
 
   onCloseProjectModal() {
