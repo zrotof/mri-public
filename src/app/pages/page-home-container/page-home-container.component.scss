@@ -1,5 +1,7 @@
-.page-home-container{
+.page-home-container {
     display: flex;
     flex-direction: column;
-    gap: 6em;
+    gap: clamp(3.5rem, 7vw, 6rem);
+    overflow-x: hidden;
+    width: 100%;
 }

@@ -1,119 +1,178 @@
-footer {
+footer.app-footer {
     display: flex;
     flex-direction: column;
     background-color: var(--project-blue-primary-color);
-    gap: 2rem;
-    padding: 4rem 0 2rem 0;
+    color: var(--project-white-primary-color);
     margin-top: 5rem;
-    
-    .top {
+    width: 100%;
+
+    @media (max-width: 768px) {
+        margin-top: 3.5rem;
+    }
+
+    .footer-top {
         display: flex;
         justify-content: center;
+        padding: 4.5rem 0 3.5rem 0;
 
-        .content {
-            display: flex;
-            justify-content: space-between;
+        @media (max-width: 992px) {
+            padding: 3.5rem 0 2.5rem 0;
+        }
+
+        @media (max-width: 576px) {
+            padding: 2.75rem 0 2rem 0;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1.4fr 1.1fr 1fr 1.3fr;
+            gap: 3rem;
             width: 100%;
 
-            .our-services,
-            .contact-ways,
-            .networks,
-            .hours {
+            @media (max-width: 1200px) {
+                grid-template-columns: 1.3fr 1fr 1fr 1.2fr;
+                gap: 2rem;
+            }
+
+            @media (max-width: 992px) {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem 2rem;
+            }
+
+            @media (max-width: 640px) {
+                grid-template-columns: 1fr;
+                gap: 2.25rem;
+            }
+        }
+    }
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+
+        .col-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--project-green-secondary-color);
+            margin: 0 0 1.25rem 0;
+            padding-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 35px;
+                height: 2px;
+                background-color: var(--project-green-secondary-color);
+                border-radius: 2px;
+            }
+        }
+    }
+
+    /* 1. Colonne Marque & Garantie */
+    .brand-col {
+        .footer-logo-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            transition: opacity 0.2s ease;
+
+            &:hover {
+                opacity: 0.9;
+            }
+
+            .footer-logo {
+                width: 130px;
+                height: auto;
+                filter: brightness(0) invert(1);
+            }
+        }
+
+        .brand-desc {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.82);
+            margin: 0 0 1.5rem 0;
+        }
+
+        .guarantee-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.85rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            backdrop-filter: blur(4px);
+
+            .badge-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 8px;
+                background: linear-gradient(135deg, var(--project-green-secondary-color), var(--project-green-primary-color));
+                color: #ffffff;
+                font-size: 1.2rem;
+                flex-shrink: 0;
+            }
+
+            .badge-text {
                 display: flex;
                 flex-direction: column;
-                gap: 1.5rem;
-                color: var(--project-white-primary-color);
 
-                h4 {
-                    font-size: 1.1rem;
-                    color: var(--project-green-secondary-color);
+                strong {
+                    font-size: 0.9rem;
+                    font-weight: 700;
+                    color: #ffffff;
+                    letter-spacing: 0.2px;
+                }
+
+                span {
+                    font-size: 0.78rem;
+                    color: rgba(255, 255, 255, 0.75);
                 }
             }
+        }
+    }
 
-            .hours-networks {
-                display: flex;
-                flex-direction: column;
-            }
+    /* 2 & 3. Listes de Services & Navigation */
+    .services-col,
+    .nav-col {
+        .footer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
 
-            .our-services,
-            .contact-ways {
-                ul {
-                    display: flex;
-                    flex-direction: column;
+            li {
+                .footer-link {
+                    display: inline-flex;
+                    align-items: center;
                     gap: 0.5rem;
+                    color: rgba(255, 255, 255, 0.82);
+                    text-decoration: none;
+                    font-size: 0.92rem;
+                    padding: 0.2rem 0;
+                    transition: all 0.22s ease-in-out;
 
-                    li {
-
-                        a {
-                            display: flex;
-                            align-items: center;
-                            color: var(--project-white-primary-color);
-
-                            .icon-wrapper {
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                width: 30px;
-                                height: 30px;
-                                border-radius: 50%;
-                                border: 1px solid var(--project-white-primary-color);
-                                margin-right: 0.5rem;
-                            }
-                        }
+                    .link-arrow {
+                        font-size: 0.75rem;
+                        color: var(--project-green-secondary-color);
+                        transition: transform 0.22s ease;
                     }
-                }
-            }
 
-            .hours {
-                padding-bottom: 1rem;
-                border-bottom: 1px solid var(--project-white-primary-color);
-                margin-bottom: 1rem;
+                    &:hover {
+                        color: var(--project-white-primary-color);
+                        transform: translateX(4px);
 
-                p {
-                    font-size: 1rem;
-                    display: flex;
-                    color: var(--project-white-primary-color);
-                    gap: 0.5rem;
-                }
-            }
-
-            .networks {
-                display: flex;
-                flex-direction: column;
-                gap: 1.5rem;
-                color: var(--project-white-primary-color);
-                border-top: 1px solid var(--project-white-primary-color);
-                padding-top: 1rem;
-                margin-top: 1rem;
-
-                h4 {
-                    font-size: 1.1rem;
-                    color: var(--project-green-secondary-color);
-                }
-
-                ul {
-                    display: flex;
-                    gap: 0.7rem;
-
-                    li {
-                        a {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            border-radius: 50%;
-                            width: 35px;
-                            height: 35px;
-                            background-color: var(--project-white-primary-color);
-                            color: var(--project-blue-primary-color);
-                            transition: all 0.2s ease-in-out;
-
-                            &:hover {
-                                background-color: var(--project-green-primary-color);
-                            }
-
-                            fa-icon {
-                                font-size: 1.2rem;
-                            }
+                        .link-arrow {
+                            color: var(--project-green-primary-color);
                         }
                     }
                 }
@@ -121,18 +180,216 @@ footer {
         }
     }
 
-    .bottom {
+    /* CTA Box in Navigation Column */
+    .quote-cta-box {
+        margin-top: 1.75rem;
+        padding: 1.15rem;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(135, 186, 68, 0.35);
+        border-radius: 10px;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
 
-        .content {
-            display: flex;
+        .cta-subtitle {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--project-green-secondary-color);
+            margin-bottom: 0.35rem;
+        }
+
+        .cta-text {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.45;
+            margin: 0 0 0.85rem 0;
+        }
+
+        .btn-footer-cta {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            border-top: 1px solid var(--project-white-primary-color);
-            padding-top: 2rem;
+            gap: 0.5rem;
+            background: var(--project-green-primary-color);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            transition: all 0.22s ease;
+
+            fa-icon {
+                font-size: 0.8rem;
+                transition: transform 0.2s ease;
+            }
+
+            &:hover {
+                background: var(--project-green-secondary-color);
+                box-shadow: 0 4px 12px rgba(135, 186, 68, 0.3);
+
+                fa-icon {
+                    transform: translateX(3px);
+                }
+            }
+        }
+    }
+
+    /* 4. Colonne Contact & Réseaux */
+    .contact-col {
+        .contact-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            li {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.85rem;
+
+                .contact-icon-wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 34px;
+                    height: 34px;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.06);
+                    border: 1px solid rgba(255, 255, 255, 0.18);
+                    color: var(--project-green-secondary-color);
+                    font-size: 0.88rem;
+                    flex-shrink: 0;
+                    margin-top: 0.1rem;
+                }
+
+                .contact-text-link {
+                    color: rgba(255, 255, 255, 0.85);
+                    text-decoration: none;
+                    font-size: 0.92rem;
+                    line-height: 1.45;
+                    transition: color 0.2s ease;
+
+                    &:hover {
+                        color: var(--project-green-secondary-color);
+                    }
+                }
+
+                .contact-static-text {
+                    color: rgba(255, 255, 255, 0.85);
+                    font-size: 0.92rem;
+                    line-height: 1.45;
+                }
+            }
+        }
+
+        .social-wrapper {
+            margin-top: 1.75rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+            .social-title {
+                display: block;
+                font-size: 0.95rem;
+                font-weight: 600;
+                color: var(--project-green-secondary-color);
+                margin-bottom: 0.75rem;
+            }
+
+            .social-links {
+                display: flex;
+                gap: 0.75rem;
+
+                .social-btn {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    background-color: #ffffff;
+                    color: var(--project-blue-primary-color);
+                    text-decoration: none;
+                    font-size: 1.05rem;
+                    transition: all 0.22s ease-in-out;
+
+                    &:hover {
+                        background-color: var(--project-green-primary-color);
+                        color: #ffffff;
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+                    }
+                }
+            }
+        }
+    }
+
+    /* 5. Bottom Bar */
+    .footer-bottom {
+        display: flex;
+        justify-content: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 1.5rem 0;
+        background: rgba(0, 0, 0, 0.1);
+
+        .bottom-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             width: 100%;
-            color: var(--project-white-primary-color);
+            gap: 1rem;
+            flex-wrap: wrap;
+
+            @media (max-width: 768px) {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 0.75rem;
+            }
+
+            .copyright {
+                font-size: 0.85rem;
+                color: rgba(255, 255, 255, 0.7);
+                margin: 0;
+
+                strong {
+                    color: rgba(255, 255, 255, 0.9);
+                    font-weight: 600;
+                }
+            }
+
+            .legal-links {
+                display: flex;
+                align-items: center;
+                gap: 0.65rem;
+                font-size: 0.85rem;
+                color: rgba(255, 255, 255, 0.65);
+                flex-wrap: wrap;
+
+                @media (max-width: 768px) {
+                    justify-content: center;
+                }
+
+                a {
+                    color: rgba(255, 255, 255, 0.75);
+                    text-decoration: none;
+                    transition: color 0.2s ease;
+
+                    &:hover {
+                        color: var(--project-green-secondary-color);
+                    }
+                }
+
+                .sep {
+                    opacity: 0.4;
+                }
+
+                .territory {
+                    color: var(--project-green-secondary-color);
+                    font-weight: 500;
+                }
+            }
         }
     }
 }

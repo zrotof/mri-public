@@ -37,12 +37,21 @@ export const routes: Routes = [
     },
     {
         path: "nos-realisations",
-        loadComponent: () => import('./pages/page-our-works-container/page-our-works-container.component').then(m => m.PageOurWorksContainerComponent),
         data: {
             backgrounded: true
-        }
+        },
+        children: [
+            {
+                path: ":slug",
+                loadComponent: () => import('./pages/page-our-works-details-container/page-our-works-details-container.component'),
+            },
+            {
+                path: "",
+                loadComponent: () => import('./pages/page-our-works-container/page-our-works-container.component').then(m => m.PageOurWorksContainerComponent)
+            }
+        ]
     },
- 
+
     {
         path: "**",
         redirectTo: "",

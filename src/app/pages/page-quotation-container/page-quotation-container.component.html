@@ -1,4 +1,24 @@
 <div class="page-quotation-container">
-    <app-quotation-hero-banner></app-quotation-hero-banner>
+
+    <!-- HERO BANNER UNIQUE AVEC FORMULAIRE ET CHIFFRES CLÉS ALIGNÉS SUR LA MÊME LIGNE DE BAS -->
+    <app-quotation-hero-banner>
+        <div counterpartSlot class="hero-counterpart-container">
+            <app-quotation-counterpart></app-quotation-counterpart>
+        </div>
+
+        <div formSlot class="hero-form-container">
+            <app-quotation-form
+                [isSubmitting]="isSubmitting()"
+                [isSuccess]="isSuccess()"
+                [submitError]="submitError()"
+                [referenceId]="referenceId()"
+                (formSubmitted)="handleQuotationSubmit($event)"
+                (resetRequested)="handleResetRequested()">
+            </app-quotation-form>
+        </div>
+    </app-quotation-hero-banner>
+
+    <!-- ROADMAP PROCESSUS CLIENT EN 5 ÉTAPES -->
     <app-road-map-process></app-road-map-process>
+
 </div>

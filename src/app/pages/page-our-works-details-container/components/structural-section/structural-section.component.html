@@ -1,0 +1,50 @@
+<div class="structural-section">
+
+    <h2>{{ section()?.title }}</h2>
+
+    <div class="content">
+        @for (paragraph of section()?.content; track paragraph) {
+        <p class="intro">
+            {{ paragraph }}
+        </p>
+        }
+    </div>
+
+    <div class="structural-body">
+
+        <!-- IMAGES -->
+        @if (section()?.images?.length) {
+        <div class="images">
+            @for (img of section()?.images; track img.src) {
+            <div class="image-wrapper">
+                <img [src]="img.src" [alt]="img.alt || ''">
+            </div>
+            }
+        </div>
+        }
+
+        <!-- ACTIONS -->
+        <ul class="actions">
+            @for (action of section()?.actions; track action.text) {
+            <li>
+                <div class="icon">
+                    <i class="pi pi-cog"></i>
+                </div>
+                <div class="text">
+                    {{ action.text }}
+                </div>
+            </li>
+            }
+        </ul>
+
+    </div>
+
+    <!-- TECHNICAL NOTE -->
+    @if (section()?.technicalNote) {
+    <div class="technical-note">
+        <strong>Validation technique :</strong>
+        <p>{{ section()?.technicalNote }}</p>
+    </div>
+    }
+
+</div>

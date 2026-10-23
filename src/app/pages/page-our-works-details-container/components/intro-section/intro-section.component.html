@@ -1,0 +1,31 @@
+<div class="location">
+  <div class="icon-wrapper">
+    <i class="pi pi-map-marker"></i>
+  </div>
+  {{ project()?.location }}
+</div>
+
+<h1>{{ project()?.title }}</h1>
+
+<div class="key-figures">
+  @for (figure of project()?.keyFigures; track figure.value) {
+    <div class="figure">
+      <i class="{{ figure.icon }}"></i>
+      <span>{{ figure.value }}</span>
+    </div>
+  }
+</div>
+
+<div class="image-wrapper">
+    <img [ngSrc]="project()?.coverImage!" fill priority>
+</div>
+
+@if (project()?.renovationTypes?.length) {
+  <div class="mobile-renovations">
+    @for (type of project()?.renovationTypes; track type) {
+      <span class="tag">
+        {{ type }}
+      </span>
+    }
+  </div>
+}

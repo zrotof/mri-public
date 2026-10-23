@@ -1,0 +1,29 @@
+<div class="challenges-section">
+
+  <h2>{{ section()?.title }}</h2>
+
+  @for (paragraph of section()?.content; track paragraph) {
+    <p class="intro">
+      {{ paragraph }}
+    </p>
+  }
+
+  @if (section()?.highlights?.length) {
+    <ul class="highlights">
+
+      @for (item of section()?.highlights; track item.text) {
+        <li>
+          <div class="bullet">
+            <i class="pi pi-circle-fill"></i>
+          </div>
+
+          <div class="text">
+            {{ item.text }}
+          </div>
+        </li>
+      }
+
+    </ul>
+  }
+
+</div>

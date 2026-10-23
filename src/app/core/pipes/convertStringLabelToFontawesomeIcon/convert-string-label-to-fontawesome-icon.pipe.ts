@@ -15,7 +15,9 @@ import {
   faQuoteLeft,
   faUser,
   faPlus,
-  faXmark
+  faXmark,
+  faBars,
+  faShieldHalved
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -43,6 +45,8 @@ export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
         return faAngleLeft
       case 'faAngleRight':
         return faAngleRight
+      case 'faBars':
+        return faBars;
       case 'faArrowRight':
         return faArrowRight
       case 'faCalendarDays':
@@ -69,6 +73,8 @@ export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
         return faQuoteLeft;
       case 'faQuoteRight':
         return faQuoteRight;
+      case 'faShieldHalved':
+        return faShieldHalved;
       case 'faWhatsapp':
         return faWhatsapp
       case 'faXmark':

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" fill="none">
+  <rect x="10" y="10" width="40" height="40" rx="4" fill="#E2001A"/>
+  <path d="M22 18v24h18v-5H28V18h-6z" fill="#FFFFFF"/>
+  <text x="60" y="38" font-family="'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="900" fill="#212121" letter-spacing="-0.5">legrand</text>
+</svg>

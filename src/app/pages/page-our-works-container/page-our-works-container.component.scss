@@ -1,5 +1,7 @@
-.page-our-works-container{
+.page-our-works-container {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    overflow-x: hidden;
+    width: 100%;
 }

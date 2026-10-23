@@ -5,6 +5,7 @@ import { HomeAboutUsComponent } from './components/home-about-us/home-about-us.c
 import { HomeCustomerTestimoniesComponent } from './components/home-customer-testimonies/home-customer-testimonies.component';
 import { CotationBannerComponent } from '../../shared/components/cotation-banner/cotation-banner.component';
 import { HomeLatestWorksComponent } from './components/home-latest-works/home-latest-works.component';
+import { HomeFaqComponent } from './components/home-faq/home-faq.component';
 
 @Component({
   selector: 'app-page-home-container',
@@ -17,6 +18,7 @@ import { HomeLatestWorksComponent } from './components/home-latest-works/home-la
     HomeAboutUsComponent,
     CotationBannerComponent,
     HomeCustomerTestimoniesComponent,
+    HomeFaqComponent
   ]
 })
 

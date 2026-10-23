@@ -1,0 +1,32 @@
+<div class="quotation-reassurance">
+    <div class="header-card">
+        <span class="badge">Engagement Qualité</span>
+        <h3>Pourquoi choisir Ma Rénovation Immobilière ?</h3>
+        <p>Spécialistes de la rénovation tous corps d’état à Saint-Germain-en-Laye et en Île-de-France, nous mettons l'exigence artisanale au service de vos espaces de vie.</p>
+    </div>
+
+    <ul class="points-list">
+        @for (point of reassurancePoints; track point.title) {
+        <li class="point-item">
+            <div class="icon-box">
+                <fa-icon [icon]="point.icon | convertStringLabelToFontawesomeIcon"></fa-icon>
+            </div>
+            <div class="text-content">
+                <h4>{{ point.title }}</h4>
+                <p>{{ point.description }}</p>
+            </div>
+        </li>
+        }
+    </ul>
+
+    <div class="direct-contact-card">
+        <div class="icon-contact">
+            <fa-icon [icon]="'faPhone' | convertStringLabelToFontawesomeIcon"></fa-icon>
+        </div>
+        <div class="contact-details">
+            <span class="label">Projet urgent ? Contactez-nous directement :</span>
+            <a href="tel:+33130610606" class="phone-link">+33 (0)1 30 61 06 06</a>
+            <span class="hours">Lun - Ven : 9h00 - 17h30 • Déplacement gratuit</span>
+        </div>
+    </div>
+</div>

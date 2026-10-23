@@ -1,6 +1,6 @@
 import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideRouter, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
 import { providePrimeNG } from 'primeng/config';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
@@ -12,7 +12,7 @@ import { routes } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes, withEnabledBlockingInitialNavigation(), withInMemoryScrolling(
+    provideRouter(routes, withComponentInputBinding(), withEnabledBlockingInitialNavigation(), withInMemoryScrolling(
       {
         scrollPositionRestoration: "enabled"
       }

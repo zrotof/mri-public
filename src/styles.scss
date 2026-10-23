@@ -21,6 +21,10 @@
     background-color: #fefefe;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: var(--project-black-secondary-color);
+
+    &.no-scroll {
+      overflow: hidden !important;
+    }
   }
 
   .header-container {
@@ -32,7 +36,6 @@
     max-width: 1300px;
     padding: 0 1rem;
   }
-
 
   ul {
     list-style: none;
@@ -75,47 +78,7 @@
   }
 }
 
-.cotation-form {
-  border: solid red;
-}
-
 @layer primeng {
-  .cotation-form {
-    background-color: var(--project-green-secondary-color) !important;
-    padding: 0.5rem 0;
-    border-radius: 0 !important;
-
-    .p-dialog-header {
-      display: flex;
-      gap: 2rem;
-      margin-bottom: 1.5rem;
-
-      .p-dialog-title {
-        font-weight: 800 !important;
-        font-size: 1.8rem !important;
-        line-height: 1 !important;
-      }
-
-      .p-dialog-header-actions {
-        p-button {
-          button {
-            border: 1px solid var(--project-black-primary-color) !important;
-            color: var(--project-black-primary-color) !important;
-            width: 40px !important;
-            height: 40px !important;
-            border-radius: 0 !important;
-            background-color: var(--project-white-primary-color) !important;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-
-            &:hover {
-              background-color: var(--project-black-primary-color) !important;
-              color: var(--project-white-primary-color) !important;
-            }
-          }
-        }
-      }
-    }
-  }
 
   .project-modal {
     min-height: 100svh !important;

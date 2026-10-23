@@ -1,11 +1,47 @@
 <div class="quotation-hero-banner">
-    <img ngSrc="images/home/hero-carousel/maison-5.webp" alt="" fill priority>
+    <div class="hero-bg-container">
+        <img ngSrc="images/home/hero-carousel/maison-5.webp" alt="Rénovation immobilière haut de gamme en Île-de-France"
+            fill priority>
+        <div class="hero-overlay"></div>
+    </div>
 
-    <div class="content header-container">
-        <div class="texts">
-            <h1>Demandez votre devis gratuit pour vos travaux de rénovation</h1>
-            <p>Obtenez rapidement une estimation détaillée et sans engagement pour votre projet de construction ou de
-                rénovation. Nos experts vous accompagnent, de la conception à la réalisation.</p>
+    <div class="content my-container hero-layout-grid">
+        <!-- GAUCHE : TEXTES ET ARGUMENTS DANS LE HERO + CONTREPARTIE CHIFFRES CLÉS EN BAS -->
+        <div class="hero-left-column">
+            <div class="texts">
+                <span class="tag">Estimation Personnalisée • 100% Gratuite</span>
+                <h1>Votre Devis Rénovation & Aménagement sur-mesure</h1>
+                <p>
+                    Obtenez une estimation claire, détaillée lot par lot et sans engagement pour votre projet en
+                    Île-de-France.
+                    Nos spécialistes vous accompagnent de la conception 3D jusqu'à la remise des clés.
+                </p>
+
+                <div class="hero-badges">
+                    <div class="badge-item">
+                        <fa-icon [icon]="'faClock' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                        <span>Étude & Devis sous 48h</span>
+                    </div>
+                    <div class="badge-item">
+                        <fa-icon [icon]="'faHandshake' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                        <span>Sans engagement</span>
+                    </div>
+                    <div class="badge-item">
+                        <fa-icon [icon]="'faLocationDot' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                        <span>Saint-Germain & Île-de-France</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTREPARTIE GAUCHE : CHIFFRES CLÉS ALIGNÉS SUR LA MÊME LIGNE QUE LE FORMULAIRE -->
+            <div class="counterpart-slot-wrapper">
+                <ng-content select="[counterpartSlot]"></ng-content>
+            </div>
+        </div>
+
+        <!-- DROITE : FORMULAIRE EN OVERLAY DÉPASSANT DE L'IMAGE -->
+        <div class="form-slot-wrapper">
+            <ng-content select="[formSlot]"></ng-content>
         </div>
     </div>
 </div>

@@ -9,13 +9,12 @@ import {
   OnDestroy,
   ViewEncapsulation
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConvertStringLabelToFontawesomeIconPipe } from '../../../../core/pipes/convertStringLabelToFontawesomeIcon/convert-string-label-to-fontawesome-icon.pipe';
 import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/all';
-import { ProjectItemModalComponent } from '../../../../shared/components/project-item-modal/project-item-modal.component';
 import { WorkTypeComponent } from '../../../../shared/components/work-type/work-type.component';
 import { ProjectService } from '../../../../core/services/project/project.service';
 
@@ -38,24 +37,21 @@ interface HorizontalLoopConfig {
   templateUrl: './home-latest-works.component.html',
   styleUrls: ['./home-latest-works.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [DialogService],
   imports: [
     NgOptimizedImage,
     FontAwesomeModule,
     ConvertStringLabelToFontawesomeIconPipe,
-    WorkTypeComponent
+    WorkTypeComponent,
+    RouterLink
   ],
 })
 
 export class HomeLatestWorksComponent implements AfterViewInit, OnDestroy {
   private ngZone = inject(NgZone);
   private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-  private dialogservice = inject(DialogService);
   private projectService = inject(ProjectService);
 
   @ViewChild('carouselContainer', { static: false }) carouselContainer!: ElementRef<HTMLDivElement>;
-
-  ref: DynamicDialogRef | undefined;
 
   protected readonly latestWorks = this.projectService.getProjectsSummary(true);
 
@@ -85,22 +81,6 @@ export class HomeLatestWorksComponent implements AfterViewInit, OnDestroy {
         }
       });
     });
-  }
-
-  onProjectChoosed(id: number) {
-    this.dialogservice.open(
-      ProjectItemModalComponent, {
-      modal: true,
-      baseZIndex: 100,
-      closable: true,
-      styleClass: "project-modal",
-      width: "100%",
-      height: "100%",
-      data: {
-        id: id
-      }
-    }
-    )
   }
 
   nextWork(): void {

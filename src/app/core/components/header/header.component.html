@@ -1,29 +1,24 @@
-<header #header>
+<header #header [class.mobile-open]="isMobileMenuOpen()">
     <div class="content header-container">
-        <img 
-            routerLink="" 
-            routerLinkActive="active-link" 
-            [routerLinkActiveOptions]="{exact: true}" 
-            class="logo" 
-            alt=""
-            ngSrc="images/logos/ma-renovation-immobiliere.svg" 
-            width="90" 
-            height="55"
-            >
+        <a routerLink="" (click)="closeMobileMenu()" class="logo-link">
+            <img class="logo"
+                alt="Ma Rénovation Immobilière" ngSrc="images/logos/ma-renovation-immobiliere.svg" width="90" height="55" priority>
+        </a>
 
-        <nav>
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
             <ul>
-                
                 <li>
                     <a routerLink="" routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{exact: true}">Accueil</a>
                 </li>
-                
+
                 <li>
-                    <a routerLink="agence" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">L'agence</a>
+                    <a routerLink="agence" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{exact: true}">L'agence</a>
                 </li>
                 <li>
-                    <a>
+                    <a routerLink="agence" fragment="services">
                         Nos Services
                         <fa-icon [icon]="'faAngleDown' | convertStringLabelToFontawesomeIcon"></fa-icon>
                     </a>
@@ -31,15 +26,93 @@
                 <li>
                     <a routerLink="nos-realisations" routerLinkActive="active-link">Nos Réalisations</a>
                 </li>
+            </ul>
+        </nav>
+
+        <!-- Desktop Action Buttons -->
+        <div class="buttons desktop-buttons">
+            <button class="btn-contact" routerLink="contactez-nous">Contact</button>
+            <button class="btn-cotation" routerLink="devis-gratuit">Devis Gratuit</button>
+        </div>
+
+        <!-- Burger Toggle Button (Mobile/Tablet) -->
+        <button 
+            type="button" 
+            class="burger-btn" 
+            [class.is-open]="isMobileMenuOpen()" 
+            (click)="toggleMobileMenu()" 
+            aria-label="Menu de navigation"
+            [attr.aria-expanded]="isMobileMenuOpen()">
+            <span class="burger-line top-line"></span>
+            <span class="burger-line mid-line"></span>
+            <span class="burger-line bot-line"></span>
+        </button>
+    </div>
+
+    <!-- Mobile Backdrop -->
+    <div 
+        class="mobile-backdrop" 
+        [class.is-open]="isMobileMenuOpen()" 
+        (click)="closeMobileMenu()"
+        tabindex="-1"
+        aria-hidden="true">
+    </div>
+
+    <!-- Mobile Drawer Panel -->
+    <aside class="mobile-drawer" [class.is-open]="isMobileMenuOpen()" aria-label="Menu mobile">
+        <div class="drawer-header">
+            <a routerLink="" (click)="closeMobileMenu()" class="drawer-logo-link">
+                <img class="drawer-logo"
+                    alt="Ma Rénovation Immobilière" ngSrc="images/logos/ma-renovation-immobiliere.svg" width="80" height="49">
+            </a>
+            <button type="button" class="close-drawer-btn" (click)="closeMobileMenu()" aria-label="Fermer le menu">
+                <fa-icon [icon]="'faXmark' | convertStringLabelToFontawesomeIcon"></fa-icon>
+            </button>
+        </div>
+
+        <nav class="drawer-nav">
+            <ul>
                 <li>
-                    <a routerLink="blog" routerLinkActive="active-link">Blog</a>
+                    <a routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">
+                        <span>Accueil</span>
+                        <fa-icon [icon]="'faAngleRight' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="agence" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">
+                        <span>L'agence</span>
+                        <fa-icon [icon]="'faAngleRight' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="agence" fragment="services" (click)="closeMobileMenu()">
+                        <span>Nos Services</span>
+                        <fa-icon [icon]="'faAngleRight' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="nos-realisations" routerLinkActive="active-link" (click)="closeMobileMenu()">
+                        <span>Nos Réalisations</span>
+                        <fa-icon [icon]="'faAngleRight' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </a>
                 </li>
             </ul>
         </nav>
 
-        <div class="buttons">
-            <button class="btn-contact" routerLink="contactez-nous">Contact</button>
-            <button class="btn-cotation" (click)="onOpenCotationRequest()">Devis Gratuit</button>
+        <div class="drawer-actions">
+            <button class="btn-contact" routerLink="contactez-nous" (click)="closeMobileMenu()">Contact</button>
+            <button class="btn-cotation" routerLink="devis-gratuit" (click)="closeMobileMenu()">Devis Gratuit</button>
         </div>
-    </div>
+
+        <div class="drawer-footer">
+            <div class="drawer-contact-item">
+                <fa-icon [icon]="'faPhone' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                <a href="tel:+33130610606">+33 (0)1 30 61 06 06</a>
+            </div>
+            <div class="drawer-contact-item">
+                <fa-icon [icon]="'faEnvelope' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                <a href="mailto:contact@mri-idf.com">contact&#64;mri-idf.com</a>
+            </div>
+        </div>
+    </aside>
 </header>

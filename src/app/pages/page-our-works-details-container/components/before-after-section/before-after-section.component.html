@@ -1,0 +1,33 @@
+<div class="before-after-section">
+
+  <h2>{{ section()?.title }}</h2>
+
+  <div class="content">
+      @for (paragraph of section()?.content; track paragraph) {
+        <p class="intro">
+          {{ paragraph }}
+        </p>
+      }
+  </div>
+
+  <div class="pairs">
+
+    @for (pair of section()?.pairs; track pair.before.src) {
+
+      <div class="pair">
+
+        <div class="image-block before">
+          <span class="label">Avant</span>
+          <img [ngSrc]="pair.before.src" [alt]="pair.before.alt || '' " fill>
+        </div>
+
+        <div class="image-block after">
+          <span class="label">Après</span>
+          <img [ngSrc]="pair.after.src" [alt]="pair.after.alt || ''" fill>
+        </div>
+
+      </div>
+    }
+  </div>
+
+</div>

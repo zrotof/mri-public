@@ -1,0 +1,17 @@
+.overview {
+  h2 {
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .paragraph {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    p {
+      line-height: 1.6;
+    }
+  }
+}

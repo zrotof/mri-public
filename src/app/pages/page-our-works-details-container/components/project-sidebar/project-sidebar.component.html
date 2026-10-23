@@ -1,0 +1,42 @@
+<aside class="project-sidebar">
+    <div class="top">
+        <h4 class="sidebar-section-title">
+            Parcours du projet
+        </h4>
+
+        <ul>
+            <li (click)="onNavigate('intro')" [class.active]="activeSection() === 'intro'">
+
+                <span class="index">01</span>
+                <span class="label">Le projet</span>
+
+            </li>
+
+            @for (section of sections(); track section.id; let i = $index) {
+
+            <li (click)="onNavigate(section.id)" [class.active]="activeSection() === section.id">
+
+                <span class="index">
+                    {{ (i + 2) < 10 ? '0' + (i + 2) : (i + 2) }} </span>
+
+                        <span class="label">
+                            {{ section.navLabel }}
+                        </span>
+            </li>
+
+            }
+        </ul>
+    </div>
+
+    @if (renovationTypes().length) {
+    <div class="bottom">
+        <h4 class="sidebar-section-title">Expertises</h4>
+
+        <div class="renovation-tags">
+            @for (type of renovationTypes(); track type) {
+            <app-work-type [workType]="type" />
+            }
+        </div>
+    </div>
+    }
+</aside>

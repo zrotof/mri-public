@@ -1,0 +1,83 @@
+@if (project(); as p) {
+
+<div class="project-detail">
+
+  <div class="content header-container">
+
+    <!-- SIDEBAR -->
+    <app-project-sidebar [sections]="p.sections" [renovationTypes]="p.renovationTypes" [activeSection]="activeSection()"
+      (navigate)="scrollTo($event)">
+    </app-project-sidebar>
+
+    <!-- CONTENT -->
+    <div class="project-content">
+
+      <!-- INTRO -->
+      <section id="intro" class="project-intro project-section" #sectionRef>
+
+        <app-intro-section [project]="p" />
+
+      </section>
+
+      <!-- SECTIONS -->
+      @for (section of p.sections; track section.id) {
+
+      <section [id]="section.id" class="project-section" #sectionRef>
+
+        @switch (section.type) {
+
+        @case ('overview') {
+          @if(section){
+            <app-overview-section [section]="section" />
+          }
+        }
+
+        @case ('challenges') {
+          @if(section){
+            <app-challenges-section [section]="section" />
+          }
+        }
+
+        @case ('audit') {
+          @if(section){            
+            <app-audit-section [section]="section" />
+          }
+        }
+
+        @case ('structural') {
+          @if (section) {
+            <app-structural-section [section]="section" />
+          }
+        }
+
+        @case ('performance') {
+          @if (section) {
+            <app-performance-section [section]="section" />            
+        }
+        }
+
+        @case ('testimonial') {
+          @if(section){
+            <app-testimonial-section [section]="section" />
+          }
+        }
+
+        @case ('before-after') {
+          @if (section) {
+            <app-before-after-section [section]="section" />
+          }
+        }
+        }
+
+      </section>
+
+      }
+
+    </div>
+
+  </div>
+
+</div>
+<app-cotation-banner></app-cotation-banner>
+
+}

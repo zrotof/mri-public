@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" fill="none">
+  <!-- Knauf symbol -->
+  <g transform="translate(16, 12)">
+    <rect width="36" height="36" rx="4" fill="#0072CE"/>
+    <path d="M10 8h5v9l9-9h6l-10 10 11 11h-7l-9-9v9h-5V8z" fill="#FFFFFF"/>
+  </g>
+  <!-- Text -->
+  <text x="60" y="38" font-family="'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="900" fill="#0072CE" letter-spacing="0.5">KNAUF</text>
+</svg>

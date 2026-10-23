@@ -1,0 +1,13 @@
+@if (section()) {
+<div class="overview">
+  <h2>{{ section()?.title }}</h2>
+
+  @if (section()?.content) {
+    <div class="paragraph">
+      @for (paragraph of section()?.content; track paragraph) {
+      <p>{{ paragraph }}</p>
+      }
+    </div>
+  }
+</div>
+}

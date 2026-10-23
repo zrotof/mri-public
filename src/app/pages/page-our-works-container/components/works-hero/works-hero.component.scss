@@ -2,8 +2,9 @@
     position: relative;
     display: flex;
     justify-content: center;
-    padding-top: 10rem;
-    padding-bottom: 5rem;
+    padding-top: clamp(6.5rem, 11vw, 10rem);
+    padding-bottom: clamp(3rem, 5vw, 5rem);
+    width: 100%;
 
     &::before {
         z-index: 0;
@@ -13,7 +14,7 @@
         height: 100%;
         top: 0;
         left: 0;
-        background-color: #344170f2;
+        background-color: rgba(52, 65, 112, 0.94);
     }
 
     img {
@@ -24,41 +25,46 @@
 
     .content {
         display: flex;
-        gap: 1rem;
+        gap: 1.25rem;
         flex-direction: column;
         align-items: center;
+        text-align: center;
         width: 100%;
         z-index: 1;
 
         h1 {
-            font-size: 3.5rem;
-            line-height: 1;
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            line-height: 1.15;
             letter-spacing: -1px;
             color: var(--project-green-secondary-color);
+            margin: 0;
         }
 
         p {
             font-size: 1rem;
-            line-height: 1.5;
-            max-width: 700px;
+            line-height: 1.6;
+            max-width: 680px;
             font-weight: 500;
             color: var(--project-white-primary-color);
             text-align: center;
+            margin: 0;
+            opacity: 0.95;
         }
 
         .buttons {
             display: flex;
             gap: 1.5rem;
-            margin-top: 1rem;
+            margin-top: 0.75rem;
 
             a,
             button {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 150px;
-                height: 50px;
+                padding: 12px 24px;
                 font-size: 1rem;
+                font-weight: 600;
+                border-radius: 4px;
                 border: 1px solid var(--project-white-primary-color);
                 color: var(--project-white-primary-color);
                 background-color: transparent;
@@ -75,10 +81,31 @@
             }
 
             .cotation {
+                border-color: var(--project-green-primary-color);
+                background-color: var(--project-green-primary-color);
+                color: var(--project-white-primary-color);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
                 &:hover {
-                    border: 1px solid var(--project-green-primary-color);
-                    color: var(--project-black-primary-color);
-                    background-color: var(--project-green-primary-color);
+                    background-color: var(--project-green-secondary-color);
+                    border-color: var(--project-green-secondary-color);
+                    color: var(--project-green-primary-color);
+                }
+            }
+        }
+    }
+}
+
+// Responsive Breakpoints
+@media (max-width: 480px) {
+    .works-hero {
+        .content {
+            .buttons {
+                width: 100%;
+                max-width: 300px;
+
+                a, button {
+                    width: 100%;
                 }
             }
         }

@@ -1,0 +1,7 @@
+.page-contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    overflow-x: hidden;
+    width: 100%;
+}

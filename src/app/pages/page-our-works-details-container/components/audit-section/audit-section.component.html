@@ -1,0 +1,40 @@
+<div class="audit-section">
+
+  <h2>{{ section()?.title }}</h2>
+
+  <!-- Intro narrative -->
+  @for (paragraph of section()?.content; track paragraph) {
+    <p class="intro">
+      {{ paragraph }}
+    </p>
+  }
+
+  <div class="audit-body">
+
+    <!-- Actions -->
+    <ul class="actions">
+      @for (action of section()?.actions; track action.text) {
+        <li>
+          <div class="icon">
+            <i class="pi pi-check"></i>
+          </div>
+          <div class="text">
+            {{ action.text }}
+          </div>
+        </li>
+      }
+    </ul>
+
+    <!-- Images (if exist) -->
+    @if (section()?.images?.length) {
+      <div class="images">
+        @for (img of section()?.images; track img.src) {
+          <div class="image-wrapper">
+            <img [src]="img.src" [alt]="img.alt || ''" />
+          </div>
+        }
+      </div>
+    }
+
+  </div>
+</div>

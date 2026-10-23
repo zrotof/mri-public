@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Project, PROJECTS } from '../../../shared/constants/projects.constant';
+import { computed, Injectable, signal, WritableSignal } from '@angular/core';
+import { PROJECTS } from '../../../shared/constants/projects.constant';
+import { Project } from '../../models/project';
 
 @Injectable({
   providedIn: 'root'
@@ -7,22 +8,29 @@ import { Project, PROJECTS } from '../../../shared/constants/projects.constant';
 
 export class ProjectService {
 
-  getProjectsSummary(isTop ?: boolean)  {
+  private projectsSignal = signal<Project[]>(PROJECTS);
 
-    const projects = isTop ? PROJECTS.filter((p: Project) => p.isTop === isTop ) : PROJECTS;
-    
-    return projects.map((p: Project) => {
-      return {
-        id: p.id,
-        coverImage: p.coverImage,
-        title: p.title,
-        description: p.description,
-        renovationTypes: p.renovationTypes
-      }
-    })
+  // SUMMARY (liste légère)
+  getProjectsSummary(isTop?: boolean) {
+    return computed(() =>
+      this.projectsSignal()
+        .filter(p => isTop ? p.isTop : true)
+        .map(p => ({
+          id: p.id,
+          slug: p.slug,
+          title: p.title,
+          location: p.location,
+          coverImage: p.coverImage,
+          shortDescription: p.shortDescription,
+          renovationTypes: p.renovationTypes
+        }))
+    );
   }
 
-  getProjectById(id: number) : Project {
-    return PROJECTS.find((p: Project) => p.id === id) as Project;
+  // DETAIL complet
+  getProjectBySlug(slug: string) {
+    return computed(() =>
+      this.projectsSignal().find(p => p.slug === slug)
+    );
   }
 }

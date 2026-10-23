@@ -1,5 +1,11 @@
-.page-quotation-container{
-    display: flex;
-    flex-direction: column;
-    margin-top: 5.5rem;
+.page-quotation-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f8fafc;
+    overflow-x: hidden;
+
+    .hero-form-container,
+    .hero-counterpart-container {
+        width: 100%;
+    }
 }

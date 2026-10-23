@@ -1,10 +1,38 @@
-<div class="home-supplier-carousel">
+<section class="home-supplier-carousel" aria-label="Marques et outillages partenaires">
     <div class="content header-container">
-        <p-carousel [value]="images" [numVisible]="4" [numScroll]="1" [circular]="true"
-            [responsiveOptions]="responsiveOptions" [showIndicators]="false">
-            <ng-template let-image #item>
-                <img [ngSrc]="image" alt width="200" height="50">
-            </ng-template>
-        </p-carousel>
+
+        <!-- En-tête explicatif & réassurance -->
+        <div class="supplier-header">
+            <span class="supplier-badge">Matériaux & Outillages de Référence</span>
+            <h2 class="supplier-title">
+                Nous travaillons avec les plus grandes marques du bâtiment
+            </h2>
+            <p class="supplier-description">
+                Pour vous garantir des réalisations pérennes, soignées et conformes aux normes les plus strictes, nos artisans et compagnons s’équipent exclusivement des meilleurs outillages et installent des matériaux issus des fabricants leaders.
+            </p>
+        </div>
+
+        <!-- Carousel PrimeNG des marques -->
+        <div class="carousel-container">
+            <p-carousel 
+                [value]="suppliers" 
+                [numVisible]="5" 
+                [numScroll]="1" 
+                [circular]="true"
+                [autoplayInterval]="3000"
+                [responsiveOptions]="responsiveOptions" 
+                [showIndicators]="false">
+                <ng-template let-supplier #item>
+                    <div class="supplier-card" [attr.aria-label]="supplier.name + ' - ' + supplier.category">
+                        <div class="logo-wrapper">
+                            <img [src]="supplier.image" [alt]="'Logo ' + supplier.name" width="160" height="48" loading="lazy">
+                        </div>
+                        <span class="supplier-name">{{ supplier.name }}</span>
+                        <span class="supplier-category">{{ supplier.category }}</span>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+
     </div>
-</div>
+</section>

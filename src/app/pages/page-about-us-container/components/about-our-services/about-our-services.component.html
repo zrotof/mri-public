@@ -1,18 +1,18 @@
 <div class="about-our-services">
     <div class="content my-container">
-        <h2>Nos Services</h2>
+        <h2>Nos Expertises Métiers</h2>
         <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita harum ipsum modi nisi totam? Similique tenetur quae obcaecati dolores vitae dolor facilis doloribus facere nihil? Et quaerat debitis exercitationem voluptatibus!
+            Du simple rafraîchissement à la restructuration complète de vos espaces, Ma rénovation immobilière vous
+            accompagne à chaque étape. Découvrez notre palette de prestations intérieures et extérieures pour
+            concrétiser toutes vos envies. 
         </p>
         <ul>
             @for (service of services; track $index) {
-                <li>
-                    <img [src]="service.icon">
-                    <h3> {{service.title}} </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, fugiat fuga molestias cupiditate, nesciunt distinctio.
-                    </p>
-                </li>
+            <li>
+                <img [src]="service.icon">
+                <h3> {{service.title}} </h3>
+                <p> {{service.description}} </p>
+            </li>
             }
         </ul>
     </div>

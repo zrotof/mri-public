@@ -1,17 +1,19 @@
 <div class="work-list">
     <div class="content header-container">
-        <div class="works">
-            @for (work of projects(); track $index) {
-            <div class="work" (click)="onProjectChoosed(work.id)">
-                <div class="image-wrapper">
-                    <img [ngSrc]="work.coverImage" [alt]="work.title" fill>
+        @if(projects()){
+            <div class="works">
+                @for ( project of projects(); track project.id) {
+                <div class="work" [routerLink]="['/nos-realisations', project.slug ]">
+                    <div class="image-wrapper">
+                        <img [ngSrc]="project.coverImage" [alt]="project.title" fill>
+                    </div>
+                    <div class="texts">
+                        <h2>{{project.title}}</h2>
+                        <button>Voir Plus</button>
+                    </div>
                 </div>
-                <div class="texts">
-                    <h2>{{work.title}}</h2>
-                    <button>Voir Plus</button>
-                </div>
+                }
             </div>
-            }
-        </div>
+        }
     </div>
 </div>

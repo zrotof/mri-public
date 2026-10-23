@@ -1,0 +1,134 @@
+.quotation-counterpart {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    width: 100%;
+
+    /* EN-TÊTE DE LA SECTION */
+    .panel-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        margin-bottom: 0.5rem;
+
+        .section-tag {
+            align-self: flex-start;
+            background-color: var(--project-green-secondary-color);
+            color: var(--project-green-primary-color);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--project-blue-primary-color);
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            margin: 0;
+            max-width: 425px;
+        }
+
+        p {
+            font-size: 0.98rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+        }
+    }
+
+    /* GRILLE DES 4 CHIFFRES CLÉS & GARANTIES */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+
+        .stat-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 1.65rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+                border-color: var(--project-green-primary-color);
+            }
+
+            &.highlight {
+                border-color: rgba(109, 153, 7, 0.35);
+                background: linear-gradient(180deg, #ffffff 0%, #fafff2 100%);
+            }
+
+            .stat-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .stat-number {
+                    font-size: 2.5rem;
+                    font-weight: 900;
+                    color: var(--project-blue-primary-color);
+                    line-height: 1;
+                    letter-spacing: -1.5px;
+                }
+
+                .stat-icon-wrap {
+                    width: 42px;
+                    height: 42px;
+                    border-radius: 10px;
+                    background: #f1f5f9;
+                    color: #64748b;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.15rem;
+                    transition: all 0.2s ease;
+
+                    &.highlight-icon {
+                        background: rgba(109, 153, 7, 0.12);
+                        color: var(--project-green-primary-color);
+                    }
+                }
+            }
+
+            h4 {
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: var(--project-black-primary-color);
+                margin: 0;
+            }
+
+            p {
+                font-size: 0.88rem;
+                color: #64748b;
+                line-height: 1.5;
+                margin: 0;
+            }
+        }
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+    .quotation-counterpart {
+        .panel-header {
+            h3 {
+                font-size: 1.45rem;
+            }
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}

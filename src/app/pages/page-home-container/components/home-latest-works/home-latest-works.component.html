@@ -15,18 +15,18 @@
     </div>
     <div class="carousel-wrapper">
         <div class="carousel-container" #carouselContainer (mouseenter)="pauseGallery()" (mouseleave)="resumeGallery()">
-            @for (work of latestWorks; track $index) {
-            <div class="work" (click)="onProjectChoosed(work.id)">
+            @for (project of latestWorks(); track project.id) {
+            <div class="work" [routerLink]="['nos-realisations', project.slug ]">
                 <div class="image-wrapper">
-                    <img [ngSrc]="work.coverImage" [alt]="work.title" fill>
+                    <img [ngSrc]="project.coverImage" [alt]="project.title" fill>
                     <ul class="renovation-types">
-                        @for (renovationType of work.renovationTypes; track $index) {
+                        @for (renovationType of project.renovationTypes; track $index) {
                         <li><app-work-type [workType]="renovationType"></app-work-type></li>
                         }
                     </ul>
                 </div>
                 <div class="texts">
-                    <h3> {{work.title}} </h3>
+                    <h3> {{project.title}} </h3>
                     <button>Voir plus</button>
                 </div>
             </div>

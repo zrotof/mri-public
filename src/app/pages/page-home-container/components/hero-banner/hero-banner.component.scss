@@ -1,9 +1,12 @@
 .hero-banner {
     display: flex;
     justify-content: center;
+    align-items: flex-end;
     position: relative;
     height: 100vh;
     height: 100svh;
+    width: 100%;
+    overflow: hidden;
 
     &::before {
         content: "";
@@ -12,7 +15,7 @@
         height: 100%;
         left: 0;
         top: 0;
-        background-color: rgba(14, 14, 14, 0.481);
+        background: linear-gradient(180deg, rgba(14, 14, 14, 0.35) 0%, rgba(14, 14, 14, 0.65) 100%);
         z-index: 0;
     }
 
@@ -25,48 +28,130 @@
         display: flex;
         align-items: flex-end;
         justify-content: space-between;
-        padding-bottom: 4rem;
-        gap: 1.5rem;
+        padding-bottom: 2rem;
+        gap: 2rem;
         z-index: 1;
         width: 100%;
-        height: 100%;
+        box-sizing: border-box;
 
         h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.3rem, 4.2vw, 3.5rem);
             font-weight: 800;
-            line-height: 1;
+            line-height: 1.05;
             letter-spacing: -1px;
             max-width: 780px;
             color: var(--project-green-secondary-color);
-            text-shadow: 0 1px 1px var(--project-black-primary-color);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+            margin: 0;
         }
 
-        .left{
+        .left {
             width: 388px;
+            flex-shrink: 0;
 
             h2 {
-                font-size: 1rem;
-                line-height: 1.5;
+                font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+                line-height: 1.55;
                 font-weight: 400;
                 max-width: 500px;
                 color: var(--project-green-secondary-color);
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+                margin: 0;
             }
-    
+
             button {
-                margin-top: 2rem;
+                margin-top: 1.75rem;
                 font-size: 1.05rem;
-                padding: 12px 18px;
-                font-weight: 500;
+                padding: 13px 22px;
+                font-weight: 600;
+                border-radius: 4px;
                 border: 1px solid var(--project-green-primary-color);
                 color: white;
                 background-color: var(--project-green-primary-color);
                 cursor: pointer;
-    
+                transition: all 0.2s ease-in-out;
+                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+
                 &:hover {
                     background-color: var(--project-blue-primary-color);
+                    border-color: var(--project-blue-primary-color);
+                    transform: translateY(-2px);
                 }
             }
         }
+    }
+}
 
+// Tablet & Mobile Breakpoints (Maintenir en bas + centrer le texte)
+@media (max-width: 992px) {
+    .hero-banner {
+        align-items: flex-end;
+
+        .content {
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            padding-bottom: clamp(2.5rem, 6vh, 3.5rem);
+            gap: 1.5rem;
+
+            h1 {
+                max-width: 100%;
+                text-align: center;
+                font-size: clamp(2rem, 5vw, 2.8rem);
+                line-height: 1.15;
+            }
+
+            .left {
+                width: 100%;
+                max-width: 620px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+                h2 {
+                    text-align: center;
+                    font-size: 1rem;
+                    line-height: 1.55;
+                    max-width: 540px;
+                    margin: 0 auto;
+                }
+
+                button {
+                    margin-top: 1.25rem;
+                    align-self: center;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-banner {
+        .content {
+            padding-bottom: clamp(2rem, 5vh, 2.75rem);
+            gap: 1.15rem;
+
+            h1 {
+                font-size: clamp(1.65rem, 6.5vw, 2.15rem);
+                line-height: 1.2;
+                letter-spacing: -0.5px;
+            }
+
+            .left {
+                h2 {
+                    font-size: 0.92rem;
+                    line-height: 1.45;
+                }
+
+                button {
+                    width: auto;
+                    min-width: 210px;
+                    padding: 12px 24px;
+                    font-size: 0.98rem;
+                }
+            }
+        }
     }
 }

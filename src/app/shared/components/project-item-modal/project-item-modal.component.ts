@@ -1,9 +1,7 @@
-import { Component, inject, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { NgOptimizedImage } from '@angular/common';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { GalleriaModule } from 'primeng/galleria';
-import { ProjectService } from '../../../core/services/project/project.service';
 import { WorkTypeComponent } from '../work-type/work-type.component';
 
 @Component({
@@ -12,14 +10,15 @@ import { WorkTypeComponent } from '../work-type/work-type.component';
   styleUrl: './project-item-modal.component.scss',
   encapsulation: ViewEncapsulation.None,
   imports: [
-    NgOptimizedImage,
+    //NgOptimizedImage,
     CarouselModule,
     GalleriaModule,
-    WorkTypeComponent
+    //WorkTypeComponent
   ]
 })
 
 export class ProjectItemModalComponent {
+  /*
   private projectServcie = inject(ProjectService);
   ref = inject(DynamicDialogRef);
   config = inject(DynamicDialogConfig);
@@ -56,6 +55,7 @@ export class ProjectItemModalComponent {
     this.currentImage = this.imagesWithIndex[0];
   }
 
+ /*
   getImages() {
     return  this.projectData.images.map((item , index ) => (  {
       imageSrc: item,
@@ -64,14 +64,14 @@ export class ProjectItemModalComponent {
       }
   ));
   }
-
   onImageClicked(index: number) {
     this.imagesWithIndex.forEach(image => image.isActive = false)
     this.currentImage = this.imagesWithIndex.find(image => image.index === index);
     this.currentImage.isActive = true;
   }
-
+  
   onCloseProjectModal() {
     this.ref.close();
   }
+  */
 }

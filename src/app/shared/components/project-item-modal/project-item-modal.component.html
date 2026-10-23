@@ -1,10 +1,11 @@
 <div class="project-item-modal">
+    <!--
     <div class="project-hero-banner">
         <img class="hero" [ngSrc]="currentImage.imageSrc" fill priority>
         <div class="content header-container">
             <div class="texts">
                 <h1> {{projectData.title}} </h1>
-                <p> {{projectData.description}} </p>
+                <p> {{projectData.shortDescription}} </p>
             </div>
 
             <ul class="renovation-types">
@@ -23,13 +24,17 @@
                 </ng-template>
             </p-carousel>
         </div>
-    </div>
-</div>
 
-<p-galleria [value]="projectData.images" [(visible)]="displayCustom!" [(activeIndex)]="activeIndex"
+        <p-galleria [value]="projectData.images" [(visible)]="displayCustom!" [(activeIndex)]="activeIndex"
     [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '850px' }" [numVisible]="7"
     [circular]="true" [fullScreen]="true" [showItemNavigators]="true" [showThumbnails]="false">
     <ng-template #item let-image>
         <img [src]="image" style="width: 100%; display: block;" />
     </ng-template>
 </p-galleria>
+    </div>
+    
+    -->
+
+
+</div>

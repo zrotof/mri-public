@@ -1,108 +1,144 @@
-<footer>
-    <div class="top">
-        <div class="content my-container">
+<footer class="app-footer">
+    <div class="footer-top">
+        <div class="my-container footer-container">
 
-            <div class="our-services">
-                <h4>Nos Services</h4>
+            <!-- Colonne 1: Présentation Entreprise & Garantie -->
+            <div class="footer-col brand-col">
+                <a routerLink="/" class="footer-logo-link" aria-label="Retour à l'accueil">
+                    <img 
+                        ngSrc="images/logos/ma-renovation-immobiliere.svg" 
+                        alt="Ma Rénovation Immobilière" 
+                        width="140" 
+                        height="86" 
+                        class="footer-logo">
+                </a>
+                <p class="brand-desc">
+                    Entreprise générale de bâtiment haut de gamme en Île-de-France. Nous concevons et réalisons tous vos projets de rénovation intérieure et extérieure avec exigence et savoir-faire.
+                </p>
 
-                <ul>
+                <div class="guarantee-badge">
+                    <div class="badge-icon">
+                        <fa-icon [icon]="'faShieldHalved' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </div>
+                    <div class="badge-text">
+                        <strong>Garantie Décennale</strong>
+                        <span>Assurance & RC Professionnelle</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colonne 2: Nos Prestations -->
+            <div class="footer-col services-col">
+                <h4 class="col-title">Nos Prestations</h4>
+                <ul class="footer-list">
+                    @for (service of services; track service) {
                     <li>
-                        <a href="">Aménagement de cuisine</a>
+                        <a routerLink="/agence" fragment="services" class="footer-link">
+                            <fa-icon [icon]="'faAngleRight' | convertStringLabelToFontawesomeIcon" class="link-arrow"></fa-icon>
+                            <span>{{ service }}</span>
+                        </a>
                     </li>
-                    <li>
-                        <a href="">Aménagement de salle de bain</a>
-                    </li>
-                    <li>
-                        <a href="">Aménagements et extension</a>
-                    </li>
-                    <li>
-                        <a href="">Décoration d'intérieur et agencement</a>
-                    </li>
-                    <li>
-                        <a href="">Électricité</a>
-                    </li>
-                    <li>
-                        <a href="">Peinture</a>
-                    </li>
-                    <li>
-                        <a href="">Plomberie</a>
-                    </li>
-                    <li>
-                        <a href="">Rénovation complète</a>
-                    </li>
-                    <li>
-                        <a href="">Rénovation extérieur</a>
-                    </li>
-                    <li>
-                        <a href="">Sols et plafonds</a>
-                    </li>
-                    <li>
-                        <a href="">Système de securité alarme</a>
-                    </li>
+                    }
                 </ul>
             </div>
 
+            <!-- Colonne 3: Liens & Devis -->
+            <div class="footer-col nav-col">
+                <h4 class="col-title">Navigation</h4>
+                <ul class="footer-list">
+                    @for (link of navLinks; track link.path) {
+                    <li>
+                        <a [routerLink]="link.path" class="footer-link">
+                            <fa-icon [icon]="'faAngleRight' | convertStringLabelToFontawesomeIcon" class="link-arrow"></fa-icon>
+                            <span>{{ link.label }}</span>
+                        </a>
+                    </li>
+                    }
+                </ul>
 
-            <div class="hours-networks">
-                <div class="hours">
-                    <h4>Horaires</h4>
-
-                    <p>
-                        <span>Lun - Ven</span> :
-                        <span>9h00 - 17h30</span>
-                    </p>
-                </div>
-                <div class="contact-ways">
-                    <h4>Contactez-nous</h4>
-
-                    <ul>
-                        <li>
-                            <a href="">
-                                <div class="icon-wrapper">
-
-                                    <fa-icon [icon]=" 'faPhone' | convertStringLabelToFontawesomeIcon"></fa-icon>
-                                </div>
-                                +33 130495882
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <div class="icon-wrapper">
-                                    <fa-icon [icon]=" 'faEnvelope' | convertStringLabelToFontawesomeIcon"></fa-icon>
-                                </div>
-                                contact&#64;mri-idf.com
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <div class="icon-wrapper">
-
-                                    <fa-icon [icon]=" 'faLocationDot' | convertStringLabelToFontawesomeIcon"></fa-icon>
-                                </div>    
-                                20 Rue Charles de Gaulle,<br> 78860 Saint-Nom-la-Bretèche
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="networks">
-                    <h4>Suivez-nous</h4>
-
-                    <ul>
-                        @for (network of networks; track $index) {
-                        <li>
-                            <a target="_blank" [href]="network.href">
-                                <fa-icon [icon]="network.icon | convertStringLabelToFontawesomeIcon"></fa-icon>
-                            </a>
-                        </li>
-                        }
-                    </ul>
+                <div class="quote-cta-box">
+                    <span class="cta-subtitle">Un projet en tête ?</span>
+                    <p class="cta-text">Recevez une estimation détaillée sous 48h, sans engagement.</p>
+                    <a routerLink="/devis-gratuit" class="btn-footer-cta">
+                        <span>Demander un devis</span>
+                        <fa-icon [icon]="'faArrowRight' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </a>
                 </div>
             </div>
+
+            <!-- Colonne 4: Contact & Horaires & Réseaux -->
+            <div class="footer-col contact-col">
+                <h4 class="col-title">Contact</h4>
+                <ul class="contact-items">
+                    <li>
+                        <div class="contact-icon-wrapper">
+                            <fa-icon [icon]="'faLocationDot' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                        </div>
+                        <a 
+                            href="https://maps.google.com/?q=45+Rue+de+la+Libert%C3%A9,+78100+Saint-Germain-en-Laye" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            class="contact-text-link">
+                            <span>{{ contactInfo.address }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="contact-icon-wrapper">
+                            <fa-icon [icon]="'faPhone' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                        </div>
+                        <a [href]="'tel:' + contactInfo.phoneRaw" class="contact-text-link">
+                            <span>{{ contactInfo.phone }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="contact-icon-wrapper">
+                            <fa-icon [icon]="'faEnvelope' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                        </div>
+                        <a [href]="'mailto:' + contactInfo.email" class="contact-text-link">
+                            <span>{{ contactInfo.email }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="contact-icon-wrapper">
+                            <fa-icon [icon]="'faClock' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                        </div>
+                        <span class="contact-static-text">{{ contactInfo.hours }}</span>
+                    </li>
+                </ul>
+
+                <div class="social-wrapper">
+                    <span class="social-title">Suivez-nous</span>
+                    <div class="social-links">
+                        @for (network of socialNetworks; track network.name) {
+                        <a 
+                            [href]="network.href" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            [attr.aria-label]="network.name"
+                            class="social-btn">
+                            <fa-icon [icon]="network.icon | convertStringLabelToFontawesomeIcon"></fa-icon>
+                        </a>
+                        }
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-    <div class="bottom">
-        <div class="content my-container">
-            <small>Copyright © {{currentYear}} MA RÉNOVATION IMMOBILIÈRE, tous droits réservés</small>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+        <div class="my-container bottom-container">
+            <p class="copyright">
+                © {{ currentYear }} <strong>MA RÉNOVATION IMMOBILIÈRE</strong>. Tous droits réservés.
+            </p>
+            <div class="legal-links">
+                <a routerLink="/contactez-nous">Contact</a>
+                <span class="sep">•</span>
+                <a routerLink="/devis-gratuit">Devis Gratuit</a>
+                <span class="sep">•</span>
+                <span class="territory">Île-de-France (78, 92, 75)</span>
+            </div>
         </div>
     </div>
 </footer>

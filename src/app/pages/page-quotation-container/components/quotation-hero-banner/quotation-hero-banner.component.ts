@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
-import { NgOptimizedImage } from "@angular/common";
-import { InputTextModule } from 'primeng/inputtext';
-import { TextareaModule } from 'primeng/textarea';
-import { SelectModule } from 'primeng/select';
+import { NgOptimizedImage } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ConvertStringLabelToFontawesomeIconPipe } from '../../../../core/pipes/convertStringLabelToFontawesomeIcon/convert-string-label-to-fontawesome-icon.pipe';
 
 @Component({
   selector: 'app-quotation-hero-banner',
+  standalone: true,
   templateUrl: './quotation-hero-banner.component.html',
   styleUrl: './quotation-hero-banner.component.scss',
   imports: [
     NgOptimizedImage,
-    InputTextModule,
-    SelectModule,
-    TextareaModule
+    FontAwesomeModule,
+    ConvertStringLabelToFontawesomeIconPipe
   ]
 })
-
 export class QuotationHeroBannerComponent {}

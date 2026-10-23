@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" fill="none">
+  <!-- Grohe Symbol -->
+  <g transform="translate(15, 12)">
+    <circle cx="18" cy="18" r="16" stroke="#003554" stroke-width="3.5" fill="none"/>
+    <path d="M12 18c3-4 9-4 12 0s-9 4-12 0z" fill="#003554"/>
+  </g>
+  <!-- Text -->
+  <text x="56" y="38" font-family="'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="900" fill="#003554" letter-spacing="3">GROHE</text>
+</svg>

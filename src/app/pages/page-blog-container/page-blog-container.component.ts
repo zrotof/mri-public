@@ -13,7 +13,7 @@ import { MainBlogArticleComponent } from "./components/main-blog-article/main-bl
   styleUrl: './page-blog-container.component.scss',
   imports: [
     BlogHeroComponent,
-    BlogRubricListComponent,
+    //BlogRubricListComponent,
     BlogSummaryComponent,
     MainBlogArticleComponent
   ]

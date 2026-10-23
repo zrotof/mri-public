@@ -1,0 +1,20 @@
+<div class="testimonial-section">
+
+  <div class="testimonial-container">
+
+    <div class="quote-icon">
+      <span>&ldquo;</span>
+    </div>
+
+    <blockquote>
+      {{ section()?.quote }}
+    </blockquote>
+
+    <div class="author">
+      <span class="name">{{ section()?.clientName }}</span>
+      @if (section()?.clientRole) {
+        <span class="role"> — {{ section()?.clientRole }}</span>
+      }
+    </div>
+  </div>
+</div>

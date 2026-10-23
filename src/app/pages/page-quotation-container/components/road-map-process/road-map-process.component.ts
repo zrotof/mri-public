@@ -1,51 +1,70 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ConvertStringLabelToFontawesomeIconPipe } from '../../../../core/pipes/convertStringLabelToFontawesomeIcon/convert-string-label-to-fontawesome-icon.pipe';
+
+export interface ProcessStep {
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  icon: string;
+  delayNotice?: string;
+}
 
 @Component({
   selector: 'app-road-map-process',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    ConvertStringLabelToFontawesomeIconPipe
+  ],
   templateUrl: './road-map-process.component.html',
   styleUrl: './road-map-process.component.scss'
 })
 export class RoadMapProcessComponent {
 
-works = [
+  readonly steps: ProcessStep[] = [
     {
-      image: "images/home/hero-carousel/maison.jpg",
-      title: "Rénovation de la plomberie et de l'électricité",
-      description: "Transformation d'un vieil appartement en un espace moderne.",
-      top: '10%', // Position Y sur la page
-      left: '20%'  // Position X sur la page
+      number: '01',
+      title: 'Prise de contact & Cadrage',
+      subtitle: 'Partage de votre vision',
+      description: 'Vous nous soumettez votre demande en ligne ou par téléphone. Un chargé d’affaires dédié analyse vos besoins et vos attentes.',
+      icon: 'faComments',
+      delayNotice: 'Réponse sous 24h'
     },
     {
-      image: "images/home/hero-carousel/maison-4.jpg",
-      title: "Extension et agrandissement de maison",
-      description: "Ajout d'une nouvelle aile pour créer une chambre principale avec salle de bains privative.",
-      top: '25%',
-      left: '80%'
+      number: '02',
+      title: 'Visite technique sur site',
+      subtitle: 'Diagnostic gratuit et sans engagement',
+      description: 'Nous nous déplaçons chez vous pour évaluer la faisabilité technique, relever les cotes et anticiper les contraintes du bâtiment.',
+      icon: 'faCompassDrafting',
+      delayNotice: 'Gratuit sur rendez-vous'
     },
     {
-      image: "images/home/hero-carousel/maison-5.webp",
-      title: "Aménagement de cuisines et salles de bains",
-      description: "Modernisation complète de la cuisine et de la salle de bains pour une famille.",
-      top: '45%',
-      left: '15%'
+      number: '03',
+      title: 'Devis détaillé & Étude 3D',
+      subtitle: 'Transparence totale lot par lot',
+      description: 'Remise d’un chiffrage exhaustif et ferme (fournitures, main d’œuvre et calendrier prévisionnel), sans aucune mauvaise surprise.',
+      icon: 'faFileInvoiceDollar',
+      delayNotice: 'Remis sous 48h'
     },
     {
-      image: "images/home/hero-carousel/maison-2.jpg",
-      title: "Rénovation de toitures et de charpentes",
-      description: "Rénovation complète d'une charpente et réfection de la toiture pour une meilleure isolation thermique.",
-      top: '65%',
-      left: '70%'
+      number: '04',
+      title: 'Réalisation & Suivi de chantier',
+      subtitle: 'Coordination de tous les corps d’état',
+      description: 'Votre conducteur de travaux pilote les artisans (plomberie, électricité, maçonnerie, menuiserie, peinture) et vous tient informé à chaque étape.',
+      icon: 'faHelmetSafety',
+      delayNotice: 'Point d’étape hebdomadaire'
     },
     {
-      image: "images/home/hero-carousel/maison-3.webp",
-      title: "Pose de revêtements de sols et muraux",
-      description: "Remplacement du carrelage par un parquet en bois massif et pose d'un nouveau revêtement mural.",
-      top: '85%',
-      left: '30%'
+      number: '05',
+      title: 'Réception & Garanties Décennales',
+      subtitle: 'Livraison clé en main',
+      description: 'Procès-verbal de réception des travaux, nettoyage complet des lieux et activation immédiate de vos garanties biennales et décennales.',
+      icon: 'faKey',
+      delayNotice: 'Garantie 10 ans'
     }
   ];
-
-
 }

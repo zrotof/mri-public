@@ -1,0 +1,260 @@
+<div class="quotation-form-wrapper">
+
+    <!-- ÉTAT DE SUCCÈS APRÈS SOUMISSION -->
+    @if (isSuccess()) {
+    <div class="success-feedback-card">
+        <div class="check-icon">
+            <fa-icon [icon]="'faCheck' | convertStringLabelToFontawesomeIcon"></fa-icon>
+        </div>
+        <h3>Demande de devis transmise avec succès !</h3>
+        @if (referenceId()) {
+            <div class="reference-badge">
+                Référence dossier : <strong>{{ referenceId() }}</strong>
+            </div>
+        }
+        <p class="description">
+            Merci pour votre confiance. Nos spécialistes en rénovation étudient actuellement les éléments de votre projet.
+            Un chargé d’affaires MRI prendra contact avec vous sous <strong>48 heures ouvrées</strong> pour convenir d'une visite technique gratuite sur site.
+        </p>
+
+        <div class="next-steps-box">
+            <h4>Prochaines étapes :</h4>
+            <ol>
+                <li>Premier échange téléphonique de cadrage avec notre expert.</li>
+                <li>Visite technique sur les lieux du chantier (sans aucun engagement).</li>
+                <li>Remise de votre chiffrage estimatif détaillé lot par lot.</li>
+            </ol>
+        </div>
+
+        <button type="button" class="btn-reset" (click)="onReset()">
+            Faire une autre demande
+        </button>
+    </div>
+    }
+
+    <!-- FORMULAIRE RÉACTIF PRIMENG -->
+    @else {
+    <form [formGroup]="quotationForm" (ngSubmit)="onSubmit()" novalidate class="quotation-form">
+
+        <!-- EN-TÊTE : CACHÉ SUR GRAND ÉCRAN, AFFICHÉ SUR PETIT ÉCRAN -->
+        <div class="form-header">
+            <h2>Détaillez votre projet de rénovation</h2>
+            <p>Remplissez ce formulaire pour obtenir une estimation précise, personnalisée et sans engagement.</p>
+        </div>
+
+        @if (submitError()) {
+        <div class="alert-error">
+            <fa-icon [icon]="'faTriangleExclamation' | convertStringLabelToFontawesomeIcon"></fa-icon>
+            <span>{{ submitError() }}</span>
+        </div>
+        }
+
+        <!-- SECTION 1 : NATURE DU CHANTIER -->
+        <fieldset class="form-section">
+            <legend>1. Votre Projet</legend>
+
+            <!-- TYPE DE TRAVAUX SEUL SUR SA LIGNE -->
+            <div class="form-group" [class.has-error]="hasError('renovationType')">
+                <label for="renovationType">Type de travaux <span class="required">*</span></label>
+                <p-select 
+                    id="renovationType" 
+                    formControlName="renovationType" 
+                    [options]="renovationTypes"
+                    placeholder="Sélectionnez la nature de vos travaux" 
+                    styleClass="w-full prime-select">
+                </p-select>
+                @if (hasError('renovationType', 'required')) {
+                    <span class="error-msg">Veuillez sélectionner un type de travaux</span>
+                }
+            </div>
+
+            <!-- TYPE DE BIEN SEUL SUR SA LIGNE -->
+            <div class="form-group" [class.has-error]="hasError('propertyType')">
+                <label for="propertyType">Type de bien <span class="required">*</span></label>
+                <p-select 
+                    id="propertyType" 
+                    formControlName="propertyType" 
+                    [options]="propertyTypes"
+                    placeholder="Type de bien" 
+                    styleClass="w-full prime-select">
+                </p-select>
+            </div>
+
+            <!-- SURFACE ESTIMÉE + CODE POSTAL SUR LA MÊME LIGNE -->
+            <div class="form-row two-cols">
+                <div class="form-group" [class.has-error]="hasError('surfaceArea')">
+                    <label for="surfaceArea">Surface estimée (m²)</label>
+                    <p-inputnumber 
+                        id="surfaceArea" 
+                        formControlName="surfaceArea" 
+                        placeholder="Ex: 85" 
+                        [min]="5" 
+                        [max]="2000" 
+                        suffix=" m²" 
+                        styleClass="w-full prime-inputnumber">
+                    </p-inputnumber>
+                    @if (hasError('surfaceArea')) {
+                        <span class="error-msg">Surface comprise entre 5 et 2000 m²</span>
+                    }
+                </div>
+
+                <div class="form-group" [class.has-error]="hasError('postalCode')">
+                    <label for="postalCode">Code postal du chantier</label>
+                    <input 
+                        type="text" 
+                        pInputText 
+                        id="postalCode" 
+                        formControlName="postalCode" 
+                        placeholder="Ex: 78100" 
+                        maxlength="5" 
+                        class="w-full prime-input" />
+                    @if (hasError('postalCode', 'pattern')) {
+                        <span class="error-msg">Code postal à 5 chiffres (ex: 78100)</span>
+                    }
+                </div>
+            </div>
+
+            <!-- DÉLAI SOUHAITÉ SUR UNE SEULE LIGNE FULL WIDTH -->
+            <div class="form-group">
+                <label for="timeframe">Délai souhaité</label>
+                <p-select 
+                    id="timeframe" 
+                    formControlName="timeframe" 
+                    [options]="timeframes" 
+                    placeholder="Délai souhaité" 
+                    styleClass="w-full prime-select">
+                </p-select>
+            </div>
+        </fieldset>
+
+        <!-- SECTION 2 : VOS COORDONNÉES -->
+        <fieldset class="form-section">
+            <legend>2. Vos Coordonnées</legend>
+
+            <div class="form-row two-cols">
+                <div class="form-group" [class.has-error]="hasError('fullName')">
+                    <label for="fullName">Nom et Prénom <span class="required">*</span></label>
+                    <input 
+                        type="text" 
+                        pInputText 
+                        id="fullName" 
+                        formControlName="fullName" 
+                        placeholder="Ex: Alexandre Dubois" 
+                        autocomplete="name" 
+                        class="w-full prime-input" />
+                    @if (hasError('fullName', 'required')) {
+                        <span class="error-msg">Votre nom et prénom sont requis</span>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Société <span class="optional">(optionnel)</span></label>
+                    <input 
+                        type="text" 
+                        pInputText 
+                        id="company" 
+                        formControlName="company" 
+                        placeholder="Nom de votre entreprise" 
+                        class="w-full prime-input" />
+                </div>
+            </div>
+
+            <div class="form-row two-cols">
+                <div class="form-group" [class.has-error]="hasError('phone')">
+                    <label for="phone">Numéro de téléphone <span class="required">*</span></label>
+                    <input 
+                        type="tel" 
+                        pInputText 
+                        id="phone" 
+                        formControlName="phone" 
+                        placeholder="Ex: 06 12 34 56 78" 
+                        autocomplete="tel" 
+                        class="w-full prime-input" />
+                    @if (hasError('phone', 'required')) {
+                        <span class="error-msg">Le numéro de téléphone est obligatoire</span>
+                    }
+                    @if (hasError('phone', 'pattern')) {
+                        <span class="error-msg">Format de téléphone invalide (ex: 06 12 34 56 78)</span>
+                    }
+                </div>
+
+                <div class="form-group" [class.has-error]="hasError('email')">
+                    <label for="email">Adresse e-mail <span class="required">*</span></label>
+                    <input 
+                        type="email" 
+                        pInputText 
+                        id="email" 
+                        formControlName="email" 
+                        placeholder="Ex: alexandre@exemple.fr" 
+                        autocomplete="email" 
+                        class="w-full prime-input" />
+                    @if (hasError('email', 'required')) {
+                        <span class="error-msg">L'adresse e-mail est obligatoire</span>
+                    }
+                    @if (hasError('email', 'email')) {
+                        <span class="error-msg">Format d'adresse e-mail invalide</span>
+                    }
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- SECTION 3 : DESCRIPTION -->
+        <fieldset class="form-section">
+            <legend>3. Description de votre besoin</legend>
+
+            <div class="form-group" [class.has-error]="hasError('message')">
+                <label for="message">Décrivez vos souhaits et contraintes <span class="required">*</span></label>
+                <textarea 
+                    pTextarea 
+                    id="message" 
+                    formControlName="message" 
+                    rows="4" 
+                    placeholder="Indiquez l’état actuel, les pièces à rénover, vos préférences de matériaux, votre budget cible..." 
+                    class="w-full prime-textarea">
+                </textarea>
+                @if (hasError('message', 'required')) {
+                    <span class="error-msg">Veuillez décrire brièvement votre projet</span>
+                }
+                @if (hasError('message', 'minlength')) {
+                    <span class="error-msg">Votre message doit comporter au moins 10 caractères</span>
+                }
+            </div>
+
+            <!-- RGPD CONSENT AVEC P-CHECKBOX -->
+            <div class="form-consent" [class.has-error]="hasError('rgpdConsent')">
+                <div class="checkbox-line">
+                    <p-checkbox 
+                        formControlName="rgpdConsent" 
+                        [binary]="true" 
+                        inputId="rgpdConsent">
+                    </p-checkbox>
+                    <label for="rgpdConsent" class="consent-label">
+                        En soumettant ce formulaire, j’accepte que les informations saisies soient traitées par Ma Rénovation Immobilière pour me recontacter et établir mon devis, conformément à la politique de confidentialité. <span class="required">*</span>
+                    </label>
+                </div>
+                @if (hasError('rgpdConsent', 'required')) {
+                    <span class="error-msg block">Veuillez accepter le traitement des données pour envoyer la demande</span>
+                }
+            </div>
+        </fieldset>
+
+        <!-- SUBMIT BUTTON AVEC P-BUTTON -->
+        <div class="form-actions">
+            <p-button 
+                type="submit" 
+                [loading]="isSubmitting()" 
+                label="Obtenir Mon Devis Gratuit" 
+                icon="pi pi-arrow-right" 
+                iconPos="right" 
+                styleClass="btn-prime-submit">
+            </p-button>
+
+            <p class="security-notice">
+                <fa-icon [icon]="'faLock' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                Vos informations restent strictement confidentielles et ne sont jamais cédées à des tiers.
+            </p>
+        </div>
+
+    </form>
+    }
+</div>

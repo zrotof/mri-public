@@ -1,0 +1,69 @@
+<section class="home-faq">
+    <div class="content my-container">
+
+        <!-- EN-TÊTE DE LA SECTION FAQ -->
+        <div class="header-section">
+            <span class="badge">F.A.Q. • Réponses Claires</span>
+            <h2>
+                <span>Vos Questions,</span>
+                <span class="highlight">Nos Engagements</span>
+            </h2>
+            <p>
+                Rénover un appartement ou agrandir une maison suscite légitimement de nombreuses interrogations.
+                Retrouvez nos réponses en toute transparence pour démarrer votre projet en confiance.
+            </p>
+        </div>
+
+        <!-- LISTE ACCORDÉON DES QUESTIONS/RÉPONSES -->
+        <div class="faq-list">
+            @for (faq of faqs; track faq.question; let idx = $index) {
+            <div class="faq-item" [class.is-open]="activeIndex() === idx">
+                <button
+                    type="button"
+                    class="faq-question-btn"
+                    [attr.aria-expanded]="activeIndex() === idx"
+                    [attr.aria-controls]="'faq-answer-' + idx"
+                    (click)="toggleItem(idx)">
+                    <span class="question-title">{{ faq.question }}</span>
+                    <span class="icon-toggle">
+                        <fa-icon [icon]="'faAngleDown' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </span>
+                </button>
+
+                <div
+                    [id]="'faq-answer-' + idx"
+                    class="faq-answer-wrapper"
+                    [class.expanded]="activeIndex() === idx"
+                    role="region">
+                    <div class="faq-answer-inner">
+                        <p>{{ faq.answer }}</p>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+
+        <!-- CARTE D'ACCOMPAGNEMENT EN BAS DE FAQ -->
+        <div class="faq-cta-box">
+            <div class="cta-left">
+                <div class="icon-wrap">
+                    <fa-icon [icon]="'faCircleQuestion' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                </div>
+                <div class="cta-texts">
+                    <h3>Vous avez une question spécifique à votre projet ?</h3>
+                    <p>Nos spécialistes se déplacent gratuitement chez vous pour évaluer la faisabilité technique.</p>
+                </div>
+            </div>
+            <div class="cta-actions">
+                <a routerLink="/devis-gratuit" class="btn-primary">
+                    <span>Demander un devis gratuit</span>
+                    <fa-icon [icon]="'faArrowRight' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                </a>
+                <a routerLink="/contactez-nous" class="btn-secondary">
+                    <span>Nous contacter</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>

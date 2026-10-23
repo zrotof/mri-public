@@ -1,0 +1,51 @@
+<div class="performance-section">
+
+  <h2>{{ section()?.title }}</h2>
+
+  <div class="content">
+      @for (paragraph of section()?.content; track paragraph) {
+        <p class="intro">
+          {{ paragraph }}
+        </p>
+      }
+  </div>
+
+  <!-- Metrics -->
+  <div class="metrics">
+
+    @for (metric of section()?.metrics; track metric.label) {
+
+      <div class="metric">
+
+        <div class="metric-label">
+          {{ metric.label }}
+        </div>
+
+        <div class="metric-values">
+          <span class="before">
+            {{ metric.before }}
+          </span>
+
+          <span class="arrow">→</span>
+
+          <span class="after">
+            {{ metric.after }}
+          </span>
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+  <!-- Result Block -->
+  @if (section()?.resultText?.length) {
+    <div class="result-block">
+      @for (result of section()?.resultText; track result) {
+        <p>{{ result }}</p>
+      }
+    </div>
+  }
+
+</div>

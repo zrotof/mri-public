@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" fill="none">
+  <!-- Tollens Symbol -->
+  <g transform="translate(14, 13)">
+    <polygon points="17,2 32,17 17,32 2,17" fill="#EAAA00"/>
+    <polygon points="17,7 27,17 17,27 7,17" fill="#002D62"/>
+  </g>
+  <!-- Text -->
+  <text x="56" y="32" font-family="'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="900" fill="#002D62" letter-spacing="2">TOLLENS</text>
+  <text x="57" y="44" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" font-weight="700" fill="#EAAA00" letter-spacing="1.2">COULEURS & PEINTURES</text>
+</svg>

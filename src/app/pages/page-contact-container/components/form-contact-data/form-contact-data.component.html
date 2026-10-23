@@ -13,19 +13,21 @@
                         <input type="text" pInputText id="name" placeholder="Votre nom et prénom">
                     </div>
 
-                    <div class="input-bloc">
-                        <label for="email">Email</label>
-                        <input type="text" pInputText id="email" placeholder="Votre nom et prénom">
-                    </div>
-
-                    <div class="input-bloc">
-                        <label for="phone">Téléphone</label>
-                        <input type="text" pInputText id="phone" placeholder="Votre nom et prénom">
+                    <div class="row">
+                        <div class="input-bloc">
+                            <label for="email">Email</label>
+                            <input type="text" pInputText id="email" placeholder="jean@exemple.fr">
+                        </div>
+    
+                        <div class="input-bloc">
+                            <label for="phone">Téléphone</label>
+                            <input type="text" pInputText id="phone" placeholder="+33 _ _ _ _ _ _ _ _ _">
+                        </div>
                     </div>
 
                     <div class="input-bloc">
                         <label for="message">Message</label>
-                        <textarea rows="12" cols="25" pTextarea id="message"></textarea>
+                        <textarea rows="12" cols="25" pTextarea id="message" placeholder="Écrivez votre message ici ..."></textarea>
                     </div>
 
                     <button type="submit">Envoyer</button>
@@ -38,26 +40,45 @@
                 <ul>
                     <li>
                         <div class="icon-wrapper">
+                            <fa-icon [icon]="'faLocationDot' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                        </div>
+                        <div class="texts">
+                            <span>ADRESSE</span>
+                            <span>45 Rue de la Liberté, 78100 Saint-Germain-en-Laye</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-wrapper">
                             <fa-icon [icon]="'faPhone' | convertStringLabelToFontawesomeIcon"></fa-icon>
                         </div>
-                        <span>+33 01 30 61 06 06</span>
+                        <div class="texts">
+                            <span>TÉLÉPHONE</span>
+                            <a href="tel:+33130610606"><span>+33 (0)1 30 61 06 06</span></a>
+                        </div>
                     </li>
                     <li>
                         <div class="icon-wrapper">
                             <fa-icon [icon]="'faEnvelope' | convertStringLabelToFontawesomeIcon"></fa-icon>
                         </div>
-                        <span>contact&#64;mri-idf.com</span>
+                        <div class="texts">
+                            <span>EMAIL</span>
+                            <a href="mailto:contact@mri-idf.com"><span>contact&#64;mri-idf.com</span></a>
+                        </div>
                     </li>
                     <li>
                         <div class="icon-wrapper">
                             <fa-icon [icon]="'faClock' | convertStringLabelToFontawesomeIcon"></fa-icon>
                         </div>
-                        <span>Lun - Ven : 9h00 - 17h30</span>
+                        <div class="texts">
+                            <span>DISPONIBILITÉ</span>
+                            <span>Lun - Ven : 9h00 - 17h30</span>
+                        </div>
                     </li>
                 </ul>
 
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345094445!2d144.95592831531593!3d-37.81720997975179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577b2f5f91f6e2f!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sau!4v1613628776321!5m2!1sen!2sau"
+                    title="Ma Rénovation Immobilière - 45 Rue de la Liberté, 78100 Saint-Germain-en-Laye"
+                    src="https://maps.google.com/maps?q=45+Rue+de+la+Libert%C3%A9,+78100+Saint-Germain-en-Laye&t=&z=16&ie=UTF8&iwloc=&output=embed"
                     allowfullscreen="" loading="lazy">
                 </iframe>
             </div>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" fill="none">
+  <!-- Geberit square symbol -->
+  <g transform="translate(14, 12)">
+    <rect width="36" height="36" rx="3" fill="#003B5C"/>
+    <rect x="7" y="7" width="10" height="10" fill="#FFFFFF"/>
+    <rect x="19" y="19" width="10" height="10" fill="#FFFFFF"/>
+  </g>
+  <!-- Text -->
+  <text x="58" y="38" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="900" fill="#003B5C" letter-spacing="0.5">GEBERIT</text>
+</svg>

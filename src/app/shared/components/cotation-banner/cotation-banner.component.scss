@@ -1,58 +1,147 @@
 .cotation-banner {
     display: flex;
     justify-content: center;
-    padding: 1rem;
-    margin-top: 10rem;
+    padding: 0 1rem;
+    margin-top: clamp(3rem, 6vw, 7rem);
 
     .content {
         position: relative;
         width: 100%;
-        background: linear-gradient(to bottom right, #344170, #5c6893);
+        background: linear-gradient(135deg, #344170 0%, #5c6893 100%);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(52, 65, 112, 0.2);
 
         .texts {
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            max-width: 700px;
-            padding: 3rem;
+            max-width: 650px;
+            padding: clamp(2rem, 4vw, 3.5rem);
+            z-index: 1;
 
             h2 {
                 color: var(--project-green-secondary-color);
-                font-size: 2.5rem;
+                font-size: clamp(1.85rem, 3.5vw, 2.5rem);
                 font-weight: 800;
                 letter-spacing: -1px;
-                max-width: 500px;
-                line-height: 1;
+                line-height: 1.2;
+                margin: 0;
             }
 
             p {
                 font-size: 1rem;
                 line-height: 1.6;
                 color: var(--project-white-primary-color);
+                margin: 0;
+                opacity: 0.95;
             }
 
             button {
-                margin-top: 2rem;
+                margin-top: 1.5rem;
                 font-size: 1.05rem;
-                padding: 12px 18px;
-                font-weight: 500;
+                padding: 13px 24px;
+                font-weight: 600;
+                border-radius: 4px;
                 border: 1px solid var(--project-green-primary-color);
                 color: var(--project-white-primary-color);
                 background-color: var(--project-green-primary-color);
                 cursor: pointer;
                 width: fit-content;
+                transition: all 0.2s ease-in-out;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
                 &:hover {
                     background-color: var(--project-blue-primary-color);
+                    border-color: var(--project-blue-primary-color);
+                    transform: translateY(-2px);
                 }
             }
         }
 
         img {
             position: absolute;
-            object-fit: cover;
-            right: 4rem;
+            object-fit: contain;
+            right: 3rem;
             bottom: 0;
+            max-height: 90%;
+            height: auto;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+// Tablet & Mobile Breakpoints
+@media (max-width: 1100px) {
+    .cotation-banner {
+        .content {
+            .texts {
+                max-width: 520px;
+            }
+
+            img {
+                right: 1rem;
+                width: 300px;
+                height: auto;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .cotation-banner {
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            .texts {
+                max-width: 100%;
+                padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+                align-items: center;
+
+                h2 {
+                    max-width: 100%;
+                }
+
+                button {
+                    margin-top: 1rem;
+                }
+            }
+
+            img {
+                position: relative;
+                right: auto;
+                bottom: auto;
+                width: 260px;
+                height: auto;
+                margin-top: 0.5rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .cotation-banner {
+        .content {
+            .texts {
+                padding: 2rem 1.25rem 1rem 1.25rem;
+
+                h2 {
+                    font-size: 1.65rem;
+                }
+
+                button {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+
+            img {
+                width: 210px;
+            }
         }
     }
 }

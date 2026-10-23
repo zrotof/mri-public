@@ -11,98 +11,115 @@
         h2 {
             display: flex;
             flex-direction: column;
-            font-size: 3rem;
-            line-height: 1;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.15;
             letter-spacing: -1px;
             color: var(--project-blue-primary-color);
         }
 
         p {
             font-size: 1rem;
-            line-height: 1.5;
+            line-height: 1.6;
+            color: var(--project-black-secondary-color);
         }
 
         .testimony {
             display: flex;
-            align-items: flex-start;
+            align-items: stretch;
             gap: 1.5rem;
             margin-top: 1rem;
 
             .left {
                 display: flex;
                 gap: 2rem;
-                padding: 2rem 2rem 1.5rem 2rem;
+                padding: clamp(1.5rem, 3vw, 2.5rem);
                 background-color: var(--project-green-secondary-color);
+                border-radius: 8px;
                 min-height: 100%;
                 flex: 1;
 
                 .quote {
                     font-size: 2rem;
                     line-height: 1;
+                    color: var(--project-blue-primary-color);
+                    opacity: 0.8;
                 }
 
                 .texts {
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    gap: 4rem;
+                    gap: 3rem;
                     flex: 1;
 
                     .top {
                         display: flex;
                         flex-direction: column;
-                        gap: 1.5rem;
+                        gap: 1rem;
 
                         h3 {
-                            font-size: 2.2rem;
-                            font-weight: 500;
-                            letter-spacing: -1;
+                            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+                            font-weight: 600;
+                            letter-spacing: -0.5px;
+                            color: var(--project-blue-primary-color);
+                            line-height: 1.25;
+                            margin: 0;
                         }
 
                         p {
                             text-align: left;
+                            line-height: 1.6;
+                            margin: 0;
                         }
                     }
 
                     .identity-navigations {
                         display: flex;
                         justify-content: space-between;
+                        align-items: flex-end;
+                        gap: 1rem;
 
                         .identity {
                             display: flex;
                             flex-direction: column;
                             gap: 0.25rem;
 
-                            span{
+                            span {
                                 font-size: 1.1rem;
                                 font-weight: 700;
+                                color: var(--project-blue-primary-color);
                             }
 
-                            h4{
+                            h4 {
                                 font-weight: 500;
                                 font-size: 0.92rem;
+                                color: #64748b;
+                                margin: 0;
                             }
                         }
 
                         .navigations {
                             display: flex;
-                            gap: 1rem;
+                            gap: 0.75rem;
 
                             button {
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
                                 border: 1px solid var(--project-blue-primary-color);
-                                width: 45px;
-                                height: 45px;
-                                border-radius: 0;
+                                width: 44px;
+                                height: 44px;
+                                border-radius: 4px;
                                 background-color: var(--project-white-primary-color);
+                                color: var(--project-blue-primary-color);
                                 transition: all 0.2s ease-in-out;
                                 cursor: pointer;
 
-                                &:hover{
+                                &:hover {
                                     background-color: var(--project-blue-primary-color);
                                     color: var(--project-white-primary-color);
+                                    transform: translateY(-2px);
                                 }
                             }
                         }
@@ -113,12 +130,69 @@
             .image-wrapper {
                 position: relative;
                 width: 350px;
-                height: 25rem;
+                min-height: 25rem;
                 overflow: hidden;
+                border-radius: 8px;
+                flex-shrink: 0;
 
                 img {
                     object-position: top center;
                     object-fit: cover;
+                }
+            }
+        }
+    }
+}
+
+// Tablet & Mobile Breakpoints
+@media (max-width: 992px) {
+    .home-customer-testimonies {
+        .content {
+            .testimony {
+                flex-direction: column-reverse;
+                align-items: stretch;
+
+                .image-wrapper {
+                    width: 100%;
+                    min-height: 20rem;
+                    height: 20rem;
+                }
+
+                .left {
+                    .texts {
+                        gap: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .home-customer-testimonies {
+        .content {
+            .testimony {
+                .image-wrapper {
+                    min-height: 16rem;
+                    height: 16rem;
+                }
+
+                .left {
+                    flex-direction: column;
+                    gap: 1.25rem;
+                    padding: 1.5rem 1.25rem;
+
+                    .texts {
+                        .identity-navigations {
+                            flex-direction: column;
+                            align-items: flex-start;
+                            gap: 1.25rem;
+
+                            .navigations {
+                                align-self: flex-end;
+                            }
+                        }
+                    }
                 }
             }
         }

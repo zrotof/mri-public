@@ -5,63 +5,124 @@
     .content {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        align-items: center;
+        gap: 1.25rem;
         width: 100%;
 
-
         h2 {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
             color: var(--project-blue-primary-color);
-            line-height: 1;
-            letter-spacing: -1;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            text-align: center;
+            margin: 0;
         }
 
-        p{
+        > p {
+            text-align: center;
             font-size: 1rem;
-            line-height: 1.5;
-            max-width: 1000px;
+            line-height: 1.6;
+            max-width: 900px;
+            font-weight: 500;
+            color: #475569;
+            margin: 0;
         }
 
         ul {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             width: 100%;
-            gap: 1.5rem;
-            margin-top: 3rem;
+            gap: 1.75rem;
+            margin-top: clamp(2rem, 4vw, 3rem);
+            padding: 0;
+            list-style: none;
 
             li {
                 display: flex;
                 flex-direction: column;
-                gap: 1.5rem;
-                padding: 1rem;
-                box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 24px, rgba(0, 0, 0, 0.04) 0px 1px 3px;
+                transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+                &:hover {
+                    transform: translateY(-4px);
+                    box-shadow: rgba(0, 0, 0, 0.14) 0px 14px 30px;
+                }
 
                 .image-wrapper {
                     position: relative;
                     width: 100%;
-                    height: 20rem;
+                    height: 22rem;
                     overflow: hidden;
 
                     img {
                         object-fit: cover;
-                        object-position: top;
+                        object-position: top center;
                     }
                 }
 
                 .texts {
                     display: flex;
                     flex-direction: column;
-                    gap: 0.5rem;
+                    gap: 0.35rem;
+                    padding: 1.25rem;
+                    background-color: var(--project-white-primary-color);
 
                     h3 {
                         color: var(--project-green-primary-color);
-                        letter-spacing: -1px;
-                        line-height: 1;
-                        font-size: 1.4rem;
+                        letter-spacing: -0.5px;
+                        line-height: 1.2;
+                        font-size: 1.35rem;
+                        font-weight: 700;
+                        margin: 0;
                     }
 
                     p {
                         font-size: 0.95rem;
+                        color: #64748b;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Responsive Breakpoints
+@media (max-width: 900px) {
+    .about-our-teams {
+        .content {
+            ul {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+
+                li {
+                    .image-wrapper {
+                        height: 20rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 560px) {
+    .about-our-teams {
+        .content {
+            h2 {
+                font-size: 1.85rem;
+            }
+
+            ul {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                max-width: 380px;
+
+                li {
+                    .image-wrapper {
+                        height: 22rem;
                     }
                 }
             }
