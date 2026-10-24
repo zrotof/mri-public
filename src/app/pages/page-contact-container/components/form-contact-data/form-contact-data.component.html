@@ -1,41 +1,120 @@
 <div class="form-contact-data">
     <div class="content my-container">
-    <!--
-        <span class="pre">Contactez-nous</span>
-        
-    -->
+
         <div class="form-block-data">
+
+            <!-- BLOC FORMULAIRE À GAUCHE -->
             <div class="form-bloc">
+
                 <h2>Parlez-nous de votre besoin</h2>
-                <form>
-                    <div class="input-bloc">
-                        <label for="name">Nom</label>
-                        <input type="text" pInputText id="name" placeholder="Votre nom et prénom">
+
+                <!-- ÉTAT DE SUCCÈS -->
+                @if (isSuccess()) {
+                <div class="contact-success-card">
+                    <div class="success-icon">
+                        <fa-icon [icon]="'faCheck' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </div>
+                    <h3>Message envoyé avec succès !</h3>
+                    <p>Merci pour votre prise de contact. Notre équipe a bien reçu vos informations et vous répondra
+                        sous <strong>24 à 48 heures ouvrées</strong>.</p>
+                    <button type="button" class="btn-new-message" (click)="onReset()">
+                        Envoyer un autre message
+                    </button>
+                </div>
+                }
+
+                <!-- FORMULAIRE RÉACTIF ANGULAR -->
+                @else {
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+
+                    @if (submitError()) {
+                    <div class="form-alert-error">
+                        <fa-icon [icon]="'faTriangleExclamation' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                        <span>{{ submitError() }}</span>
+                    </div>
+                    }
+
+                    <!-- NOM & PRÉNOM -->
+                    <div class="input-bloc" [class.has-error]="hasError('name')">
+                        <label for="contact-name">Nom et Prénom <span class="required">*</span></label>
+                        <input type="text" pInputText id="contact-name" formControlName="name"
+                            placeholder="Ex: Jean Dupont" autocomplete="name">
+                        @if (hasError('name', 'required')) {
+                        <span class="error-msg">Veuillez indiquer votre nom et prénom</span>
+                        }
+                        @if (hasError('name', 'minlength')) {
+                        <span class="error-msg">Le nom doit comporter au moins 2 caractères</span>
+                        }
                     </div>
 
+                    <!-- LIGNE EMAIL + TÉLÉPHONE -->
                     <div class="row">
-                        <div class="input-bloc">
-                            <label for="email">Email</label>
-                            <input type="text" pInputText id="email" placeholder="jean@exemple.fr">
+                        <div class="input-bloc" [class.has-error]="hasError('email')">
+                            <label for="contact-email">Email <span class="required">*</span></label>
+                            <input type="email" pInputText id="contact-email" formControlName="email"
+                                placeholder="Ex: jean.dupont@exemple.fr" autocomplete="email">
+                            @if (hasError('email', 'required')) {
+                            <span class="error-msg">L'adresse email est requise</span>
+                            }
+                            @if (hasError('email', 'email')) {
+                            <span class="error-msg">Format d'adresse email invalide</span>
+                            }
                         </div>
-    
-                        <div class="input-bloc">
-                            <label for="phone">Téléphone</label>
-                            <input type="text" pInputText id="phone" placeholder="+33 _ _ _ _ _ _ _ _ _">
+
+                        <div class="input-bloc" [class.has-error]="hasError('phone')">
+                            <label for="contact-phone">Téléphone <span class="optional">(optionnel)</span></label>
+                            <input type="tel" pInputText id="contact-phone" formControlName="phone"
+                                placeholder="Ex: 06 12 34 56 78" autocomplete="tel">
+                            @if (hasError('phone', 'pattern')) {
+                            <span class="error-msg">Format de téléphone invalide</span>
+                            }
                         </div>
                     </div>
 
-                    <div class="input-bloc">
-                        <label for="message">Message</label>
-                        <textarea rows="12" cols="25" pTextarea id="message" placeholder="Écrivez votre message ici ..."></textarea>
+                    <!-- MESSAGE -->
+                    <div class="input-bloc" [class.has-error]="hasError('message')">
+                        <label for="contact-message">Votre Message <span class="required">*</span></label>
+                        <textarea rows="6" pTextarea id="contact-message" formControlName="message"
+                            placeholder="Indiquez vos questions, précisions sur vos besoins, disponibilités pour un échange...">
+                        </textarea>
+                        @if (hasError('message', 'required')) {
+                        <span class="error-msg">Veuillez rédiger votre message</span>
+                        }
+                        @if (hasError('message', 'minlength')) {
+                        <span class="error-msg">Le message doit comporter au moins 10 caractères</span>
+                        }
                     </div>
 
-                    <button type="submit">Envoyer</button>
+                    <!-- CONSENTEMENT RGPD -->
+                    <div class="consent-bloc" [class.has-error]="hasError('rgpdConsent')">
+                        <div class="checkbox-container">
+                            <p-checkbox formControlName="rgpdConsent" [binary]="true" inputId="contactRgpd">
+                            </p-checkbox>
+                            <label for="contactRgpd" class="consent-label">
+                                En cochant cette case, j’accepte que mes données soient traitées par Ma Rénovation
+                                Immobilière pour répondre à ma demande, conformément à la <a
+                                    routerLink="/politique-de-confidentialite" target="_blank">politique de
+                                    confidentialité</a>. <span class="required">*</span>
+                            </label>
+                        </div>
+                        @if (hasError('rgpdConsent', 'required')) {
+                        <span class="error-msg">Veuillez accepter le traitement des données pour envoyer votre
+                            message</span>
+                        }
+                    </div>
+
+                    <!-- BOUTON D'ENVOI -->
+                    <p-button type="submit" [loading]="isSubmitting()" label="Envoyer le message" icon="pi pi-send"
+                        iconPos="right" styleClass="btn-contact-submit">
+                    </p-button>
+
                 </form>
+                }
             </div>
 
+            <!-- BLOC COORDONNÉES DIRECTES & MAP À DROITE -->
             <div class="data">
-                <h2>Vous préférez un contact directe ?</h2>
+                <h2>Vous préférez un contact direct ?</h2>
 
                 <ul>
                     <li>
@@ -76,12 +155,12 @@
                     </li>
                 </ul>
 
-                <iframe
-                    title="Ma Rénovation Immobilière - 45 Rue de la Liberté, 78100 Saint-Germain-en-Laye"
+                <iframe title="Ma Rénovation Immobilière - 45 Rue de la Liberté, 78100 Saint-Germain-en-Laye"
                     src="https://maps.google.com/maps?q=45+Rue+de+la+Libert%C3%A9,+78100+Saint-Germain-en-Laye&t=&z=16&ie=UTF8&iwloc=&output=embed"
                     allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
+
         </div>
     </div>
 </div>

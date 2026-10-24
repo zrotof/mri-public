@@ -23,11 +23,29 @@ export class HeaderComponent {
   private _renderer = inject(Renderer2);
   private router = inject(Router);
 
-  backgroundedHeader!: boolean;
+  readonly phoneNumber = '+33130610606';
+  backgroundedHeader: boolean = false;
   isMobileMenuOpen = signal<boolean>(false);
 
   ngOnInit(): void {
+    this.checkInitialBackgrounded();
     this.onRoutingEvent();
+  }
+
+  private checkInitialBackgrounded(): void {
+    let route = this.router.routerState.root;
+    while (route.firstChild) {
+      route = route.firstChild;
+    }
+    if (route.snapshot?.data?.['backgrounded']) {
+      this.backgroundedHeader = true;
+    }
+  }
+
+  ngAfterViewInit(): void {
+    if (this.backgroundedHeader && this.header?.nativeElement) {
+      this._renderer.addClass(this.header.nativeElement, 'navbar-background-on-scroll');
+    }
   }
 
   onRoutingEvent(): void {

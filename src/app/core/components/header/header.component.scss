@@ -24,15 +24,47 @@ header {
             text-decoration: none;
             cursor: pointer;
             z-index: 1002;
-        }
 
-        .logo {
-            object-fit: contain;
-            transition: transform 0.2s ease;
-            cursor: pointer;
+            .logo-container {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 90px;
+                height: 55px;
+                transition: transform 0.25s ease;
+
+                .logo {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    pointer-events: none;
+                    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                    will-change: opacity;
+                }
+
+                // Version blanche quand non backgrounded (au-dessus du hero sombre)
+                .logo-white {
+                    opacity: 1;
+                    filter: brightness(0) invert(1);
+                    z-index: 2;
+                }
+
+                // Version colorée quand backgrounded
+                .logo-color {
+                    opacity: 0;
+                    filter: none;
+                    z-index: 1;
+                }
+            }
 
             &:hover {
-                transform: scale(1.02);
+                .logo-container {
+                    transform: scale(1.02);
+                }
             }
         }
 
@@ -43,9 +75,10 @@ header {
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
-                gap: clamp(1rem, 1.8vw, 2rem);
+                gap: clamp(1.2rem, 2vw, 2.4rem);
                 margin: 0;
                 padding: 0;
+                padding-right: clamp(1.5rem, 3vw, 3.5rem);
                 list-style: none;
 
                 li {
@@ -84,7 +117,8 @@ header {
             align-items: center;
             gap: 0.75rem;
 
-            button {
+            button,
+            a {
                 font-size: 0.95rem;
                 padding: 9px 18px;
                 font-weight: 600;
@@ -92,9 +126,22 @@ header {
                 cursor: pointer;
                 transition: all 0.2s ease-in-out;
                 white-space: nowrap;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.45rem;
+                box-sizing: border-box;
+                font-family: inherit;
+                line-height: 1.2;
+
+                fa-icon {
+                    font-size: 0.85rem;
+                }
             }
 
-            .btn-contact {
+            .btn-contact,
+            .btn-phone {
                 color: var(--project-white-primary-color);
                 background-color: transparent;
                 border: 2px solid var(--project-white-primary-color);
@@ -304,26 +351,50 @@ header {
             padding: 1.25rem 0;
             border-top: 1px solid #f1f5f9;
 
-            button {
+            button,
+            a {
                 width: 100%;
                 padding: 0.85rem 1rem;
-                border-radius: 8px;
+                border-radius: 4px;
                 font-size: 1rem;
                 font-weight: 600;
                 text-align: center;
                 cursor: pointer;
                 transition: all 0.2s ease;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                text-decoration: none;
+                box-sizing: border-box;
+                font-family: inherit;
+                line-height: 1.2;
+
+                fa-icon {
+                    font-size: 0.95rem;
+                }
             }
 
+            .btn-phone,
             .btn-contact {
                 background: transparent;
-                border: 2px solid var(--project-blue-primary-color);
-                color: var(--project-blue-primary-color);
+                border: 2px solid var(--project-green-primary-color);
+                color: var(--project-green-primary-color);
+
+                fa-icon {
+                    color: var(--project-green-primary-color);
+                    transition: color 0.2s ease;
+                }
 
                 &:hover,
                 &:active {
-                    background: var(--project-blue-primary-color);
+                    background: var(--project-green-primary-color);
+                    border-color: var(--project-green-primary-color);
                     color: #ffffff;
+
+                    fa-icon {
+                        color: #ffffff;
+                    }
                 }
             }
 
@@ -341,38 +412,6 @@ header {
                 }
             }
         }
-
-        .drawer-footer {
-            padding-top: 1rem;
-            border-top: 1px solid #f1f5f9;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-
-            .drawer-contact-item {
-                display: flex;
-                align-items: center;
-                gap: 0.75rem;
-                font-size: 0.9rem;
-                color: #64748b;
-
-                fa-icon {
-                    color: var(--project-green-primary-color);
-                    width: 16px;
-                }
-
-                a {
-                    color: #475569;
-                    font-weight: 500;
-                    text-decoration: none;
-                    transition: color 0.2s ease;
-
-                    &:hover {
-                        color: var(--project-green-primary-color);
-                    }
-                }
-            }
-        }
     }
 }
 
@@ -382,6 +421,17 @@ header {
     background-color: var(--project-white-primary-color);
 
     .content {
+        .logo-link {
+            .logo-container {
+                .logo-white {
+                    opacity: 0;
+                }
+
+                .logo-color {
+                    opacity: 1;
+                }
+            }
+        }
         .desktop-nav {
             ul {
                 li {
@@ -402,7 +452,8 @@ header {
         }
 
         .desktop-buttons {
-            .btn-contact {
+            .btn-contact,
+            .btn-phone {
                 color: var(--project-green-primary-color);
                 border: 2px solid var(--project-green-primary-color);
 
@@ -427,7 +478,7 @@ header {
         height: 4.75rem;
 
         .content {
-            .logo {
+            .logo-link .logo-container {
                 width: 78px;
                 height: 48px;
             }
@@ -453,7 +504,7 @@ header {
         height: 4.25rem;
 
         .content {
-            .logo {
+            .logo-link .logo-container {
                 width: 68px;
                 height: 42px;
             }

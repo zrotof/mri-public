@@ -64,9 +64,80 @@
                 border-color: var(--project-green-primary-color);
             }
 
-            &.highlight {
-                border-color: rgba(109, 153, 7, 0.35);
-                background: linear-gradient(180deg, #ffffff 0%, #fafff2 100%);
+            &.decennale-card {
+                position: relative;
+                overflow: hidden;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                background-image: 
+                    linear-gradient(135deg, rgba(16, 37, 66, 0.88) 0%, rgba(13, 31, 23, 0.88) 100%),
+                    url('/images/projects/travaux-renovation-saint-germain-en-laye.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                color: #ffffff;
+                justify-content: center;
+                box-shadow: 0 4px 20px rgba(16, 37, 66, 0.12);
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: radial-gradient(circle at top right, rgba(109, 153, 7, 0.3), transparent 70%);
+                    pointer-events: none;
+                }
+
+                &:hover {
+                    transform: translateY(-4px);
+                    box-shadow: 0 12px 28px rgba(16, 37, 66, 0.28);
+                    border-color: var(--project-green-primary-color);
+                }
+
+                .decennale-content {
+                    position: relative;
+                    z-index: 1;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.75rem;
+                    height: 100%;
+                    justify-content: center;
+                }
+
+                .decennale-badge {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.45rem;
+                    align-self: flex-start;
+                    background: rgba(109, 153, 7, 0.28);
+                    border: 1px solid rgba(163, 230, 53, 0.45);
+                    backdrop-filter: blur(4px);
+                    color: #bef264;
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    padding: 0.3rem 0.75rem;
+                    border-radius: 999px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+
+                    i {
+                        font-size: 0.85rem;
+                    }
+                }
+
+                .decennale-text {
+                    font-size: 0.95rem;
+                    font-weight: 500;
+                    color: #f1f5f9;
+                    line-height: 1.55;
+                    margin: 0;
+
+                    strong {
+                        color: #ffffff;
+                        font-weight: 700;
+                        text-decoration: underline;
+                        text-decoration-color: var(--project-green-primary-color);
+                        text-underline-offset: 3px;
+                    }
+                }
             }
 
             .stat-header {

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, input, output, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
@@ -18,6 +19,7 @@ import { QuotationRequest } from '../../../../core/models/quotation';
   styleUrl: './quotation-form.component.scss',
   imports: [
     CommonModule,
+    RouterLink,
     ReactiveFormsModule,
     InputTextModule,
     SelectModule,
@@ -88,7 +90,7 @@ export class QuotationFormComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/)]],
       company: [''],
-      message: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(2000)]],
+      message: ['', [Validators.maxLength(2000)]],
       rgpdConsent: [false, [Validators.requiredTrue]]
     });
   }
@@ -116,7 +118,7 @@ export class QuotationFormComponent implements OnInit {
       surfaceArea: formValue.surfaceArea ? Number(formValue.surfaceArea) : undefined,
       postalCode: formValue.postalCode?.trim() || undefined,
       timeframe: formValue.timeframe,
-      message: formValue.message.trim(),
+      message: formValue.message?.trim() || undefined,
       rgpdConsent: formValue.rgpdConsent
     };
 

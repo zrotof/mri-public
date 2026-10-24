@@ -1,13 +1,13 @@
 <section class="home-supplier-carousel" aria-label="Marques et outillages partenaires">
     <div class="content header-container">
 
-        <!-- En-tête explicatif & réassurance -->
+        <!-- En-tête de section -->
         <div class="supplier-header">
-            <span class="supplier-badge">Matériaux & Outillages de Référence</span>
-            <h2 class="supplier-title">
-                Nous travaillons avec les plus grandes marques du bâtiment
+            <h2 appGsapSplitTextFadeInScrollTrigger [isTextSplit]="true" [duration]="0.8" [delay]="0.1">
+                <span>Nous Travaillons Avec</span>
+                <span>Les Plus Grandes Marques Du Bâtiment</span>
             </h2>
-            <p class="supplier-description">
+            <p class="supplier-description" appGsapSplitTextFadeInScrollTrigger [isTextSplit]="false" [duration]="0.8" [delay]="0.25">
                 Pour vous garantir des réalisations pérennes, soignées et conformes aux normes les plus strictes, nos artisans et compagnons s’équipent exclusivement des meilleurs outillages et installent des matériaux issus des fabricants leaders.
             </p>
         </div>
@@ -23,12 +23,10 @@
                 [responsiveOptions]="responsiveOptions" 
                 [showIndicators]="false">
                 <ng-template let-supplier #item>
-                    <div class="supplier-card" [attr.aria-label]="supplier.name + ' - ' + supplier.category">
+                    <div class="supplier-card" [attr.aria-label]="supplier.name">
                         <div class="logo-wrapper">
                             <img [src]="supplier.image" [alt]="'Logo ' + supplier.name" width="160" height="48" loading="lazy">
                         </div>
-                        <span class="supplier-name">{{ supplier.name }}</span>
-                        <span class="supplier-category">{{ supplier.category }}</span>
                     </div>
                 </ng-template>
             </p-carousel>

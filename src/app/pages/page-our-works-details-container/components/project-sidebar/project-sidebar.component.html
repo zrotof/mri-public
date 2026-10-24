@@ -1,42 +1,46 @@
 <aside class="project-sidebar">
-    <div class="top">
-        <h4 class="sidebar-section-title">
-            Parcours du projet
-        </h4>
+  <div class="top">
+    <h3 class="sidebar-section-title">
+      Parcours du projet
+    </h3>
 
-        <ul>
-            <li (click)="onNavigate('intro')" [class.active]="activeSection() === 'intro'">
+    <ul>
+      <li (click)="onNavigate('intro')" [class.active]="activeSection() === 'intro'">
+        <span class="index">01</span>
+        <span class="label">Le projet</span>
+      </li>
 
-                <span class="index">01</span>
-                <span class="label">Le projet</span>
+      @for (section of sections(); track section.id; let i = $index) {
+        <li (click)="onNavigate(section.id)" [class.active]="activeSection() === section.id">
+          <span class="index">{{ (i + 2) < 10 ? '0' + (i + 2) : (i + 2) }}</span>
+          <span class="label">{{ section.navLabel }}</span>
+        </li>
+      }
+    </ul>
+  </div>
 
-            </li>
-
-            @for (section of sections(); track section.id; let i = $index) {
-
-            <li (click)="onNavigate(section.id)" [class.active]="activeSection() === section.id">
-
-                <span class="index">
-                    {{ (i + 2) < 10 ? '0' + (i + 2) : (i + 2) }} </span>
-
-                        <span class="label">
-                            {{ section.navLabel }}
-                        </span>
-            </li>
-
-            }
-        </ul>
-    </div>
-
-    @if (renovationTypes().length) {
+  @if (renovationTypes().length) {
     <div class="bottom">
-        <h4 class="sidebar-section-title">Expertises</h4>
+      <h3 class="sidebar-section-title">Expertises</h3>
 
-        <div class="renovation-tags">
-            @for (type of renovationTypes(); track type) {
-            <app-work-type [workType]="type" />
-            }
-        </div>
+      <div class="renovation-tags">
+        @for (type of renovationTypes(); track type) {
+          <app-work-type [workType]="type" />
+        }
+      </div>
     </div>
-    }
+  }
+
+  <div class="sidebar-cta">
+    <p>Vous avez un projet similaire de rénovation ou d'extension ?</p>
+    <a routerLink="/devis-gratuit" class="btn-sidebar-devis">
+      <span>Estimer mon projet</span>
+      <i class="pi pi-arrow-right"></i>
+    </a>
+
+    <button type="button" class="btn-sidebar-share" (click)="onShare()" aria-label="Partager cette réalisation">
+      <i class="pi pi-share-alt"></i>
+      <span>Partager ce projet</span>
+    </button>
+  </div>
 </aside>

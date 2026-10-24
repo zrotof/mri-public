@@ -7,7 +7,8 @@ import {
   ViewChild,
   inject,
   OnDestroy,
-  ViewEncapsulation
+  ViewEncapsulation,
+  computed
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -55,7 +56,27 @@ export class HomeLatestWorksComponent implements AfterViewInit, OnDestroy {
 
   protected readonly latestWorks = this.projectService.getProjectsSummary(true);
 
+  // Duplique la liste si moins de 6 éléments pour garantir une boucle infinie continue sans vide d'écran
+  protected readonly displayWorks = computed(() => {
+    const works = this.latestWorks();
+    if (!works || works.length === 0) return [];
+    if (works.length < 6) {
+      const repeatFactor = Math.ceil(6 / works.length);
+      const list: typeof works = [];
+      for (let i = 0; i < repeatFactor; i++) {
+        list.push(...works);
+      }
+      return list;
+    }
+    return works;
+  });
+
   private loopTimeline?: gsap.core.Timeline;
+  private intersectionObserver?: IntersectionObserver;
+  private isVisibleInViewport = false;
+  private isDocumentVisible = true;
+  private isHovered = false;
+  private cleanupVisibilityChange?: () => void;
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
@@ -72,7 +93,7 @@ export class HomeLatestWorksComponent implements AfterViewInit, OnDestroy {
       }
 
       this.loopTimeline = this.horizontalLoop(projects, {
-        paused: false,
+        paused: true, // Démarre en pause jusqu'à ce que la section entre dans le viewport
         draggable: true,
         speed: 0.3,
         onChange: (element: HTMLElement, index: number) => {
@@ -80,7 +101,62 @@ export class HomeLatestWorksComponent implements AfterViewInit, OnDestroy {
           element.classList.add('active');
         }
       });
+
+      // Active l'IntersectionObserver et la Page Visibility API pour 0 consommation CPU hors champ
+      this.setupVisibilityObservers();
     });
+  }
+
+  private setupVisibilityObservers(): void {
+    if (typeof IntersectionObserver !== 'undefined' && this.carouselContainer?.nativeElement) {
+      this.intersectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            this.isVisibleInViewport = entry.isIntersecting;
+            this.updatePlaybackState();
+          });
+        },
+        {
+          root: null,
+          rootMargin: '100px 0px 100px 0px', // Préchauffe 100px avant l'entrée dans l'écran
+          threshold: 0.05
+        }
+      );
+
+      this.intersectionObserver.observe(this.carouselContainer.nativeElement);
+    } else {
+      this.isVisibleInViewport = true;
+      this.updatePlaybackState();
+    }
+
+    if (typeof document !== 'undefined') {
+      const handleVisibilityChange = () => {
+        this.isDocumentVisible = !document.hidden;
+        this.updatePlaybackState();
+      };
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+      this.cleanupVisibilityChange = () => {
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
+      };
+    }
+  }
+
+  private updatePlaybackState(): void {
+    if (this.isVisibleInViewport && this.isDocumentVisible && !this.isHovered) {
+      this.loopTimeline?.resume();
+    } else {
+      this.loopTimeline?.pause();
+    }
+  }
+
+  pauseGallery(): void {
+    this.isHovered = true;
+    this.loopTimeline?.pause();
+  }
+
+  resumeGallery(): void {
+    this.isHovered = false;
+    this.updatePlaybackState();
   }
 
   nextWork(): void {
@@ -92,6 +168,8 @@ export class HomeLatestWorksComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.intersectionObserver?.disconnect();
+    this.cleanupVisibilityChange?.();
     this.loopTimeline?.kill?.();
   }
 
@@ -133,7 +211,11 @@ export class HomeLatestWorksComponent implements AfterViewInit, OnDestroy {
     const getTotalWidth = (): number => {
       const lastItem = items[items.length - 1];
       const scaleX = Number(gsap.getProperty(lastItem, "scaleX"));
-      return lastItem.offsetLeft + (xPercents[items.length - 1] / 100) * widths[items.length - 1] - startX + spaceBefore[0] + lastItem.offsetWidth * scaleX;
+      // Mesure l'écart (gap) réel entre les éléments pour l'ajouter à la fin du cycle
+      const trailingGap = (spaceBefore[1] && spaceBefore[1] > 0)
+        ? spaceBefore[1]
+        : (parseFloat(window.getComputedStyle(container).columnGap) || 16);
+      return lastItem.offsetLeft + (xPercents[items.length - 1] / 100) * widths[items.length - 1] - startX + spaceBefore[0] + lastItem.offsetWidth * scaleX + trailingGap;
     };
 
     const populateWidths = (): void => {
@@ -262,13 +344,5 @@ export class HomeLatestWorksComponent implements AfterViewInit, OnDestroy {
     }
 
     return tl;
-  }
-
-  pauseGallery(): void {
-    this.loopTimeline?.pause();
-  }
-
-  resumeGallery(): void {
-    this.loopTimeline?.resume();
   }
 }

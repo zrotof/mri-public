@@ -17,7 +17,10 @@ import {
   faPlus,
   faXmark,
   faBars,
-  faShieldHalved
+  faShieldHalved,
+  faCheck,
+  faCircleCheck,
+  faFileInvoiceDollar
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -75,6 +78,12 @@ export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
         return faQuoteRight;
       case 'faShieldHalved':
         return faShieldHalved;
+      case 'faCheck':
+        return faCheck;
+      case 'faCircleCheck':
+        return faCircleCheck;
+      case 'faFileInvoiceDollar':
+        return faFileInvoiceDollar;
       case 'faWhatsapp':
         return faWhatsapp
       case 'faXmark':

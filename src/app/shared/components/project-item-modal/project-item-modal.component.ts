@@ -50,7 +50,7 @@ export class ProjectItemModalComponent {
   imagesWithIndex : any[]= [];
 
   ngOnInit() {
-    this.imagesWithIndex = [{imageSrc: this.projectData.coverImage, index: 0, isActive: true}, ...this.getImages() ]
+    this.imagesWithIndex = [{imageSrc: this.projectData.featuredImages?.[0] ?? this.projectData.coverImage, index: 0, isActive: true}, ...this.getImages() ]
 
     this.currentImage = this.imagesWithIndex[0];
   }

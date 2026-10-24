@@ -18,6 +18,18 @@ export const PROJECTS: Project[] = [
       "Notre mission consistait à transformer l’espace, améliorer la performance énergétique et valoriser durablement le bien."
     ],
 
+    featuredImages: [
+      'https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg',
+      'https://images.pexels.com/photos/1648776/pexels-photo-1648776.jpeg',
+      'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg',
+      'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg'
+    ],
+    featuredImageAlts: [
+      'Façade extérieure et restructuration contemporaine de villa à Saint-Cloud',
+      'Restructuration du séjour cathédrale avec verrière d’angle et baies vitrées à Saint-Cloud',
+      'Cuisine d’architecte ouverte et agencement haut de gamme sur mesure',
+      'Suite parentale contemporaine et finitions soignées en Île-de-France'
+    ],
     coverImage:
       'https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg',
 
@@ -225,6 +237,16 @@ export const PROJECTS: Project[] = [
       "L’objectif était de moderniser les installations techniques sans altérer le patrimoine architectural."
     ],
 
+    featuredImages: [
+      'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg',
+      'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg',
+      'https://images.pexels.com/photos/1648776/pexels-photo-1648776.jpeg'
+    ],
+    featuredImageAlts: [
+      'Restauration de moulures et parquet en point de Hongrie dans un appartement haussmannien à Paris 16e',
+      'Double séjour lumineux avec bibliothèque sur mesure et cheminée d’époque à Paris',
+      'Rénovation contemporaine des pièces d’eau et isolation phonique renforcée'
+    ],
     coverImage:
       'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg',
 
@@ -242,5 +264,112 @@ export const PROJECTS: Project[] = [
       { icon: 'pi pi-chart-line', value: 'DPE F → C' }
     ],
     sections: []
+  },
+
+  {
+    id: 3,
+    slug: 'renovation-extension-maison-saint-germain-en-laye',
+    isTop: true,
+
+    title: 'Rénovation complète et extension de maison',
+    location: 'Saint-Germain-en-Laye',
+
+    shortDescription:
+      'Rénovation énergétique globale et extension contemporaine de 220 m² dans un quartier résidentiel de Saint-Germain-en-Laye (78).',
+
+    introDescription: [
+      "Située dans un quartier calme et arboré de Saint-Germain-en-Laye, cette maison familiale des années 1970 offrait un potentiel exceptionnel mais manquait cruellement d'ouverture sur l'extérieur.",
+      "Notre intervention : une rénovation tous corps d’état combinée à une extension contemporaine à toit plat, métamorphosant l’espace de vie tout en optimisant la performance énergétique."
+    ],
+
+    featuredImages: [
+      'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg',
+      'https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg',
+      'https://images.pexels.com/photos/1648776/pexels-photo-1648776.jpeg'
+    ],
+    featuredImageAlts: [
+      'Extension contemporaine de maison à toit plat et baies aluminium à Saint-Germain-en-Laye',
+      'Rénovation thermique globale ITE et surélévation de toiture dans les Yvelines 78',
+      'Pièce de vie lumineuse ouverte de plain-pied sur terrasse et jardin paysager'
+    ],
+    coverImage:
+      'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg',
+
+    renovationTypes: [
+      'Extension maison 78',
+      'Rénovation Saint-Germain-en-Laye',
+      'Surélévation toiture',
+      'Isolation thermique ITE',
+      'Menuiseries aluminium'
+    ],
+
+    keyFigures: [
+      { icon: 'pi pi-home', value: '220 m²' },
+      { icon: 'pi pi-clock', value: '6 mois' },
+      { icon: 'pi pi-tag', value: '480 000 €' },
+      { icon: 'pi pi-chart-line', value: 'DPE E → A' }
+    ],
+
+    sections: [
+      {
+        id: 'overview',
+        type: 'overview',
+        navLabel: 'Vue d’ensemble',
+        title: 'Une extension harmonieuse et lumineuse',
+        content: [
+          "Le projet visait à créer une vaste pièce de réception baignée de lumière naturelle, connectée de plain-pied avec la terrasse et le jardin paysager.",
+          "L'agrandissement en ossature bois haute performance a permis d'ajouter 60 m² de surface habitable sans alourdir la structure initiale du bâti.",
+          "Les espaces intérieurs ont été entièrement repensés avec une cuisine ouverte d'architecte, des parquets en chêne massif et une suite parentale avec dressing sur mesure."
+        ],
+        images: [
+          {
+            src: 'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg'
+          }
+        ]
+      },
+      {
+        id: 'challenges',
+        type: 'challenges',
+        navLabel: 'Les enjeux',
+        title: 'Défis techniques & règles d’urbanisme locales',
+        content: [
+          "Intervenir à Saint-Germain-en-Laye implique le strict respect des règles du Plan Local d'Urbanisme (PLU) et de la proximité de zones sauvegardées."
+        ],
+        highlights: [
+          { text: "Conformité stricte avec les exigences architecturales du PLU de Saint-Germain-en-Laye" },
+          { text: "Intégration d’une verrière d’angle sans rupture thermique" },
+          { text: "Raccordement des réseaux et plancher chauffant basse température" },
+          { text: "Chantier en site occupé partiel avec planning millimétré" }
+        ]
+      },
+      {
+        id: 'performance',
+        type: 'performance',
+        navLabel: 'Performance énergétique',
+        title: 'Un saut énergétique spectaculaire : DPE E vers A',
+        content: [
+          "Grâce à l’isolation thermique par l’extérieur, l’installation d’une pompe à chaleur air-eau et le remplacement de l’intégralité des menuiseries par du triple vitrage aluminium, le logement atteint les plus hauts standards de confort d'aujourd'hui."
+        ],
+        metrics: [
+          { label: "Classe énergétique (DPE)", before: "E", after: "A" },
+          { label: "Consommation estimée", before: "24 500 kWh", after: "8 200 kWh" },
+          { label: "Émissions carbone", before: "5.8 t/an", after: "1.2 t/an" }
+        ],
+        resultText: [
+          "Gain de plus de 60 % sur la facture d'énergie annuelle.",
+          "Confort thermique d'été exceptionnel grâce aux brise-soleil orientables motorisés.",
+          "Plus-value immobilière majeure sur le marché de Saint-Germain-en-Laye."
+        ]
+      },
+      {
+        id: 'testimonial',
+        type: 'testimonial',
+        navLabel: 'Avis client',
+        title: 'Ce que disent les propriétaires',
+        quote: "L'équipe de Ma Rénovation Immobilière a su nous guider avec un grand professionnalisme dès le dépôt du permis de construire jusqu'à la dernière finition de peinture. Notre maison a changé de dimension tout en restant très chaleureuse.",
+        clientName: "Mme Claire B.",
+        clientRole: "Propriétaire à Saint-Germain-en-Laye"
+      }
+    ]
   }
 ];

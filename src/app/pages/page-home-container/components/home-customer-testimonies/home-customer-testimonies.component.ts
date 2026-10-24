@@ -13,7 +13,6 @@ import { NgOptimizedImage } from '@angular/common';
     NgOptimizedImage
   ]
 })
-
 export class HomeCustomerTestimoniesComponent {
 
   testimonials = [
@@ -61,18 +60,134 @@ export class HomeCustomerTestimoniesComponent {
 
   currentTestimonyIndex = 0;
   currentTestimony = this.testimonials[this.currentTestimonyIndex];
+  animDirection: 'next' | 'prev' | null = null;
+
+  // Swipe / Drag gesture state
+  touchStartX = 0;
+  touchStartY = 0;
+  dragOffset = 0;
+  isDragging = false;
+  private isHorizontalSwipe = false;
+
+  goToTestimony(index: number): void {
+    if (index === this.currentTestimonyIndex) return;
+    this.animDirection = index > this.currentTestimonyIndex ? 'next' : 'prev';
+    this.currentTestimonyIndex = index;
+    this.currentTestimony = this.testimonials[this.currentTestimonyIndex];
+  }
 
   onPrevOrNextTestimony(navigationWay: number): void {
+    this.animDirection = navigationWay === 1 ? 'next' : 'prev';
     if (this.currentTestimonyIndex === 0 && navigationWay === -1) {
       this.currentTestimonyIndex = this.testimonials.length - 1;
-    }
-    else if (this.currentTestimonyIndex === this.testimonials.length - 1 && navigationWay === 1) {
+    } else if (this.currentTestimonyIndex === this.testimonials.length - 1 && navigationWay === 1) {
       this.currentTestimonyIndex = 0;
-    }
-    else {
+    } else {
       this.currentTestimonyIndex += navigationWay;
     }
+    this.currentTestimony = this.testimonials[this.currentTestimonyIndex];
+  }
 
-    this.currentTestimony = this.testimonials[this.currentTestimonyIndex]
+  onAnimationEnd(): void {
+    this.animDirection = null;
+  }
+
+  // Touch event handlers (Mobile / Tablet)
+  onTouchStart(e: TouchEvent): void {
+    if (e.touches.length !== 1) return;
+    this.touchStartX = e.touches[0].clientX;
+    this.touchStartY = e.touches[0].clientY;
+    this.dragOffset = 0;
+    this.isDragging = true;
+    this.isHorizontalSwipe = false;
+  }
+
+  onTouchMove(e: TouchEvent): void {
+    if (!this.isDragging || e.touches.length !== 1) return;
+    const currentX = e.touches[0].clientX;
+    const currentY = e.touches[0].clientY;
+    const deltaX = currentX - this.touchStartX;
+    const deltaY = currentY - this.touchStartY;
+
+    if (!this.isHorizontalSwipe) {
+      if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 8) {
+        // Vertical scroll dominant -> do not interfere
+        this.isDragging = false;
+        this.dragOffset = 0;
+        return;
+      }
+      if (Math.abs(deltaX) > 8) {
+        this.isHorizontalSwipe = true;
+      }
+    }
+
+    if (this.isHorizontalSwipe) {
+      this.dragOffset = Math.max(-90, Math.min(90, deltaX));
+    }
+  }
+
+  onTouchEnd(): void {
+    if (!this.isDragging && !this.isHorizontalSwipe) return;
+    this.finalizeSwipe();
+  }
+
+  onTouchCancel(): void {
+    this.isDragging = false;
+    this.isHorizontalSwipe = false;
+    this.dragOffset = 0;
+  }
+
+  // Pointer / Mouse drag handlers (Desktop)
+  onPointerDown(e: PointerEvent): void {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    this.touchStartX = e.clientX;
+    this.touchStartY = e.clientY;
+    this.dragOffset = 0;
+    this.isDragging = true;
+    this.isHorizontalSwipe = false;
+  }
+
+  onPointerMove(e: PointerEvent): void {
+    if (!this.isDragging) return;
+    const deltaX = e.clientX - this.touchStartX;
+    const deltaY = e.clientY - this.touchStartY;
+
+    if (!this.isHorizontalSwipe) {
+      if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 8) {
+        this.isDragging = false;
+        this.dragOffset = 0;
+        return;
+      }
+      if (Math.abs(deltaX) > 8) {
+        this.isHorizontalSwipe = true;
+      }
+    }
+
+    if (this.isHorizontalSwipe) {
+      this.dragOffset = Math.max(-90, Math.min(90, deltaX));
+    }
+  }
+
+  onPointerUp(): void {
+    if (!this.isDragging && !this.isHorizontalSwipe) return;
+    this.finalizeSwipe();
+  }
+
+  onPointerCancel(): void {
+    this.isDragging = false;
+    this.isHorizontalSwipe = false;
+    this.dragOffset = 0;
+  }
+
+  private finalizeSwipe(): void {
+    const threshold = 40;
+    if (this.dragOffset < -threshold) {
+      this.onPrevOrNextTestimony(1);
+    } else if (this.dragOffset > threshold) {
+      this.onPrevOrNextTestimony(-1);
+    }
+    this.isDragging = false;
+    this.isHorizontalSwipe = false;
+    this.dragOffset = 0;
   }
 }

@@ -1,6 +1,6 @@
 .home-about-us {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: center;
     gap: clamp(2.5rem, 5vw, 4rem);
 
@@ -141,8 +141,8 @@
 
         .content {
             width: 100%;
-            border-bottom: 1px solid rgb(215, 215, 215);
-            padding-bottom: 2.5rem;
+            border-top: 1px solid rgb(215, 215, 215);
+            padding-top: 2.5rem;
 
             ul {
                 display: flex;

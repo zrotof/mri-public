@@ -1,83 +1,84 @@
 @if (project(); as p) {
 
-<div class="project-detail">
+<article class="project-detail">
 
-  <div class="content header-container">
+  <!-- 1. HERO PRESTIGE : Pleine largeur, lumineux et immersif -->
+  <app-intro-section id="intro" [project]="p" #sectionRef />
 
-    <!-- SIDEBAR -->
-    <app-project-sidebar [sections]="p.sections" [renovationTypes]="p.renovationTypes" [activeSection]="activeSection()"
-      (navigate)="scrollTo($event)">
-    </app-project-sidebar>
+  <!-- 2. CORPS DU PROJET : Grille 2 colonnes avec Sidebar Sticky flottante -->
+  <div class="project-body-section">
+    <div class="content header-container body-grid">
 
-    <!-- CONTENT -->
-    <div class="project-content">
+      <!-- SIDEBAR -->
+      <aside class="sidebar-wrapper">
+        <app-project-sidebar
+          [sections]="p.sections"
+          [renovationTypes]="p.renovationTypes"
+          [activeSection]="activeSection()"
+          (navigate)="scrollTo($event)"
+          (share)="onShareProject()">
+        </app-project-sidebar>
+      </aside>
 
-      <!-- INTRO -->
-      <section id="intro" class="project-intro project-section" #sectionRef>
+      <!-- SECTIONS TECHNIQUES -->
+      <main class="sections-wrapper">
+        @for (section of p.sections; track section.id) {
+          <section [id]="section.id" class="project-section" #sectionRef>
+            @switch (section.type) {
+              @case ('overview') {
+                @if (section) {
+                  <app-overview-section [section]="section" />
+                }
+              }
 
-        <app-intro-section [project]="p" />
+              @case ('challenges') {
+                @if (section) {
+                  <app-challenges-section [section]="section" />
+                }
+              }
 
-      </section>
+              @case ('audit') {
+                @if (section) {
+                  <app-audit-section [section]="section" />
+                }
+              }
 
-      <!-- SECTIONS -->
-      @for (section of p.sections; track section.id) {
+              @case ('structural') {
+                @if (section) {
+                  <app-structural-section [section]="section" />
+                }
+              }
 
-      <section [id]="section.id" class="project-section" #sectionRef>
+              @case ('performance') {
+                @if (section) {
+                  <app-performance-section [section]="section" />
+                }
+              }
 
-        @switch (section.type) {
+              @case ('testimonial') {
+                @if (section) {
+                  <app-testimonial-section [section]="section" />
+                }
+              }
 
-        @case ('overview') {
-          @if(section){
-            <app-overview-section [section]="section" />
-          }
+              @case ('before-after') {
+                @if (section) {
+                  <app-before-after-section [section]="section" />
+                }
+              }
+            }
+          </section>
         }
-
-        @case ('challenges') {
-          @if(section){
-            <app-challenges-section [section]="section" />
-          }
-        }
-
-        @case ('audit') {
-          @if(section){            
-            <app-audit-section [section]="section" />
-          }
-        }
-
-        @case ('structural') {
-          @if (section) {
-            <app-structural-section [section]="section" />
-          }
-        }
-
-        @case ('performance') {
-          @if (section) {
-            <app-performance-section [section]="section" />            
-        }
-        }
-
-        @case ('testimonial') {
-          @if(section){
-            <app-testimonial-section [section]="section" />
-          }
-        }
-
-        @case ('before-after') {
-          @if (section) {
-            <app-before-after-section [section]="section" />
-          }
-        }
-        }
-
-      </section>
-
-      }
+      </main>
 
     </div>
-
   </div>
 
-</div>
+</article>
+
+<app-related-projects [currentSlug]="p.slug" />
 <app-cotation-banner></app-cotation-banner>
+
+<app-share-modal />
 
 }

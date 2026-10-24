@@ -5,11 +5,15 @@
                 @for ( project of projects(); track project.id) {
                 <div class="work" [routerLink]="['/nos-realisations', project.slug ]">
                     <div class="image-wrapper">
-                        <img [ngSrc]="project.coverImage" [alt]="project.title" fill>
+                        <img [ngSrc]="project.coverImage"
+                             [alt]="project.title + ' à ' + project.location + ' - Rénovation immobilière MRI'"
+                             fill>
                     </div>
                     <div class="texts">
                         <h2>{{project.title}}</h2>
-                        <button>Voir Plus</button>
+                        <button type="button" [attr.aria-label]="'Découvrir la réalisation ' + project.title + ' à ' + project.location">
+                            Découvrir le projet
+                        </button>
                     </div>
                 </div>
                 }

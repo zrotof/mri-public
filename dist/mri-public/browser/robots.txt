@@ -1,0 +1,8 @@
+# Robots.txt - Ma Rénovation Immobilière
+# https://www.ma-renovation-immobiliere.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.ma-renovation-immobiliere.com/sitemap.xml

@@ -1,0 +1,149 @@
+@if (shareService.isOpen()) {
+  <div class="share-modal-backdrop" (click)="onBackdropClick($event)" role="presentation">
+    <div class="share-modal-dialog"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="share-modal-title">
+
+      <!-- En-tête de la modale -->
+      <div class="modal-header">
+        <div class="header-left">
+          <div class="icon-badge">
+            <i class="pi pi-share-alt"></i>
+          </div>
+          <div class="header-titles">
+            <h2 id="share-modal-title">Partager cette réalisation</h2>
+            <p class="subtitle">Faites découvrir ce projet à vos proches ou inspirez votre réseau</p>
+          </div>
+        </div>
+
+        <button type="button"
+                class="btn-close"
+                (click)="close()"
+                aria-label="Fermer la boîte de dialogue de partage">
+          <i class="pi pi-times"></i>
+        </button>
+      </div>
+
+      <!-- Aperçu du projet -->
+      @if (shareService.data(); as project) {
+        <div class="project-preview">
+          @if (project.imageUrl) {
+            <img [src]="project.imageUrl" [alt]="project.title" class="preview-img" />
+          }
+          <div class="preview-info">
+            <span class="preview-title">{{ project.title }}</span>
+            @if (project.location) {
+              <span class="preview-location">
+                <i class="pi pi-map-marker"></i>
+                {{ project.location }}
+              </span>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- Grille des canaux de partage -->
+      <div class="share-channels">
+        <button type="button"
+                class="channel-btn whatsapp"
+                (click)="shareWhatsApp()"
+                aria-label="Partager sur WhatsApp">
+          <div class="channel-icon">
+            <i class="pi pi-whatsapp"></i>
+          </div>
+          <div class="channel-text">
+            <span class="channel-name">WhatsApp</span>
+            <span class="channel-desc">Message direct</span>
+          </div>
+        </button>
+
+        <button type="button"
+                class="channel-btn email"
+                (click)="shareEmail()"
+                aria-label="Partager par Email">
+          <div class="channel-icon">
+            <i class="pi pi-envelope"></i>
+          </div>
+          <div class="channel-text">
+            <span class="channel-name">Email</span>
+            <span class="channel-desc">Envoyer par courriel</span>
+          </div>
+        </button>
+
+        <button type="button"
+                class="channel-btn linkedin"
+                (click)="shareLinkedIn()"
+                aria-label="Partager sur LinkedIn">
+          <div class="channel-icon">
+            <i class="pi pi-linkedin"></i>
+          </div>
+          <div class="channel-text">
+            <span class="channel-name">LinkedIn</span>
+            <span class="channel-desc">Partager au réseau</span>
+          </div>
+        </button>
+
+        <button type="button"
+                class="channel-btn facebook"
+                (click)="shareFacebook()"
+                aria-label="Partager sur Facebook">
+          <div class="channel-icon">
+            <i class="pi pi-facebook"></i>
+          </div>
+          <div class="channel-text">
+            <span class="channel-name">Facebook</span>
+            <span class="channel-desc">Fil d'actualité</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Bloc copier le lien -->
+      <div class="copy-link-section">
+        <label for="share-url-input" class="copy-label">Lien direct de la réalisation</label>
+        <div class="copy-input-group">
+          <i class="pi pi-link link-icon"></i>
+          <input id="share-url-input"
+                 type="text"
+                 readonly
+                 [value]="shareUrl()"
+                 (click)="$any($event.target).select()" />
+
+          <button type="button"
+                  class="btn-copy"
+                  [class.copied]="copied()"
+                  (click)="copyLink()"
+                  [attr.aria-label]="copied() ? 'Lien copié' : 'Copier le lien'">
+            @if (copied()) {
+              <i class="pi pi-check"></i>
+              <span>Copié !</span>
+            } @else {
+              <i class="pi pi-copy"></i>
+              <span>Copier</span>
+            }
+          </button>
+        </div>
+
+        @if (copied()) {
+          <p class="copy-feedback" role="status">
+            <i class="pi pi-check-circle"></i>
+            Lien copié dans votre presse-papier !
+          </p>
+        }
+      </div>
+
+      <!-- Action native si supportée -->
+      @if (canNativeShare()) {
+        <div class="native-share-section">
+          <button type="button"
+                  class="btn-native-share"
+                  (click)="triggerNativeShare()">
+            <i class="pi pi-external-link"></i>
+            <span>Partager via les applications de votre appareil</span>
+          </button>
+        </div>
+      }
+
+    </div>
+  </div>
+}

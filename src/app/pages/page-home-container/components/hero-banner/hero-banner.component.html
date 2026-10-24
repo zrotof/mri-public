@@ -1,10 +1,42 @@
 <div class="hero-banner">
     <img ngSrc="images/maintenance/ma-renovation-immobiliere.webp" alt="Rénovation et construction à Saint-Germain-en-Laye" fill priority>
-    <div class="content header-container">
-        <h1>Rénovation et Construction Immobilière à Saint-Germain-en-Laye</h1>
+    <div class="content header-container" #heroContent>
+        <h1 #heroTitle>Rénovation et Construction Immobilière à Saint-Germain-en-Laye</h1>
         <div class="left">
-            <h2>Valorisez votre patrimoine avec un spécialiste en rénovation et construction, de l'aménagement intérieur à l'extension de maison.</h2>
-            <button class="btn" routerLink="/devis-gratuit">Votre Devis Gratuit</button>
+            <h2 #heroSubtitle>Valorisez votre patrimoine avec un spécialiste en rénovation et construction, de l'aménagement intérieur à l'extension de maison.</h2>
+            <div class="hero-actions">
+                <button #heroBtn class="btn" routerLink="/devis-gratuit">Votre Devis Gratuit</button>
+                <div class="hero-socials">
+                    <a href="https://www.instagram.com/ma_renov_immo/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Suivez-nous sur Instagram" title="Instagram @ma_renov_immo">
+                        <fa-icon [icon]="'faInstagram' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </a>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Suivez-nous sur LinkedIn" title="LinkedIn">
+                        <fa-icon [icon]="'faLinkedin' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Suivez-nous sur Facebook" title="Facebook">
+                        <fa-icon [icon]="'faFacebookF' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<aside class="hero-reassurance-strip" aria-label="Engagements et garanties contractuelles">
+    <div class="header-container strip-content">
+        <div class="strip-item">
+            <fa-icon [icon]="'faShieldHalved' | convertStringLabelToFontawesomeIcon" class="strip-icon"></fa-icon>
+            <span class="strip-text">Décennale 10 ans</span>
+        </div>
+        <span class="strip-separator" aria-hidden="true"></span>
+        <div class="strip-item">
+            <fa-icon [icon]="'faFileInvoiceDollar' | convertStringLabelToFontawesomeIcon" class="strip-icon"></fa-icon>
+            <span class="strip-text">Devis ferme sous 48h</span>
+        </div>
+        <span class="strip-separator" aria-hidden="true"></span>
+        <div class="strip-item">
+            <fa-icon [icon]="'faClock' | convertStringLabelToFontawesomeIcon" class="strip-icon"></fa-icon>
+            <span class="strip-text">Délais garantis</span>
+        </div>
+    </div>
+</aside>

@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Carousel, CarouselModule } from 'primeng/carousel';
+import { GsapSplitTextFadeInScrollTriggerDirective } from '../../../../shared/directives/gsap-split-text-fade-in-scroll-trigger/gsap-split-text-fade-in-scroll-trigger.directive';
 
 export interface SupplierBrand {
   name: string;
@@ -13,7 +14,8 @@ export interface SupplierBrand {
   styleUrl: './home-supplier-carousel.component.scss',
   encapsulation: ViewEncapsulation.None,
   imports: [
-    CarouselModule
+    CarouselModule,
+    GsapSplitTextFadeInScrollTriggerDirective
   ]
 })
 export class HomeSupplierCarouselComponent {

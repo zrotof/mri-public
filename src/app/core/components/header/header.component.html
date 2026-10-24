@@ -1,8 +1,12 @@
 <header #header [class.mobile-open]="isMobileMenuOpen()">
     <div class="content header-container">
-        <a routerLink="" (click)="closeMobileMenu()" class="logo-link">
-            <img class="logo"
-                alt="Ma Rénovation Immobilière" ngSrc="images/logos/ma-renovation-immobiliere.svg" width="90" height="55" priority>
+        <a routerLink="" (click)="closeMobileMenu()" class="logo-link" aria-label="Accueil - Ma Rénovation Immobilière">
+            <div class="logo-container">
+                <img class="logo logo-white"
+                    alt="Ma Rénovation Immobilière" ngSrc="images/logos/ma-renovation-immobiliere.svg" width="90" height="55" priority>
+                <img class="logo logo-color"
+                    alt="" aria-hidden="true" ngSrc="images/logos/ma-renovation-immobiliere.svg" width="90" height="55">
+            </div>
         </a>
 
         <!-- Desktop Navigation -->
@@ -17,21 +21,29 @@
                     <a routerLink="agence" routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{exact: true}">L'agence</a>
                 </li>
+                <!-- Menu Nos Services temporairement masqué en attente des pages dédiées
                 <li>
                     <a routerLink="agence" fragment="services">
                         Nos Services
                         <fa-icon [icon]="'faAngleDown' | convertStringLabelToFontawesomeIcon"></fa-icon>
                     </a>
                 </li>
+                -->
                 <li>
                     <a routerLink="nos-realisations" routerLinkActive="active-link">Nos Réalisations</a>
+                </li>
+                <li>
+                    <a routerLink="contactez-nous" routerLinkActive="active-link">Contact</a>
                 </li>
             </ul>
         </nav>
 
         <!-- Desktop Action Buttons -->
         <div class="buttons desktop-buttons">
-            <button class="btn-contact" routerLink="contactez-nous">Contact</button>
+            <a href="tel:+33130610606" class="btn-contact btn-phone" aria-label="Appeler le 01 30 61 06 06">
+                <fa-icon [icon]="'faPhone' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                <span>01 30 61 06 06</span>
+            </a>
             <button class="btn-cotation" routerLink="devis-gratuit">Devis Gratuit</button>
         </div>
 
@@ -96,23 +108,21 @@
                         <fa-icon [icon]="'faAngleRight' | convertStringLabelToFontawesomeIcon"></fa-icon>
                     </a>
                 </li>
+                <li>
+                    <a routerLink="contactez-nous" routerLinkActive="active-link" (click)="closeMobileMenu()">
+                        <span>Contact</span>
+                        <fa-icon [icon]="'faAngleRight' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </a>
+                </li>
             </ul>
         </nav>
 
         <div class="drawer-actions">
-            <button class="btn-contact" routerLink="contactez-nous" (click)="closeMobileMenu()">Contact</button>
-            <button class="btn-cotation" routerLink="devis-gratuit" (click)="closeMobileMenu()">Devis Gratuit</button>
-        </div>
-
-        <div class="drawer-footer">
-            <div class="drawer-contact-item">
+            <a href="tel:+33130610606" class="btn-phone" (click)="closeMobileMenu()" aria-label="Appeler le 01 30 61 06 06">
                 <fa-icon [icon]="'faPhone' | convertStringLabelToFontawesomeIcon"></fa-icon>
-                <a href="tel:+33130610606">+33 (0)1 30 61 06 06</a>
-            </div>
-            <div class="drawer-contact-item">
-                <fa-icon [icon]="'faEnvelope' | convertStringLabelToFontawesomeIcon"></fa-icon>
-                <a href="mailto:contact@mri-idf.com">contact&#64;mri-idf.com</a>
-            </div>
+                <span>01 30 61 06 06</span>
+            </a>
+            <button class="btn-cotation" routerLink="devis-gratuit" (click)="closeMobileMenu()">Devis Gratuit</button>
         </div>
     </aside>
 </header>

@@ -11,11 +11,16 @@
                 transport, de construction, d’enseigne du retail ou encore chez de nombreux particuliers. Découvrez
                 certains de nos projets ci-dessous.
             </p>
+
+            <a routerLink="/nos-realisations" class="btn-all-works">
+                <span>Voir toutes nos réalisations</span>
+                <fa-icon [icon]="'faArrowRight' | convertStringLabelToFontawesomeIcon"></fa-icon>
+            </a>
         </div>
     </div>
     <div class="carousel-wrapper">
         <div class="carousel-container" #carouselContainer (mouseenter)="pauseGallery()" (mouseleave)="resumeGallery()">
-            @for (project of latestWorks(); track project.id) {
+            @for (project of displayWorks(); track $index) {
             <div class="work" [routerLink]="['nos-realisations', project.slug ]">
                 <div class="image-wrapper">
                     <img [ngSrc]="project.coverImage" [alt]="project.title" fill>

@@ -20,7 +20,8 @@ export class ProjectService {
           slug: p.slug,
           title: p.title,
           location: p.location,
-          coverImage: p.coverImage,
+          coverImage: p.coverImage ?? p.featuredImages?.[0] ?? '',
+          featuredImages: p.featuredImages,
           shortDescription: p.shortDescription,
           renovationTypes: p.renovationTypes
         }))

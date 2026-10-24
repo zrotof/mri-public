@@ -203,20 +203,17 @@
             <legend>3. Description de votre besoin</legend>
 
             <div class="form-group" [class.has-error]="hasError('message')">
-                <label for="message">Décrivez vos souhaits et contraintes <span class="required">*</span></label>
+                <label for="message">Précisions sur votre besoin <span class="optional">(optionnel)</span></label>
                 <textarea 
                     pTextarea 
                     id="message" 
                     formControlName="message" 
-                    rows="4" 
-                    placeholder="Indiquez l’état actuel, les pièces à rénover, vos préférences de matériaux, votre budget cible..." 
+                    rows="3" 
+                    placeholder="Ex: Rénovation cuisine et salle de bain, reprise électricité, matériaux souhaités, budget indicatif..." 
                     class="w-full prime-textarea">
                 </textarea>
-                @if (hasError('message', 'required')) {
-                    <span class="error-msg">Veuillez décrire brièvement votre projet</span>
-                }
-                @if (hasError('message', 'minlength')) {
-                    <span class="error-msg">Votre message doit comporter au moins 10 caractères</span>
+                @if (hasError('message', 'maxlength')) {
+                    <span class="error-msg">Le message ne doit pas dépasser 2000 caractères</span>
                 }
             </div>
 
@@ -229,7 +226,7 @@
                         inputId="rgpdConsent">
                     </p-checkbox>
                     <label for="rgpdConsent" class="consent-label">
-                        En soumettant ce formulaire, j’accepte que les informations saisies soient traitées par Ma Rénovation Immobilière pour me recontacter et établir mon devis, conformément à la politique de confidentialité. <span class="required">*</span>
+                        En soumettant ce formulaire, j’accepte que les informations saisies soient traitées par Ma Rénovation Immobilière pour me recontacter et établir mon devis, conformément à notre <a routerLink="/politique-de-confidentialite" target="_blank" class="legal-underline">politique de confidentialité</a>. <span class="required">*</span>
                     </label>
                 </div>
                 @if (hasError('rgpdConsent', 'required')) {
@@ -250,8 +247,8 @@
             </p-button>
 
             <p class="security-notice">
-                <fa-icon [icon]="'faLock' | convertStringLabelToFontawesomeIcon"></fa-icon>
-                Vos informations restent strictement confidentielles et ne sont jamais cédées à des tiers.
+                <fa-icon [icon]="'faShieldHalved' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                <span>Visite technique 100% offerte • Devis sans engagement sous 48h • Garantie décennale 10 ans</span>
             </p>
         </div>
 

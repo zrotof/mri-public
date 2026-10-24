@@ -8,11 +8,16 @@ import {
   ViewChildren,
   signal,
   AfterViewInit,
-  PLATFORM_ID
+  PLATFORM_ID,
+  effect
 } from '@angular/core';
 
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ConvertStringLabelToFontawesomeIconPipe } from '../../core/pipes/convertStringLabelToFontawesomeIcon/convert-string-label-to-fontawesome-icon.pipe';
 import { ProjectService } from '../../core/services/project/project.service';
+import { SeoService } from '../../core/services/seo';
 import { OverviewSectionComponent } from './components/overview-section/overview-section.component';
 import { ChallengesSectionComponent } from './components/challenges-section/challenges-section.component';
 import { AuditSectionComponent } from './components/audit-section/audit-section.component';
@@ -22,7 +27,10 @@ import { TestimonialSectionComponent } from './components/testimonial-section/te
 import { BeforeAfterSectionComponent } from './components/before-after-section/before-after-section.component';
 import { ProjectSidebarComponent } from './components/project-sidebar/project-sidebar.component';
 import { IntroSectionComponent } from './components/intro-section/intro-section.component';
+import { RelatedProjectsComponent } from './components/related-projects/related-projects.component';
 import { CotationBannerComponent } from '../../shared/components/cotation-banner/cotation-banner.component';
+import { ShareModalComponent } from '../../shared/components/share-modal/share-modal.component';
+import { ShareService } from '../../core/services/share/share.service';
 
 @Component({
   selector: 'app-page-our-works-details-container',
@@ -31,6 +39,9 @@ import { CotationBannerComponent } from '../../shared/components/cotation-banner
   styleUrl: './page-our-works-details-container.component.scss',
   imports: [
     CommonModule,
+    RouterLink,
+    FontAwesomeModule,
+    ConvertStringLabelToFontawesomeIconPipe,
     ProjectSidebarComponent,
     IntroSectionComponent,
     OverviewSectionComponent,
@@ -40,13 +51,17 @@ import { CotationBannerComponent } from '../../shared/components/cotation-banner
     PerformanceSectionComponent,
     TestimonialSectionComponent,
     BeforeAfterSectionComponent,
-    CotationBannerComponent
+    RelatedProjectsComponent,
+    CotationBannerComponent,
+    ShareModalComponent
   ]
 })
 export default class PageOurWorksDetailsContainerComponent implements AfterViewInit {
 
   private readonly service = inject(ProjectService);
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly seoService = inject(SeoService);
+  private readonly shareService = inject(ShareService);
 
   slug = input.required<string>();
 
@@ -54,7 +69,27 @@ export default class PageOurWorksDetailsContainerComponent implements AfterViewI
     this.service.getProjectBySlug(this.slug())()
   );
 
+  onShareProject(): void {
+    const p = this.project();
+    if (!p) return;
+    this.shareService.open({
+      title: p.title,
+      location: p.location,
+      imageUrl: p.featuredImages?.[0] || p.coverImage,
+      description: p.introDescription?.[0]
+    });
+  }
+
   activeSection = signal<string>('intro');
+
+  constructor() {
+    effect(() => {
+      const p = this.project();
+      if (p) {
+        this.seoService.applyProjectSeo(p);
+      }
+    });
+  }
 
   @ViewChildren('sectionRef') sections!: QueryList<ElementRef>;
 

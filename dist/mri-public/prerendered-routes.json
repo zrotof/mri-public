@@ -2,9 +2,13 @@
   "routes": {
     "/": {},
     "/agence": {},
-    "/blog": {},
     "/contactez-nous": {},
     "/devis-gratuit": {},
-    "/nos-realisations": {}
+    "/mentions-legales": {},
+    "/nos-realisations": {},
+    "/nos-realisations/appartement-haussmann-paris": {},
+    "/nos-realisations/renovation-extension-maison-saint-germain-en-laye": {},
+    "/nos-realisations/villa-contemporaine-saint-cloud": {},
+    "/politique-de-confidentialite": {}
   }
 }

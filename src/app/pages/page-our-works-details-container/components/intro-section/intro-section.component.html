@@ -1,31 +1,83 @@
-<div class="location">
-  <div class="icon-wrapper">
-    <i class="pi pi-map-marker"></i>
+<div class="content header-container">
+  <div class="intro-header-content">
+    <app-breadcrumb [items]="breadcrumbItems()" [centered]="true" />
+
+    <h1>
+      {{ project()?.title }}
+      @if (project()?.location) {
+      <span class="h1-location">à {{ project()?.location }}</span>
+      }
+    </h1>
+
+    @if (mergedIntroDescription()) {
+    <div class="intro-description-wrapper">
+      <p class="intro-lead-p">{{ mergedIntroDescription() }}</p>
+    </div>
+    }
+
+    <div class="intro-actions">
+      <button type="button" class="btn-share" (click)="openShare()" aria-label="Partager cette réalisation"
+        title="Partager cette réalisation">
+        <i class="pi pi-share-alt"></i>
+        <span>Partager</span>
+      </button>
+    </div>
   </div>
-  {{ project()?.location }}
-</div>
 
-<h1>{{ project()?.title }}</h1>
+  <div class="carousel-wrapper" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)" role="region"
+    aria-label="Galerie photos mise en avant">
 
-<div class="key-figures">
-  @for (figure of project()?.keyFigures; track figure.value) {
+    <div class="carousel-track" [style.transform]="'translateX(' + (-currentSlideIndex() * 100) + '%)'">
+      @for (image of images(); track $index) {
+      <div class="carousel-slide" [class.active]="$index === currentSlideIndex()">
+        <img [ngSrc]="image" [alt]="getImageAlt($index)" fill [priority]="$index === 0">
+      </div>
+      }
+    </div>
+
+    @if (images().length > 1) {
+    <!-- Flèches de navigation -->
+    <button type="button" class="carousel-nav-btn prev" (click)="prevSlide()" aria-label="Photo précédente">
+      <i class="pi pi-chevron-left"></i>
+    </button>
+
+    <button type="button" class="carousel-nav-btn next" (click)="nextSlide()" aria-label="Photo suivante">
+      <i class="pi pi-chevron-right"></i>
+    </button>
+
+    <!-- Badge compteur -->
+    <div class="carousel-counter-badge">
+      <i class="pi pi-images"></i>
+      <span>{{ currentSlideIndex() + 1 }} / {{ images().length }}</span>
+    </div>
+
+    <!-- Puces indicateurs -->
+    <div class="carousel-dots" role="tablist">
+      @for (image of images(); track $index) {
+      <button type="button" class="carousel-dot" [class.active]="$index === currentSlideIndex()"
+        (click)="goToSlide($index)" [attr.aria-label]="'Afficher la photo ' + ($index + 1)">
+      </button>
+      }
+    </div>
+    }
+  </div>
+
+  <div class="key-figures">
+    @for (figure of project()?.keyFigures; track figure.value) {
     <div class="figure">
       <i class="{{ figure.icon }}"></i>
       <span>{{ figure.value }}</span>
     </div>
-  }
-</div>
-
-<div class="image-wrapper">
-    <img [ngSrc]="project()?.coverImage!" fill priority>
-</div>
-
-@if (project()?.renovationTypes?.length) {
-  <div class="mobile-renovations">
-    @for (type of project()?.renovationTypes; track type) {
-      <span class="tag">
-        {{ type }}
-      </span>
     }
   </div>
-}
+
+  @if (project()?.renovationTypes?.length) {
+  <div class="mobile-renovations">
+    @for (type of project()?.renovationTypes; track type) {
+    <span class="tag">
+      {{ type }}
+    </span>
+    }
+  </div>
+  }
+</div>

@@ -5,10 +5,11 @@ import { CommonModule } from '@angular/common';
 import { QuotationHeroBannerComponent } from './components/quotation-hero-banner/quotation-hero-banner.component';
 import { QuotationFormComponent } from './components/quotation-form/quotation-form.component';
 import { QuotationCounterpartComponent } from './components/quotation-counterpart/quotation-counterpart.component';
-import { RoadMapProcessComponent } from './components/road-map-process/road-map-process.component';
+import { RoadMapProcessComponent } from '../../shared/components/road-map-process/road-map-process.component';
 
 import { QuotationService } from '../../core/services/quotation/quotation.service';
 import { QuotationRequest, QuotationResponse } from '../../core/models/quotation';
+import { GtmService } from '../../core/services/gtm';
 
 @Component({
   selector: 'app-page-quotation-container',
@@ -24,6 +25,8 @@ import { QuotationRequest, QuotationResponse } from '../../core/models/quotation
   ]
 })
 export class PageQuotationContainerComponent implements OnInit {
+  private gtmService = inject(GtmService);
+
   // État géré par le composant conteneur (Smart Component)
   isSubmitting = signal<boolean>(false);
   isSuccess = signal<boolean>(false);
@@ -53,6 +56,17 @@ export class PageQuotationContainerComponent implements OnInit {
         this.isSubmitting.set(false);
         this.isSuccess.set(true);
         this.referenceId.set(response.referenceId);
+
+        // Tracking GTM / GA4 de conversion Lead Gen
+        this.gtmService.pushEvent('generate_lead', {
+          event_category: 'Quotation',
+          event_label: request.renovationType,
+          renovation_type: request.renovationType,
+          property_type: request.propertyType,
+          surface_area: request.surfaceArea,
+          postal_code: request.postalCode,
+          reference_id: response.referenceId
+        });
 
         // Scroll doux vers le bloc de confirmation si dans le navigateur
         if (typeof window !== 'undefined') {

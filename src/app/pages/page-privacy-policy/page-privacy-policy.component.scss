@@ -1,0 +1,299 @@
+.page-privacy-policy-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: hidden;
+
+    // 1. HERO BANNER INSPIRÉ DE /AGENCE ET /CONTACTEZ-NOUS
+    .privacy-hero {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        background-color: var(--project-blue-primary-color);
+        padding-top: clamp(7.5rem, 12vw, 11rem);
+        padding-bottom: clamp(3rem, 5.5vw, 5rem);
+        width: 100%;
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            gap: 1.25rem;
+
+            .badge {
+                display: inline-block;
+                font-size: 0.85rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                color: var(--project-green-secondary-color);
+                background: rgba(239, 248, 216, 0.12);
+                border: 1px solid rgba(239, 248, 216, 0.25);
+                padding: 6px 16px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+                line-height: 1.15;
+                letter-spacing: -1px;
+                color: var(--project-green-secondary-color);
+                font-weight: 800;
+                margin: 0;
+            }
+
+            .subtitle {
+                font-size: 1.05rem;
+                line-height: 1.6;
+                max-width: 760px;
+                font-weight: 400;
+                color: var(--project-white-primary-color);
+                margin: 0;
+                opacity: 0.95;
+            }
+        }
+    }
+
+    // 2. CORPS DE PAGE CENTRALISÉ
+    .privacy-body {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: #f7f9f5;
+        padding: clamp(3rem, 6vw, 5rem) 0 6rem;
+
+        .content {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .privacy-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .privacy-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2.25rem 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.07);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+            @media (max-width: 768px) {
+                padding: 1.75rem 1.25rem;
+            }
+
+            &:hover {
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+            }
+
+            &.highlight-card {
+                border-left: 5px solid var(--project-blue-primary-color);
+                background: linear-gradient(to right, #f8faff, #ffffff);
+            }
+
+            h2 {
+                font-size: 1.45rem;
+                font-weight: 700;
+                color: var(--project-blue-primary-color);
+                margin-bottom: 1.15rem;
+                padding-bottom: 0.6rem;
+                border-bottom: 2px solid #edf2e5;
+            }
+
+            p {
+                font-size: 1rem;
+                line-height: 1.7;
+                color: #4b5563;
+                margin-bottom: 1rem;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            .standard-list {
+                list-style: disc;
+                padding-left: 1.5rem;
+                margin: 1rem 0;
+
+                li {
+                    padding: 0.35rem 0;
+                    font-size: 0.98rem;
+                    line-height: 1.6;
+                    color: #4b5563;
+
+                    strong {
+                        color: var(--project-black-primary-color);
+                    }
+                }
+            }
+
+            .privacy-details {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    padding: 0.55rem 0;
+                    font-size: 0.98rem;
+                    line-height: 1.5;
+                    color: #4b5563;
+                    border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+
+                    strong {
+                        color: var(--project-black-primary-color);
+                        min-width: 220px;
+                        display: inline-block;
+
+                        @media (max-width: 600px) {
+                            display: block;
+                            margin-bottom: 0.15rem;
+                        }
+                    }
+
+                    a {
+                        color: var(--project-green-primary-color);
+                        text-decoration: underline;
+                        font-weight: 600;
+
+                        &:hover {
+                            color: var(--project-black-primary-color);
+                        }
+                    }
+                }
+            }
+
+            a {
+                color: var(--project-green-primary-color);
+                text-decoration: underline;
+                font-weight: 600;
+
+                &:hover {
+                    color: var(--project-black-primary-color);
+                }
+            }
+
+            // Tableau RGPD
+            .table-container {
+                overflow-x: auto;
+                margin: 1.25rem 0;
+
+                .privacy-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    text-align: left;
+
+                    th, td {
+                        padding: 0.85rem 1rem;
+                        border: 1px solid #e5e7eb;
+                        font-size: 0.92rem;
+                    }
+
+                    th {
+                        background-color: #f3f4f6;
+                        color: var(--project-black-primary-color);
+                        font-weight: 700;
+                    }
+
+                    td {
+                        color: #4b5563;
+                        line-height: 1.5;
+                    }
+                }
+            }
+
+            // GTM features
+            .gtm-features {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 1.25rem;
+
+                .gtm-feature-item {
+                    background: #f1f5f9;
+                    padding: 1rem 1.25rem;
+                    border-radius: 8px;
+
+                    strong {
+                        color: var(--project-blue-primary-color);
+                        display: block;
+                        margin-bottom: 0.35rem;
+                    }
+
+                    p {
+                        margin-bottom: 0;
+                        font-size: 0.92rem;
+                    }
+
+                    code {
+                        background: #e2e8f0;
+                        padding: 2px 6px;
+                        border-radius: 4px;
+                        font-size: 0.85rem;
+                        color: #0f172a;
+                    }
+                }
+            }
+
+            .contact-box {
+                background-color: var(--project-green-secondary-color);
+                padding: 1rem 1.25rem;
+                border-radius: 8px;
+                font-size: 0.95rem;
+                color: #2b3d04;
+                line-height: 1.7;
+            }
+        }
+
+        .privacy-footer-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+            @media (max-width: 600px) {
+                flex-direction: column;
+                gap: 1.25rem;
+                text-align: center;
+            }
+
+            a {
+                font-size: 1rem;
+                font-weight: 600;
+                color: var(--project-blue-primary-color);
+                transition: color 0.2s ease;
+
+                &:hover {
+                    color: var(--project-green-primary-color);
+                }
+            }
+
+            .privacy-link-home {
+                color: #6b7280;
+
+                &:hover {
+                    color: var(--project-black-primary-color);
+                }
+            }
+        }
+    }
+}

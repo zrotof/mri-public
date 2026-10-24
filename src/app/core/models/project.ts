@@ -127,7 +127,9 @@ export interface Project {
   shortDescription: string;      // ✅ Pour cards / homepage
   introDescription: string[];    // ✅ Pour le haut de la page projet
 
-  coverImage: string;
+  featuredImages: string[];
+  featuredImageAlts?: string[];
+  coverImage?: string;
 
   renovationTypes: string[];
 

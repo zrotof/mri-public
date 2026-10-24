@@ -8,7 +8,7 @@ export interface QuotationRequest {
   surfaceArea?: number;
   postalCode?: string;
   timeframe?: string;
-  message: string;
+  message?: string;
   rgpdConsent: boolean;
 }
 
