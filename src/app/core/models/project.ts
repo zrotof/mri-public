@@ -24,8 +24,9 @@ export interface BaseSection {
 
 
 export interface ProjectKeyFigure {
-  icon: string;  // ex: 'pi pi-home'
-  value: string; // ex: '350 m²'
+  label?: string; // ex: 'Surface', 'Durée', 'Lieu', 'Budget', 'Performance'
+  icon: string;   // ex: 'pi pi-home'
+  value: string;  // ex: '350 m²'
 }
 
 /* ===========================

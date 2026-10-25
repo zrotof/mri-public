@@ -36,11 +36,12 @@ export class HeroBannerComponent implements AfterViewInit {
     try {
       this.initHeroAnimation();
     } catch (err) {
-      console.warn('Hero animation fallback:', err);
       const contentEl = this.heroContent?.nativeElement || document.querySelector('.hero-banner .content');
       const btnEl = this.heroBtn?.nativeElement || document.querySelector('.hero-banner .btn');
+      const socialIcons = contentEl?.querySelectorAll('.hero-socials .social-icon');
       if (contentEl) gsap.set(contentEl, { visibility: 'visible' });
       if (btnEl) gsap.set(btnEl, { opacity: 1, scale: 1, clearProps: 'all' });
+      if (socialIcons) gsap.set(socialIcons, { opacity: 1, scale: 1, clearProps: 'all' });
     }
   }
 
@@ -49,6 +50,7 @@ export class HeroBannerComponent implements AfterViewInit {
     const titleEl = this.heroTitle?.nativeElement || document.querySelector('.hero-banner h1');
     const subtitleEl = this.heroSubtitle?.nativeElement || document.querySelector('.hero-banner h2');
     const btnEl = this.heroBtn?.nativeElement || document.querySelector('.hero-banner .btn');
+    const socialIcons = contentEl?.querySelectorAll('.hero-socials .social-icon');
 
     if (!contentEl || !titleEl) return;
 
@@ -116,6 +118,26 @@ export class HeroBannerComponent implements AfterViewInit {
           clearProps: 'transform,opacity'
         },
         '-=0.2'
+      );
+    }
+
+    if (socialIcons && socialIcons.length) {
+      tl.fromTo(socialIcons,
+        {
+          y: 25,
+          opacity: 0,
+          scale: 0.8
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: 'back.out(1.7)',
+          clearProps: 'transform,opacity'
+        },
+        btnEl ? '<' : '-=0.2'
       );
     }
   }

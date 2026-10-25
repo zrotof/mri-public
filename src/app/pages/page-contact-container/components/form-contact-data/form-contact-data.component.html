@@ -6,7 +6,7 @@
             <!-- BLOC FORMULAIRE À GAUCHE -->
             <div class="form-bloc">
 
-                <h2>Parlez-nous de votre besoin</h2>
+                <h2 appGsapSplitTextFadeInScrollTrigger [isTextSplit]="true" [duration]="0.8" [delay]="0.1">Parlez-nous de votre besoin</h2>
 
                 <!-- ÉTAT DE SUCCÈS -->
                 @if (isSuccess()) {
@@ -114,7 +114,7 @@
 
             <!-- BLOC COORDONNÉES DIRECTES & MAP À DROITE -->
             <div class="data">
-                <h2>Vous préférez un contact direct ?</h2>
+                <h2 appGsapSplitTextFadeInScrollTrigger [isTextSplit]="true" [duration]="0.8" [delay]="0.1">Vous préférez un contact direct ?</h2>
 
                 <ul>
                     <li>

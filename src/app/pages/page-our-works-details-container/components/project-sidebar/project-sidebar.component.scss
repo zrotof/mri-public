@@ -89,90 +89,6 @@
       gap: 0.5rem;
     }
   }
-
-  .sidebar-cta {
-    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
-    border: 1px solid rgba(109, 153, 7, 0.2);
-    border-radius: 12px;
-    padding: 1.25rem;
-    text-align: center;
-    margin-top: 0.25rem;
-
-    p {
-      margin: 0 0 0.85rem 0;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: #166534;
-      line-height: 1.4;
-    }
-
-    .btn-sidebar-devis {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
-      width: 100%;
-      background: var(--project-green-primary-color);
-      color: #ffffff;
-      padding: 0.6rem 1rem;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.25s ease;
-
-      i {
-        font-size: 0.8rem;
-        transition: transform 0.25s ease;
-      }
-
-      &:hover {
-        background: #5a7f05;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 14px rgba(109, 153, 7, 0.3);
-
-        i {
-          transform: translateX(3px);
-        }
-      }
-    }
-
-    .btn-sidebar-share {
-      margin-top: 0.75rem;
-      width: 100%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      background: #ffffff;
-      color: #475569;
-      border: 1px solid #cbd5e1;
-      padding: 0.55rem 0.95rem;
-      border-radius: 8px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-
-      i {
-        font-size: 0.88rem;
-        color: var(--project-green-primary-color);
-        transition: transform 0.2s ease;
-      }
-
-      &:hover {
-        background: #f8fafc;
-        border-color: var(--project-green-primary-color);
-        color: var(--project-blue-primary-color);
-        transform: translateY(-1px);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-
-        i {
-          transform: scale(1.15);
-        }
-      }
-    }
-  }
 }
 
 // Tablet & Mobile Breakpoints
@@ -214,10 +130,6 @@
           }
         }
       }
-    }
-
-    .sidebar-cta {
-      display: none;
     }
   }
 }

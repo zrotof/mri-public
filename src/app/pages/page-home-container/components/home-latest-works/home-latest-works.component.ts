@@ -18,6 +18,7 @@ import { gsap } from 'gsap';
 import { Draggable } from 'gsap/all';
 import { WorkTypeComponent } from '../../../../shared/components/work-type/work-type.component';
 import { ProjectService } from '../../../../core/services/project/project.service';
+import { GsapSplitTextFadeInScrollTriggerDirective } from '../../../../shared/directives/gsap-split-text-fade-in-scroll-trigger/gsap-split-text-fade-in-scroll-trigger.directive';
 
 gsap.registerPlugin(Draggable);
 
@@ -43,7 +44,8 @@ interface HorizontalLoopConfig {
     FontAwesomeModule,
     ConvertStringLabelToFontawesomeIconPipe,
     WorkTypeComponent,
-    RouterLink
+    RouterLink,
+    GsapSplitTextFadeInScrollTriggerDirective
   ],
 })
 

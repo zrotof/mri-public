@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { title } from 'process';
+import { GsapSplitTextFadeInScrollTriggerDirective } from '../../../../shared/directives/gsap-split-text-fade-in-scroll-trigger/gsap-split-text-fade-in-scroll-trigger.directive';
 
 @Component({
   selector: 'app-about-our-services',
-  imports: [],
+  imports: [
+    GsapSplitTextFadeInScrollTriggerDirective
+  ],
   templateUrl: './about-our-services.component.html',
   styleUrl: './about-our-services.component.scss'
 })

@@ -1,11 +1,11 @@
 @if (section()) {
 <div class="overview">
-  <h2>{{ section()?.title }}</h2>
+  <h2 appGsapSplitTextFadeInScrollTrigger [isTextSplit]="true" [duration]="0.8" [delay]="0.1">{{ section()?.title }}</h2>
 
   @if (section()?.content) {
     <div class="paragraph">
       @for (paragraph of section()?.content; track paragraph) {
-      <p>{{ paragraph }}</p>
+      <p appGsapSplitTextFadeInScrollTrigger [isTextSplit]="false" [duration]="0.8" [delay]="0.25">{{ paragraph }}</p>
       }
     </div>
   }

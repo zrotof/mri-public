@@ -41,10 +41,11 @@ export const PROJECTS: Project[] = [
     ],
 
     keyFigures: [
-      { icon: 'pi pi-home', value: '350 m²' },
-      { icon: 'pi pi-clock', value: '8 mois' },
-      { icon: 'pi pi-tag', value: '890 000 €' },
-      { icon: 'pi pi-chart-line', value: 'DPE E → A' }
+      { label: 'Surface', icon: 'pi pi-home', value: '350 m²' },
+      { label: 'Durée', icon: 'pi pi-clock', value: '8 mois' },
+      { label: 'Lieu', icon: 'pi pi-map-marker', value: 'Saint-Cloud (92)' },
+      { label: 'Budget', icon: 'pi pi-tag', value: '890 000 €' },
+      { label: 'Performance', icon: 'pi pi-chart-line', value: 'DPE E → A' }
     ],
 
     sections: [
@@ -258,10 +259,11 @@ export const PROJECTS: Project[] = [
     ],
 
     keyFigures: [
-      { icon: 'pi pi-home', value: '180 m²' },
-      { icon: 'pi pi-clock', value: '5 mois' },
-      { icon: 'pi pi-tag', value: '420 000 €' },
-      { icon: 'pi pi-chart-line', value: 'DPE F → C' }
+      { label: 'Surface', icon: 'pi pi-home', value: '180 m²' },
+      { label: 'Durée', icon: 'pi pi-clock', value: '15 semaines' },
+      { label: 'Lieu', icon: 'pi pi-map-marker', value: 'Paris 16e' },
+      { label: 'Budget', icon: 'pi pi-tag', value: '420 000 €' },
+      { label: 'Performance', icon: 'pi pi-chart-line', value: 'DPE F → C' }
     ],
     sections: []
   },
@@ -304,10 +306,11 @@ export const PROJECTS: Project[] = [
     ],
 
     keyFigures: [
-      { icon: 'pi pi-home', value: '220 m²' },
-      { icon: 'pi pi-clock', value: '6 mois' },
-      { icon: 'pi pi-tag', value: '480 000 €' },
-      { icon: 'pi pi-chart-line', value: 'DPE E → A' }
+      { label: 'Surface', icon: 'pi pi-home', value: '220 m²' },
+      { label: 'Durée', icon: 'pi pi-clock', value: '6 mois' },
+      { label: 'Lieu', icon: 'pi pi-map-marker', value: 'Saint-Germain-en-Laye' },
+      { label: 'Budget', icon: 'pi pi-tag', value: '480 000 €' },
+      { label: 'Performance', icon: 'pi pi-chart-line', value: 'DPE E → A' }
     ],
 
     sections: [

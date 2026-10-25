@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConvertStringLabelToFontawesomeIconPipe } from '../../../../core/pipes/convertStringLabelToFontawesomeIcon/convert-string-label-to-fontawesome-icon.pipe';
 import { GsapSplitTextFadeInScrollTriggerDirective } from '../../../../shared/directives/gsap-split-text-fade-in-scroll-trigger/gsap-split-text-fade-in-scroll-trigger.directive';
@@ -16,7 +15,6 @@ export interface FaqItem {
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
     FontAwesomeModule,
     ConvertStringLabelToFontawesomeIconPipe,
     GsapSplitTextFadeInScrollTriggerDirective

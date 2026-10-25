@@ -18,9 +18,9 @@
                     </span>
                 </div>
             </div>
-            <h2> {{blogArticle().title}} </h2>
+            <h2 appGsapSplitTextFadeInScrollTrigger [isTextSplit]="true" [duration]="0.8" [delay]="0.1"> {{blogArticle().title}} </h2>
 
-            <p>
+            <p appGsapSplitTextFadeInScrollTrigger [isTextSplit]="false" [duration]="0.8" [delay]="0.25">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo, veniam a iste blanditiis laboriosam ipsa recusandae quidem necessitatibus facilis non impedit cum, ullam, harum exercitationem nemo quis dolor illum sunt. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident aperiam itaque, aliquid adipisci, iusto at porro et tenetur soluta ipsam qui facere eius maxime debitis? Nam nobis iure veniam porro?
             </p>
         </div>

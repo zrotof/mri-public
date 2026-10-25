@@ -1,10 +1,10 @@
 <div class="before-after-section">
 
-  <h2>{{ section()?.title }}</h2>
+  <h2 appGsapSplitTextFadeInScrollTrigger [isTextSplit]="true" [duration]="0.8" [delay]="0.1">{{ section()?.title }}</h2>
 
   <div class="content">
       @for (paragraph of section()?.content; track paragraph) {
-        <p class="intro">
+        <p class="intro" appGsapSplitTextFadeInScrollTrigger [isTextSplit]="false" [duration]="0.8" [delay]="0.25">
           {{ paragraph }}
         </p>
       }

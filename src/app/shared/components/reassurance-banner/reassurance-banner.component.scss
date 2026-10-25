@@ -1,0 +1,152 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.reassurance-banner {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+
+    .strip-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.25rem;
+        width: 100%;
+    }
+
+    .strip-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.25s ease-in-out;
+        padding: 1.5rem;
+        //border: 1px solid black;
+        background-color: var(--project-black-tertiary-color);
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(109, 153, 7, 0.5);
+            transform: translateY(-3px);
+
+            .strip-icon {
+                color: var(--project-green-primary-color);
+                transform: translateY(-2px) scale(1.08);
+            }
+        }
+
+        .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: auto;
+            height: auto;
+            margin-bottom: 1.5rem;
+            flex-shrink: 0;
+            background: transparent;
+            box-shadow: none;
+
+            .strip-icon {
+                font-size: 2.25rem;
+                color: var(--project-green-primary-color);
+                transition: transform 0.25s ease-in-out, color 0.25s ease-in-out;
+                display: inline-block;
+            }
+        }
+
+        .strip-text-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.55rem;
+            width: 100%;
+            height: -webkit-fill-available;
+
+            .strip-title {
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: var(--project-blue-primary-color);
+                line-height: 1.25;
+                text-align: center;
+                width: 170px;
+            }
+
+            .strip-desc {
+                font-size: 1rem;
+                line-height: 1.55;
+                color: var(--project-black-secondary-color);
+                font-weight: 400;
+                text-align: center;
+            }
+        }
+    }
+}
+
+// Tablet & Mobile Breakpoints
+@media (max-width: 1024px) {
+    .reassurance-banner {
+        .strip-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+    }
+}
+
+// Petit écran : snap scroll sur une seule ligne
+@media (max-width: 768px) {
+    .reassurance-banner {
+        width: 100%;
+        overflow: hidden;
+
+        .strip-grid {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 0 1.25rem;
+            -webkit-overflow-scrolling: touch;
+            padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+            gap: 1rem;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            scrollbar-width: none; // Masquer la barre de scroll
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .strip-card {
+            flex: 0 0 82%;
+            min-width: 260px;
+            max-width: 320px;
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
+            box-sizing: border-box;
+            padding: 1.35rem 1.15rem;
+
+            .icon-wrapper {
+                margin-bottom: 1.75rem;
+            }
+
+            .strip-text-wrapper {
+                .strip-title {
+                    font-size: 1.15rem;
+                    width: auto;
+                    max-width: 240px;
+                }
+
+                .strip-desc {
+                    font-size: 0.92rem;
+                    line-height: 1.5;
+                }
+            }
+        }
+    }
+}

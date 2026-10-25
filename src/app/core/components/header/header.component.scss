@@ -193,10 +193,12 @@ header {
                     transform: translateY(8px) rotate(45deg);
                     background-color: var(--project-blue-primary-color);
                 }
+
                 .mid-line {
                     opacity: 0;
                     transform: translateX(-12px);
                 }
+
                 .bot-line {
                     transform: translateY(-8px) rotate(-45deg);
                     background-color: var(--project-blue-primary-color);
@@ -265,7 +267,7 @@ header {
             .close-drawer-btn {
                 background: #f8fafc;
                 border: 1px solid #e2e8f0;
-                border-radius: 50%;
+                border-radius: 4px;
                 width: 38px;
                 height: 38px;
                 display: flex;
@@ -278,9 +280,9 @@ header {
 
                 &:hover,
                 &:active {
-                    background: #fee2e2;
-                    color: #ef4444;
-                    border-color: #fca5a5;
+                    background: var(--project-green-primary-color);
+                    border-color: var(--project-green-primary-color);
+                    color: #ffffff;
                 }
             }
         }
@@ -303,7 +305,7 @@ header {
                         justify-content: space-between;
                         align-items: center;
                         padding: 0.9rem 1rem;
-                        border-radius: 8px;
+                        border-radius: 4px;
                         color: var(--project-blue-primary-color);
                         font-weight: 600;
                         font-size: 1.05rem;
@@ -314,19 +316,21 @@ header {
                             font-size: 1.05rem;
                         }
 
+                        i,
                         fa-icon {
-                            font-size: 0.85rem;
+                            font-size: 0.95rem;
                             color: #94a3b8;
                             transition: transform 0.2s ease, color 0.2s ease;
                         }
 
                         &:hover {
-                            background-color: #f0fdf4;
+                            background-color: var(--project-green-secondary-color);
                             color: var(--project-green-primary-color);
 
+                            i,
                             fa-icon {
                                 color: var(--project-green-primary-color);
-                                transform: translateX(3px);
+                                transform: translate(3px, -3px);
                             }
                         }
 
@@ -335,6 +339,7 @@ header {
                             color: var(--project-green-primary-color);
                             border-left: 4px solid var(--project-green-primary-color);
 
+                            i,
                             fa-icon {
                                 color: var(--project-green-primary-color);
                             }
@@ -348,7 +353,7 @@ header {
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
-            padding: 1.25rem 0;
+            padding: 1.25rem 0 0;
             border-top: 1px solid #f1f5f9;
 
             button,
@@ -432,6 +437,7 @@ header {
                 }
             }
         }
+
         .desktop-nav {
             ul {
                 li {
@@ -452,6 +458,7 @@ header {
         }
 
         .desktop-buttons {
+
             .btn-contact,
             .btn-phone {
                 color: var(--project-green-primary-color);

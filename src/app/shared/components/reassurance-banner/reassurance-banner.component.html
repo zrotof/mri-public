@@ -1,0 +1,16 @@
+<section class="reassurance-banner" aria-label="Nos engagements clés">
+    <div class="content header-container strip-grid">
+        @for (item of items; track item.title) {
+        <div class="strip-card">
+            <div class="icon-wrapper">
+                <fa-icon [icon]="item.icon | convertStringLabelToFontawesomeIcon" class="strip-icon"
+                    aria-hidden="true"></fa-icon>
+            </div>
+            <div class="strip-text-wrapper">
+                <h3 class="strip-title">{{ item.title }}</h3>
+                <p class="strip-desc">{{ item.description }}</p>
+            </div>
+        </div>
+        }
+    </div>
+</section>

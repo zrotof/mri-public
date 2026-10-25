@@ -20,7 +20,13 @@ import {
   faShieldHalved,
   faCheck,
   faCircleCheck,
-  faFileInvoiceDollar
+  faFileInvoiceDollar,
+  faFileSignature,
+  faUserTie,
+  faCalendarCheck,
+  faAward,
+  faGem,
+  faHandshake
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -31,6 +37,18 @@ import {
   faWhatsapp,
   faYoutube
 } from '@fortawesome/free-brands-svg-icons';
+
+import { faCalendarCheck as farCalendarCheck } from '@fortawesome/free-regular-svg-icons/faCalendarCheck';
+import { faFileLines as farFileLines } from '@fortawesome/free-regular-svg-icons/faFileLines';
+import { faClipboard as farClipboard } from '@fortawesome/free-regular-svg-icons/faClipboard';
+import { faHandshake as farHandshake } from '@fortawesome/free-regular-svg-icons/faHandshake';
+import { faUser as farUser } from '@fortawesome/free-regular-svg-icons/faUser';
+import { faGem as farGem } from '@fortawesome/free-regular-svg-icons/faGem';
+import { faCircleCheck as farCircleCheck } from '@fortawesome/free-regular-svg-icons/faCircleCheck';
+import { faClock as farClock } from '@fortawesome/free-regular-svg-icons/faClock';
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons/faStar';
+import { faCompass as farCompass } from '@fortawesome/free-regular-svg-icons/faCompass';
+import { faLightbulb as farLightbulb } from '@fortawesome/free-regular-svg-icons/faLightbulb';
 
 import { IconDefinition } from '@fortawesome/angular-fontawesome';
 
@@ -84,6 +102,18 @@ export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
         return faCircleCheck;
       case 'faFileInvoiceDollar':
         return faFileInvoiceDollar;
+      case 'faFileSignature':
+        return faFileSignature;
+      case 'faUserTie':
+        return faUserTie;
+      case 'faCalendarCheck':
+        return faCalendarCheck;
+      case 'faAward':
+        return faAward;
+      case 'faGem':
+        return faGem;
+      case 'faHandshake':
+        return faHandshake;
       case 'faWhatsapp':
         return faWhatsapp
       case 'faXmark':
@@ -92,6 +122,28 @@ export class ConvertStringLabelToFontawesomeIconPipe implements PipeTransform {
         return faXTwitter;
       case 'faYoutube':
         return faYoutube;
+      case 'farFileLines':
+        return farFileLines;
+      case 'farClipboard':
+        return farClipboard;
+      case 'farUser':
+        return farUser;
+      case 'farHandshake':
+        return farHandshake;
+      case 'farCalendarCheck':
+        return farCalendarCheck;
+      case 'farGem':
+        return farGem;
+      case 'farCircleCheck':
+        return farCircleCheck;
+      case 'farClock':
+        return farClock;
+      case 'farStar':
+        return farStar;
+      case 'farCompass':
+        return farCompass;
+      case 'farLightbulb':
+        return farLightbulb;
       default:
         return faUser;
     }

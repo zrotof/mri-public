@@ -3,10 +3,12 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ProjectService } from '../../../../core/services/project/project.service';
 
+import { GsapSplitTextFadeInScrollTriggerDirective } from '../../../../shared/directives/gsap-split-text-fade-in-scroll-trigger/gsap-split-text-fade-in-scroll-trigger.directive';
+
 @Component({
   selector: 'app-related-projects',
   standalone: true,
-  imports: [CommonModule, RouterLink, NgOptimizedImage],
+  imports: [CommonModule, RouterLink, NgOptimizedImage, GsapSplitTextFadeInScrollTriggerDirective],
   templateUrl: './related-projects.component.html',
   styleUrl: './related-projects.component.scss'
 })

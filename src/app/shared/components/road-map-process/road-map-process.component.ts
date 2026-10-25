@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConvertStringLabelToFontawesomeIconPipe } from '../../../core/pipes/convertStringLabelToFontawesomeIcon/convert-string-label-to-fontawesome-icon.pipe';
+import { GsapSplitTextFadeInScrollTriggerDirective } from '../../directives/gsap-split-text-fade-in-scroll-trigger/gsap-split-text-fade-in-scroll-trigger.directive';
 
 export interface ProcessStep {
   number: string;
@@ -18,7 +19,8 @@ export interface ProcessStep {
   imports: [
     CommonModule,
     FontAwesomeModule,
-    ConvertStringLabelToFontawesomeIconPipe
+    ConvertStringLabelToFontawesomeIconPipe,
+    GsapSplitTextFadeInScrollTriggerDirective
   ],
   templateUrl: './road-map-process.component.html',
   styleUrl: './road-map-process.component.scss'

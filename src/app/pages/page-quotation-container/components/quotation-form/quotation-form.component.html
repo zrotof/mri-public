@@ -38,8 +38,8 @@
 
         <!-- EN-TÊTE : CACHÉ SUR GRAND ÉCRAN, AFFICHÉ SUR PETIT ÉCRAN -->
         <div class="form-header">
-            <h2>Détaillez votre projet de rénovation</h2>
-            <p>Remplissez ce formulaire pour obtenir une estimation précise, personnalisée et sans engagement.</p>
+            <h2 appGsapSplitTextFadeInScrollTrigger [isTextSplit]="true" [duration]="0.8" [delay]="0.1">Détaillez votre projet de rénovation</h2>
+            <p appGsapSplitTextFadeInScrollTrigger [isTextSplit]="false" [duration]="0.8" [delay]="0.25">Remplissez ce formulaire pour obtenir une estimation précise, personnalisée et sans engagement.</p>
         </div>
 
         @if (submitError()) {

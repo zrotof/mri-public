@@ -1,12 +1,14 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
+import { GsapSplitTextFadeInScrollTriggerDirective } from '../../../../shared/directives/gsap-split-text-fade-in-scroll-trigger/gsap-split-text-fade-in-scroll-trigger.directive';
 
 @Component({
   selector: 'app-about-our-teams',
   templateUrl: './about-our-teams.component.html',
   styleUrl: './about-our-teams.component.scss',
   imports: [
-    NgOptimizedImage
+    NgOptimizedImage,
+    GsapSplitTextFadeInScrollTriggerDirective
   ]
 })
 

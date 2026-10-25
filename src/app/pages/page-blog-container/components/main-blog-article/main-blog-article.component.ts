@@ -4,6 +4,8 @@ import { ConvertStringLabelToFontawesomeIconPipe } from '../../../../core/pipes/
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DatePipe } from '@angular/common';
 
+import { GsapSplitTextFadeInScrollTriggerDirective } from '../../../../shared/directives/gsap-split-text-fade-in-scroll-trigger/gsap-split-text-fade-in-scroll-trigger.directive';
+
 @Component({
   selector: 'app-main-blog-article',
   templateUrl: './main-blog-article.component.html',
@@ -11,7 +13,8 @@ import { DatePipe } from '@angular/common';
   imports: [
     DatePipe,
     FontAwesomeModule,
-    ConvertStringLabelToFontawesomeIconPipe
+    ConvertStringLabelToFontawesomeIconPipe,
+    GsapSplitTextFadeInScrollTriggerDirective
   ]
 })
 

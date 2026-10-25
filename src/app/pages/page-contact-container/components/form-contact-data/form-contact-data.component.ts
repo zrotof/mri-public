@@ -11,6 +11,7 @@ import { ButtonModule } from 'primeng/button';
 import { ConvertStringLabelToFontawesomeIconPipe } from '../../../../core/pipes/convertStringLabelToFontawesomeIcon/convert-string-label-to-fontawesome-icon.pipe';
 import { ContactService } from '../../../../core/services/contact/contact.service';
 import { GtmService } from '../../../../core/services/gtm';
+import { GsapSplitTextFadeInScrollTriggerDirective } from '../../../../shared/directives/gsap-split-text-fade-in-scroll-trigger/gsap-split-text-fade-in-scroll-trigger.directive';
 
 @Component({
   selector: 'app-form-contact-data',
@@ -26,7 +27,8 @@ import { GtmService } from '../../../../core/services/gtm';
     CheckboxModule,
     ButtonModule,
     FontAwesomeModule,
-    ConvertStringLabelToFontawesomeIconPipe
+    ConvertStringLabelToFontawesomeIconPipe,
+    GsapSplitTextFadeInScrollTriggerDirective
   ]
 })
 export class FormContactDataComponent {

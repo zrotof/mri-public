@@ -1,6 +1,6 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Project } from '../../../../core/models/project';
+import { Project, ProjectKeyFigure } from '../../../../core/models/project';
 import { BreadcrumbComponent, BreadcrumbItem } from '../../../../shared/components/breadcrumb/breadcrumb.component';
 import { ShareService } from '../../../../core/services/share/share.service';
 
@@ -117,5 +117,18 @@ export class IntroSectionComponent {
       return p.featuredImageAlts[index];
     }
     return `${p.title} à ${p.location} - Vue ${index + 1}`;
+  }
+
+  getFigureLabel(figure: ProjectKeyFigure): string {
+    if (figure.label) {
+      return figure.label;
+    }
+    const icon = figure.icon || '';
+    if (icon.includes('home')) return 'Surface';
+    if (icon.includes('clock')) return 'Durée';
+    if (icon.includes('map-marker')) return 'Lieu';
+    if (icon.includes('tag')) return 'Budget';
+    if (icon.includes('chart-line')) return 'Performance';
+    return '';
   }
 }

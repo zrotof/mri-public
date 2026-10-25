@@ -11,6 +11,7 @@ import { ButtonModule } from 'primeng/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConvertStringLabelToFontawesomeIconPipe } from '../../../../core/pipes/convertStringLabelToFontawesomeIcon/convert-string-label-to-fontawesome-icon.pipe';
 import { QuotationRequest } from '../../../../core/models/quotation';
+import { GsapSplitTextFadeInScrollTriggerDirective } from '../../../../shared/directives/gsap-split-text-fade-in-scroll-trigger/gsap-split-text-fade-in-scroll-trigger.directive';
 
 @Component({
   selector: 'app-quotation-form',
@@ -28,7 +29,8 @@ import { QuotationRequest } from '../../../../core/models/quotation';
     CheckboxModule,
     ButtonModule,
     FontAwesomeModule,
-    ConvertStringLabelToFontawesomeIconPipe
+    ConvertStringLabelToFontawesomeIconPipe,
+    GsapSplitTextFadeInScrollTriggerDirective
   ]
 })
 export class QuotationFormComponent implements OnInit {

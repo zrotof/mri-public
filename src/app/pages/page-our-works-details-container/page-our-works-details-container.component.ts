@@ -13,9 +13,6 @@ import {
 } from '@angular/core';
 
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ConvertStringLabelToFontawesomeIconPipe } from '../../core/pipes/convertStringLabelToFontawesomeIcon/convert-string-label-to-fontawesome-icon.pipe';
 import { ProjectService } from '../../core/services/project/project.service';
 import { SeoService } from '../../core/services/seo';
 import { OverviewSectionComponent } from './components/overview-section/overview-section.component';
@@ -39,9 +36,6 @@ import { ShareService } from '../../core/services/share/share.service';
   styleUrl: './page-our-works-details-container.component.scss',
   imports: [
     CommonModule,
-    RouterLink,
-    FontAwesomeModule,
-    ConvertStringLabelToFontawesomeIconPipe,
     ProjectSidebarComponent,
     IntroSectionComponent,
     OverviewSectionComponent,

@@ -4,8 +4,8 @@
       
       <div class="section-header">
         <span class="eyebrow">Portfolio & Réalisations</span>
-        <h2 id="related-projects-title">Autres Réalisations Similaires</h2>
-        <p class="subtitle">
+        <h2 id="related-projects-title" appGsapSplitTextFadeInScrollTrigger [isTextSplit]="true" [duration]="0.8" [delay]="0.1">Autres Réalisations Similaires</h2>
+        <p class="subtitle" appGsapSplitTextFadeInScrollTrigger [isTextSplit]="false" [duration]="0.8" [delay]="0.25">
           Découvrez d'autres projets de rénovation complète, réhabilitation et extension signés Ma Rénovation Immobilière en Île-de-France.
         </p>
       </div>
@@ -31,7 +31,7 @@
                 <h3>{{ project.title }}</h3>
                 <p class="description">{{ project.shortDescription }}</p>
 
-                @if (project.renovationTypes?.length) {
+                @if (project.renovationTypes.length) {
                   <div class="tags">
                     @for (type of project.renovationTypes.slice(0, 3); track type) {
                       <span class="tag">{{ type }}</span>

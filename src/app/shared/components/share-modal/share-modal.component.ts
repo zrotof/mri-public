@@ -22,7 +22,7 @@ export class ShareModalComponent implements OnInit, OnDestroy {
     const d = this.shareService.data();
     if (d?.url) return d.url;
     if (this.isBrowser) return window.location.href;
-    return 'https://mri-renovation.fr';
+    return 'https://ma-renovation-immobiliere.fr';
   });
 
   readonly shareText = computed<string>(() => {

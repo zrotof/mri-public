@@ -4,6 +4,7 @@ import { HomeSupplierCarouselComponent } from './components/home-supplier-carous
 import { HomeAboutUsComponent } from './components/home-about-us/home-about-us.component';
 import { HomeCustomerTestimoniesComponent } from './components/home-customer-testimonies/home-customer-testimonies.component';
 import { CotationBannerComponent } from '../../shared/components/cotation-banner/cotation-banner.component';
+import { ReassuranceBannerComponent } from '../../shared/components/reassurance-banner/reassurance-banner.component';
 import { HomeLatestWorksComponent } from './components/home-latest-works/home-latest-works.component';
 import { HomeFaqComponent } from './components/home-faq/home-faq.component';
 
@@ -13,6 +14,7 @@ import { HomeFaqComponent } from './components/home-faq/home-faq.component';
   styleUrl: './page-home-container.component.scss',
   imports: [
     HeroBannerComponent,
+    ReassuranceBannerComponent,
     HomeLatestWorksComponent,
     HomeSupplierCarouselComponent,
     HomeAboutUsComponent,

@@ -16,6 +16,11 @@
     }
 
     <div class="intro-actions">
+      <a href="tel:+33130610606" class="btn-phone-call" aria-label="Appeler le 01 30 61 06 06"
+        title="Appeler le 01 30 61 06 06">
+        <i class="pi pi-phone"></i>
+        <span>01 30 61 06 06</span>
+      </a>
       <button type="button" class="btn-share" (click)="openShare()" aria-label="Partager cette réalisation"
         title="Partager cette réalisation">
         <i class="pi pi-share-alt"></i>
@@ -63,10 +68,17 @@
   </div>
 
   <div class="key-figures">
-    @for (figure of project()?.keyFigures; track figure.value) {
+    @for (figure of project()?.keyFigures; track $index) {
     <div class="figure">
-      <i class="{{ figure.icon }}"></i>
-      <span>{{ figure.value }}</span>
+      <div class="figure-icon-wrapper">
+        <i class="{{ figure.icon }}"></i>
+      </div>
+      <div class="figure-content">
+        @if (getFigureLabel(figure); as lbl) {
+        <span class="figure-label">{{ lbl }}</span>
+        }
+        <span class="figure-value">{{ figure.value }}</span>
+      </div>
     </div>
     }
   </div>

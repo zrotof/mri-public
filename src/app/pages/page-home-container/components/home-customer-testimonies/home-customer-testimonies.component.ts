@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConvertStringLabelToFontawesomeIconPipe } from '../../../../core/pipes/convertStringLabelToFontawesomeIcon/convert-string-label-to-fontawesome-icon.pipe';
 import { NgOptimizedImage } from '@angular/common';
+import { GsapSplitTextFadeInScrollTriggerDirective } from '../../../../shared/directives/gsap-split-text-fade-in-scroll-trigger/gsap-split-text-fade-in-scroll-trigger.directive';
 
 @Component({
   selector: 'app-home-customer-testimonies',
@@ -10,7 +11,8 @@ import { NgOptimizedImage } from '@angular/common';
   imports: [
     FontAwesomeModule,
     ConvertStringLabelToFontawesomeIconPipe,
-    NgOptimizedImage
+    NgOptimizedImage,
+    GsapSplitTextFadeInScrollTriggerDirective
   ]
 })
 export class HomeCustomerTestimoniesComponent {
