@@ -13,6 +13,9 @@ export interface SupplierBrand {
   templateUrl: './home-supplier-carousel.component.html',
   styleUrl: './home-supplier-carousel.component.scss',
   encapsulation: ViewEncapsulation.None,
+  host: {
+    ngSkipHydration: 'true'
+  },
   imports: [
     CarouselModule,
     GsapSplitTextFadeInScrollTriggerDirective

@@ -1,5 +1,5 @@
 import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, inject, PLATFORM_ID, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, NgZone, PLATFORM_ID, ViewChild, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
@@ -29,20 +29,26 @@ export class HeroBannerComponent implements AfterViewInit {
   @ViewChild('heroBtn') heroBtn!: ElementRef<HTMLElement>;
 
   private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  private ngZone = inject(NgZone);
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
 
-    try {
-      this.initHeroAnimation();
-    } catch (err) {
-      const contentEl = this.heroContent?.nativeElement || document.querySelector('.hero-banner .content');
-      const btnEl = this.heroBtn?.nativeElement || document.querySelector('.hero-banner .btn');
-      const socialIcons = contentEl?.querySelectorAll('.hero-socials .social-icon');
-      if (contentEl) gsap.set(contentEl, { visibility: 'visible' });
-      if (btnEl) gsap.set(btnEl, { opacity: 1, scale: 1, clearProps: 'all' });
-      if (socialIcons) gsap.set(socialIcons, { opacity: 1, scale: 1, clearProps: 'all' });
-    }
+    this.ngZone.runOutsideAngular(() => {
+      requestAnimationFrame(() => {
+        try {
+          this.initHeroAnimation();
+        } catch (err) {
+          console.warn('Hero animation fallback:', err);
+          const contentEl = this.heroContent?.nativeElement || document.querySelector('.hero-banner .content');
+          const btnEl = this.heroBtn?.nativeElement || document.querySelector('.hero-banner .btn');
+          const socialIcons = contentEl?.querySelectorAll('.hero-socials .social-icon');
+          if (contentEl) gsap.set(contentEl, { visibility: 'visible' });
+          if (btnEl) gsap.set(btnEl, { opacity: 1, scale: 1, clearProps: 'all' });
+          if (socialIcons) gsap.set(socialIcons, { opacity: 1, scale: 1, clearProps: 'all' });
+        }
+      });
+    });
   }
 
   initHeroAnimation() {
@@ -59,7 +65,7 @@ export class HeroBannerComponent implements AfterViewInit {
 
     let titleSplit: SplitText | null = null;
     try {
-      titleSplit = new SplitText(titleEl, {
+      titleSplit = SplitText.create(titleEl, {
         type: 'lines',
         mask: 'lines'
       });
@@ -74,71 +80,64 @@ export class HeroBannerComponent implements AfterViewInit {
         y: 60,
         stagger: 0.25,
         duration: 0.7,
-        ease: 'power2.out'
+        ease: 'power2.out',
+        clearProps: 'transform,opacity'
       });
     } else {
-      tl.from(titleEl, {
+      tl.fromTo(titleEl, {
         y: 40,
-        opacity: 0,
+        opacity: 0
+      }, {
+        y: 0,
+        opacity: 1,
         duration: 0.7,
-        ease: 'power2.out'
+        ease: 'power2.out',
+        clearProps: 'transform,opacity'
       });
     }
 
     if (subtitleEl) {
-      tl.fromTo(subtitleEl,
-        {
-          y: 30,
-          opacity: 0
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.75,
-          ease: 'power2.out',
-          clearProps: 'transform,opacity'
-        },
-        '-=0.3'
-      );
+      tl.fromTo(subtitleEl, {
+        y: 30,
+        opacity: 0
+      }, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power2.out',
+        clearProps: 'transform,opacity'
+      }, '-=0.2');
     }
 
     if (btnEl) {
-      tl.fromTo(btnEl,
-        {
-          y: 25,
-          opacity: 0,
-          scale: 0.85
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          ease: 'back.out(1.7)',
-          clearProps: 'transform,opacity'
-        },
-        '-=0.2'
-      );
+      tl.fromTo(btnEl, {
+        y: 25,
+        opacity: 0,
+        scale: 0
+      }, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.6,
+        ease: 'back.out(1.7)',
+        clearProps: 'transform,opacity'
+      }, '-=0.2');
     }
 
     if (socialIcons && socialIcons.length) {
-      tl.fromTo(socialIcons,
-        {
-          y: 25,
-          opacity: 0,
-          scale: 0.8
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          stagger: 0.08,
-          ease: 'back.out(1.7)',
-          clearProps: 'transform,opacity'
-        },
-        btnEl ? '<' : '-=0.2'
-      );
+      tl.fromTo(socialIcons, {
+        y: 20,
+        opacity: 0,
+        scale: 0
+      }, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        stagger: 0.08,
+        duration: 0.5,
+        ease: 'back.out(1.7)',
+        clearProps: 'transform,opacity'
+      }, '<');
     }
   }
 }

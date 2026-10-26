@@ -78,6 +78,8 @@
                 h2 {
                     font-size: clamp(1.4rem, 2.5vw, 1.8rem);
                     font-weight: 700;
+                    line-height: 1;
+                    letter-spacing: -1px;
                     color: var(--project-blue-primary-color);
                     margin: 0;
                 }
@@ -295,6 +297,8 @@
                 h2 {
                     font-size: clamp(1.4rem, 2.5vw, 1.8rem);
                     font-weight: 700;
+                    line-height: 1;
+                    letter-spacing: -1px;
                     color: var(--project-blue-primary-color);
                     margin: 0;
                 }

@@ -1,10 +1,40 @@
 <div class="page-home-container">
     <app-hero-banner></app-hero-banner>
     <app-reassurance-banner></app-reassurance-banner>
-    <app-home-about-us></app-home-about-us>
-    <app-home-latest-works></app-home-latest-works>
-    <app-home-supplier-carousel></app-home-supplier-carousel>
-    <app-home-customer-testimonies></app-home-customer-testimonies>
-    <app-home-faq></app-home-faq>
-    <app-cotation-banner></app-cotation-banner>
+
+    @defer (on viewport) {
+        <app-home-about-us></app-home-about-us>
+    } @placeholder {
+        <div class="defer-placeholder" style="min-height: 400px;"></div>
+    }
+
+    @defer (on idle) {
+        <app-home-latest-works></app-home-latest-works>
+    } @placeholder {
+        <div class="defer-placeholder" style="min-height: 500px; background-color: var(--project-blue-primary-color);"></div>
+    }
+
+    @defer (on viewport) {
+        <app-home-supplier-carousel></app-home-supplier-carousel>
+    } @placeholder {
+        <div class="defer-placeholder" style="min-height: 250px;"></div>
+    }
+
+    @defer (on viewport) {
+        <app-home-customer-testimonies></app-home-customer-testimonies>
+    } @placeholder {
+        <div class="defer-placeholder" style="min-height: 400px;"></div>
+    }
+
+    @defer (on viewport) {
+        <app-home-faq></app-home-faq>
+    } @placeholder {
+        <div class="defer-placeholder" style="min-height: 400px;"></div>
+    }
+
+    @defer (on viewport) {
+        <app-cotation-banner></app-cotation-banner>
+    } @placeholder {
+        <div class="defer-placeholder" style="min-height: 300px;"></div>
+    }
 </div>

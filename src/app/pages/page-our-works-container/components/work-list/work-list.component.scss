@@ -87,7 +87,8 @@
                         color: var(--project-blue-primary-color);
                         font-weight: 600;
                         font-size: 1.1rem;
-                        line-height: 1.4;
+                        line-height: 1;
+                        letter-spacing: -1px;
                         margin: 0;
                         transition: color 0.25s ease;
                     }

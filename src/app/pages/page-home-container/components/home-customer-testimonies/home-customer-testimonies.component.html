@@ -1,17 +1,17 @@
 <div class="home-customer-testimonies">
     <div class="content my-container">
-        <h2 appGsapSplitTextFadeInScrollTrigger [isTextSplit]="true" [duration]="0.8" [delay]="0.1">
-            <span>Des Rêves</span>
-            <span>Transformés En Réalité</span>
-        </h2>
-        <p appGsapSplitTextFadeInScrollTrigger [isTextSplit]="false" [duration]="0.8" [delay]="0.25">
-            Parce qu’un projet est bien plus qu’un simple chantier, nous mettons notre savoir-faire et notre passion au
-            service de vos envies. Qu’il s’agisse de repenser une cuisine, rénover une salle de bain ou transformer
-            entièrement une maison, nous accompagnons chaque client avec la même exigence : offrir un résultat à la
-            hauteur de ses rêves. Ces témoignages reflètent la confiance de ceux qui nous ont confié leur projet.
-        </p>
+        <div class="section-header">
+            <h2 appGsapSplitTextFadeInScrollTrigger [isTextSplit]="true" [duration]="0.8" [delay]="0.1">
+                <span>Des Rêves</span>
+                <span>Transformés En Réalité</span>
+            </h2>
+            <p appGsapSplitTextFadeInScrollTrigger [isTextSplit]="false" [duration]="0.8" [delay]="0.25">
+                Découvrez les retours d’expérience de nos clients qui nous ont confié leurs projets de rénovation.
+            </p>
+        </div>
 
-        <div class="testimony-container"
+        <!-- Mode Desktop : vue unique avec grande image à droite et contrôles -->
+        <div class="testimony-container desktop-testimony-view"
              (touchstart)="onTouchStart($event)"
              (touchmove)="onTouchMove($event)"
              (touchend)="onTouchEnd()"
@@ -39,7 +39,7 @@
         
                         <div class="identity-navigations">
                             <div class="identity">
-                                <!-- Avatar visible uniquement sur petit écran à gauche du nom -->
+                                <!-- Avatar visible uniquement sur grand écran si besoin -->
                                 <div class="client-avatar">
                                     <img [ngSrc]="currentTestimony.image" [alt]="currentTestimony.clientName" width="52" height="52">
                                 </div>
@@ -81,9 +81,43 @@
                     <img [ngSrc]="currentTestimony.image" [alt]="currentTestimony.clientName" fill>
                 </div>
             </div>
+        </div>
 
-            <div class="swipe-hint">
-                <span>Glissez pour naviguer entre les témoignages</span>
+        <!-- Mode Petit Écran : Snap scroll horizontal instinctif -->
+        <div class="mobile-testimonies-snap-container">
+            <div class="mobile-testimonies-track" (scroll)="onMobileTrackScroll($event)">
+                @for (t of testimonials; track $index) {
+                    <div class="mobile-testimony-card" [id]="'testimony-card-' + $index">
+                        <fa-icon class="mobile-quote" [icon]=" 'faQuoteLeft' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                        <div class="mobile-texts">
+                            <h3>{{t.title}}</h3>
+                            <p>{{t.message}}</p>
+                        </div>
+                        <div class="mobile-client-footer">
+                            <div class="client-avatar">
+                                <img [ngSrc]="t.image" [alt]="t.clientName" width="48" height="48">
+                            </div>
+                            <div class="client-info">
+                                <span class="client-name">{{t.clientName}}</span>
+                                @if (t.clientCompany) {
+                                    <h4 class="client-company">{{t.clientCompany}}</h4>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Indicateurs de pagination centrés pour mobile -->
+            <div class="mobile-dots-pagination">
+                @for (t of testimonials; track $index) {
+                    <button type="button"
+                            class="dot"
+                            [class.active]="$index === mobileActiveIndex"
+                            (click)="scrollToMobileCard($index)"
+                            [attr.aria-label]="'Témoignage ' + ($index + 1)">
+                    </button>
+                }
             </div>
         </div>
     </div>

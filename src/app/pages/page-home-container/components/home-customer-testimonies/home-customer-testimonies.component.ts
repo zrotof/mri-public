@@ -63,6 +63,27 @@ export class HomeCustomerTestimoniesComponent {
   currentTestimonyIndex = 0;
   currentTestimony = this.testimonials[this.currentTestimonyIndex];
   animDirection: 'next' | 'prev' | null = null;
+  mobileActiveIndex = 0;
+
+  scrollToMobileCard(index: number): void {
+    this.mobileActiveIndex = index;
+    const card = document.getElementById(`testimony-card-${index}`);
+    if (card) {
+      card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  }
+
+  onMobileTrackScroll(event: Event): void {
+    const el = event.target as HTMLElement;
+    if (!el) return;
+    const scrollLeft = el.scrollLeft;
+    const cardEl = el.querySelector('.mobile-testimony-card') as HTMLElement | null;
+    const cardWidth = cardEl ? cardEl.offsetWidth + 16 : 300;
+    const newIndex = Math.round(scrollLeft / cardWidth);
+    if (newIndex >= 0 && newIndex < this.testimonials.length && newIndex !== this.mobileActiveIndex) {
+      this.mobileActiveIndex = newIndex;
+    }
+  }
 
   // Swipe / Drag gesture state
   touchStartX = 0;

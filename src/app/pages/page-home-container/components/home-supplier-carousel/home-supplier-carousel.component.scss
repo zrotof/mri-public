@@ -29,7 +29,7 @@
             flex-direction: column;
             align-items: center;
             gap: 0.5rem;
-            line-height: 1.15;
+            line-height: 1;
             font-weight: 900;
             letter-spacing: -1px;
             font-size: clamp(2rem, 4vw, 3rem);
@@ -92,7 +92,8 @@
                     width: auto;
                     height: auto;
                     object-fit: contain;
-                    filter: grayscale(100%) opacity(0.6);
+                    filter: none;
+                    opacity: 1;
                     transition: all 0.28s ease;
                 }
             }
@@ -101,8 +102,6 @@
                 transform: translateY(-4px);
 
                 .logo-wrapper img {
-                    filter: none;
-                    opacity: 1;
                     transform: scale(1.08);
                 }
             }

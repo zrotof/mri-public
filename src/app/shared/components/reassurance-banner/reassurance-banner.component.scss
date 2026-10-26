@@ -21,11 +21,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
         transition: all 0.25s ease-in-out;
         padding: 1.5rem;
-        //border: 1px solid black;
         background-color: var(--project-black-tertiary-color);
+        border-radius: 8px;
+        box-sizing: border-box;
 
         &:hover {
             background: rgba(255, 255, 255, 0.08);
@@ -44,7 +44,7 @@
             justify-content: center;
             width: auto;
             height: auto;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             flex-shrink: 0;
             background: transparent;
             box-shadow: none;
@@ -60,11 +60,10 @@
         .strip-text-wrapper {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             gap: 0.55rem;
             width: 100%;
-            height: -webkit-fill-available;
 
             .strip-title {
                 font-size: 1.25rem;
@@ -72,7 +71,11 @@
                 color: var(--project-blue-primary-color);
                 line-height: 1.25;
                 text-align: center;
-                width: 170px;
+                max-width: 180px;
+                min-height: 3.2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .strip-desc {
@@ -81,22 +84,45 @@
                 color: var(--project-black-secondary-color);
                 font-weight: 400;
                 text-align: center;
+                height: 7.75rem;
+            }
+        }
+
+        .card-image-wrapper {
+            width: 100%;
+            height: 175px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 0.65rem;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
             }
         }
     }
 }
 
-// Tablet & Mobile Breakpoints
+// Tablet Breakpoint
 @media (max-width: 1024px) {
     .reassurance-banner {
         .strip-grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
+            gap: 1.25rem;
+        }
+
+        .strip-card {
+            .card-image-wrapper {
+                height: 210px;
+                margin-top: 0.65rem;
+            }
         }
     }
 }
 
-// Petit écran : snap scroll sur une seule ligne
+// Petit écran : snap scroll avec icône à gauche, texte à droite et image en dessous
 @media (max-width: 768px) {
     .reassurance-banner {
         width: 100%;
@@ -108,9 +134,9 @@
             flex-wrap: nowrap;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            scroll-padding: 0 1.25rem;
+            scroll-padding: 0 1rem;
             -webkit-overflow-scrolling: touch;
-            padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+            padding: 0.5rem 1rem 1.25rem 1rem;
             gap: 1rem;
             width: 100%;
             max-width: 100%;
@@ -123,29 +149,53 @@
         }
 
         .strip-card {
-            flex: 0 0 82%;
-            min-width: 260px;
-            max-width: 320px;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem 1rem;
+            width: 250px;
             scroll-snap-align: center;
             scroll-snap-stop: always;
             box-sizing: border-box;
-            padding: 1.35rem 1.15rem;
+            padding: 1rem;
+            flex: 1 0 auto;
 
             .icon-wrapper {
-                margin-bottom: 1.75rem;
+                margin-bottom: 1rem;
+                margin-top: 0.25rem;
+                flex-shrink: 0;
+
+                .strip-icon {
+                    font-size: 1.85rem;
+                }
             }
 
             .strip-text-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                gap: 0.35rem;
+                text-align: left;
+
                 .strip-title {
                     font-size: 1.15rem;
-                    width: auto;
-                    max-width: 240px;
+                    text-align: left;
+                    line-height: 1.3;
+                    min-height: 3rem;
                 }
 
                 .strip-desc {
-                    font-size: 0.92rem;
-                    line-height: 1.5;
+                    font-size: 1rem;
+                    line-height: 1.45;
+                    text-align: left;
+                    height: 7.5rem;
                 }
+            }
+
+            .card-image-wrapper {
+                margin: 0;
+                width: 100%;
+                height: 130px;
             }
         }
     }

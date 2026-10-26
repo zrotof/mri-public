@@ -33,9 +33,9 @@
         h2 {
             display: flex;
             flex-direction: column;
-            font-size: 3rem;
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
-            line-height: 1.15;
+            line-height: 1;
             letter-spacing: -1px;
             color: var(--project-blue-primary-color);
             margin: 0;
@@ -154,24 +154,8 @@
 }
 
 /* RESPONSIVE */
-@media (max-width: 992px) {
-    .home-faq {
-        .header-section {
-            h2 {
-                font-size: 2.35rem;
-            }
-        }
-    }
-}
-
 @media (max-width: 600px) {
     .home-faq {
-        .header-section {
-            h2 {
-                font-size: 2rem;
-            }
-        }
-
         .faq-list {
             .faq-item {
                 .faq-question-btn {

@@ -65,7 +65,8 @@
 
     <div class="bottom">
         <div class="content my-container">
-            <ul>
+            <!-- Affichage d'origine pour grand écran -->
+            <ul class="stats-desktop">
                 <li>
                     <span>+10</span>
                     <div class="texts">
@@ -90,6 +91,54 @@
                     </div>
                 </li>
             </ul>
+
+            <!-- Affichage en cartes validé pour petits écrans -->
+            <div class="stats-mobile">
+                <div class="stat-card">
+                    <div class="stat-icon-badge">
+                        <fa-icon [icon]="'faAward' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value">
+                            <span class="symbol">+</span>10
+                        </div>
+                        <div class="stat-label">
+                            <span class="main-label">Années d'expérience</span>
+                            <span class="sub-label">Savoir-faire tous corps d'état</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon-badge">
+                        <fa-icon [icon]="'faCircleCheck' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value">
+                            <span class="symbol">+</span>2 500
+                        </div>
+                        <div class="stat-label">
+                            <span class="main-label">Chantiers livrés</span>
+                            <span class="sub-label">Rénovations clés en main</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon-badge">
+                        <fa-icon [icon]="'faHandshake' | convertStringLabelToFontawesomeIcon"></fa-icon>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value">
+                            <span class="symbol">+</span>5K
+                        </div>
+                        <div class="stat-label">
+                            <span class="main-label">Clients accompagnés</span>
+                            <span class="sub-label">Particuliers & professionnels</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

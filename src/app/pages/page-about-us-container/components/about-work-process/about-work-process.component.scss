@@ -12,10 +12,10 @@
         gap: 1.5rem;
 
         h2 {
-            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
             color: var(--project-blue-primary-color);
-            line-height: 1.15;
+            line-height: 1;
             letter-spacing: -1px;
             text-align: center;
             margin: 0;
@@ -218,10 +218,6 @@
 @media (max-width: 600px) {
     .about-work-process {
         .content {
-            h2 {
-                font-size: 1.85rem;
-            }
-
             .sub-header {
                 font-size: 0.95rem;
             }

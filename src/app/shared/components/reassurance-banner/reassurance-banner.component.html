@@ -10,6 +10,11 @@
                 <h3 class="strip-title">{{ item.title }}</h3>
                 <p class="strip-desc">{{ item.description }}</p>
             </div>
+            @if (item.image) {
+            <div class="card-image-wrapper">
+                <img [src]="item.image" [alt]="item.title" loading="lazy">
+            </div>
+            }
         </div>
         }
     </div>
